@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My Average Blog</title>
+    <link>https://d0ublew.github.io/</link>
+    <description>Recent content on My Average Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2023 William Wijaya</copyright>
+    <lastBuildDate>Tue, 25 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://d0ublew.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[imaginary-ctf-2023] [pwn] generic-rop-challenge</title>
+      <link>https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/</link>
+      <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/</guid>
+      <description>ARM64 ROP</description>
+      
+    </item>
+    
+  </channel>
+</rss>
