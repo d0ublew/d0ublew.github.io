@@ -780,7 +780,7 @@
         
 
 
-        <div class="max-w-prose mb-20">
+        <div class="max-w-min mb-20">
           
   
 
@@ -919,8 +919,8 @@
 <li>Add <code>N</code> to <code>sp</code> (<code>sp = sp + N</code>)</li>
 <li>Stores old frame pointer, <code>x29</code>, to <code>[sp]</code> and return address, <code>x30</code>, to <code>[sp + 8]</code></li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">stp</span> <span class="no">x29</span><span class="p">,</span> <span class="no">x30</span><span class="p">,</span> <span class="p">[</span><span class="no">sp</span><span class="p">,</span> <span class="c1">#N]!  ; pre-indexed [base, #offset]!
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">mov</span> <span class="no">x29</span><span class="p">,</span> <span class="no">sp</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-armasm" data-lang="armasm"><span class="line"><span class="cl">stp <span class="nc">x29</span>, <span class="nc">x30</span>, <span class="err">[sp</span>, #<span class="err">N]!  ; pre-indexed [base, #offset]!</span>
+</span></span><span class="line"><span class="cl">mov <span class="nc">x29</span>, <span class="err">sp</span>
 </span></span></code></pre></div><div id="function-epilogue" class="anchor"></div>
 <h4 class="relative group">Function Epilogue 
     <span
@@ -934,8 +934,8 @@
 <li>Load <code>[sp]</code> to <code>x29</code> and <code>[sp + 8]</code> to <code>x30</code></li>
 <li>Add <code>N</code> to <code>sp</code> (<code>sp = sp + N</code>)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">ldp</span> <span class="no">x29</span><span class="p">,</span> <span class="no">x30</span><span class="p">,</span> <span class="p">[</span><span class="no">sp</span><span class="p">],</span> <span class="c1">#N  ; post-indexed [base], #offset
-</span></span></span></code></pre></div><div id="stack-layout" class="anchor"></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-armasm" data-lang="armasm"><span class="line"><span class="cl">ldp <span class="nc">x29</span>, <span class="nc">x30</span>, <span class="err">[sp]</span>, #<span class="err">N  ; post-indexed [base], #offset</span>
+</span></span></code></pre></div><div id="stack-layout" class="anchor"></div>
 <h4 class="relative group">Stack Layout 
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
