@@ -97,7 +97,7 @@
     "keywords": ["ARM64","ROP"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "658"
+    "wordCount": "686"
   }]
   </script>
 
@@ -869,9 +869,14 @@
 </h3>
 <p>References: <a href="https://docs.pwntools.com/en/stable/qemu.html"   target="_blank">
     https://docs.pwntools.com/en/stable/qemu.html</a></p>
+<p>Debugging (<strong>choose either one</strong>):</p>
 <ul>
+<li>gdb-multiarch: <code>sudo apt-get install gdb-multiarch</code></li>
 <li>gcc toolchain (with gdb): <a href="https://github.com/xpack-dev-tools/aarch64-none-elf-gcc-xpack/"   target="_blank">
     https://github.com/xpack-dev-tools/aarch64-none-elf-gcc-xpack/</a></li>
+</ul>
+<p>Running:</p>
+<ul>
 <li>qemu: <code>sudo apt-get install qemu-user-static</code></li>
 <li>libs: <code>sudo apt-get install libc6-arm64-cross</code> installs to <code>/usr/aarch64-linux-gnu/</code></li>
 </ul>
@@ -881,6 +886,9 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># debug mode (gdbserver) on port 1234</span>
 </span></span><span class="line"><span class="cl">qemu-aarch64-static -g <span class="m">1234</span> ./binary
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># in case of the loader not provided (`ld-linux-aarch64.so.1`), use the loader from `libc-arm64-cross`</span>
+</span></span><span class="line"><span class="cl">qemu-aarch64-static -L /usr/aarch64-linux-gnu/ ./binary
 </span></span></code></pre></div><p>Attach debugger with <code>GEF</code></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">gef➤  gef-remote --qemu-user localhost <span class="m">1234</span>
 </span></span></code></pre></div><div id="assembly" class="anchor"></div>
