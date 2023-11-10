@@ -7,13 +7,13 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2023 d0UBleW</copyright>
-    <lastBuildDate>Tue, 25 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://d0ublew.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://d0ublew.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>ImaginaryCTF 2023</title>
-      <link>https://d0ublew.github.io/categories/imaginaryctf-2023/</link>
-      <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
+      <title>PwC CTF: Hack A Day 2023 - Securing AI</title>
+      <link>https://d0ublew.github.io/categories/pwc-ctf-hack-a-day-2023-securing-ai/</link>
+      <pubDate>Wed, 08 Nov 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://d0ublew.github.io/categories/imaginaryctf-2023/</guid>
+      <guid>https://d0ublew.github.io/categories/pwc-ctf-hack-a-day-2023-securing-ai/</guid>
       <description></description>
       
     </item>
@@ -21,9 +21,29 @@
     <item>
       <title>pwn</title>
       <link>https://d0ublew.github.io/categories/pwn/</link>
-      <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 08 Nov 2023 00:00:00 +0000</pubDate>
       
       <guid>https://d0ublew.github.io/categories/pwn/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>web</title>
+      <link>https://d0ublew.github.io/categories/web/</link>
+      <pubDate>Wed, 08 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://d0ublew.github.io/categories/web/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>ImaginaryCTF 2023</title>
+      <link>https://d0ublew.github.io/categories/imaginaryctf-2023/</link>
+      <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://d0ublew.github.io/categories/imaginaryctf-2023/</guid>
       <description></description>
       
     </item>

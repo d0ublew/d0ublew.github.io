@@ -1,56 +1,52 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-    
-  
-    
-  
-    
-      <url>
-            <loc>https://d0ublew.github.io/</loc>
-            <lastmod>2023-07-25T00:00:00+00:00</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/</loc>
-            <lastmod>2023-07-25T00:00:00+00:00</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-  
-    
-      <url>
-            <loc>https://d0ublew.github.io/posts/</loc>
-            <lastmod>2023-07-25T00:00:00+00:00</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      <url>
-            <loc>https://d0ublew.github.io/about/</loc>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-  
-    
-  
+
+  <url>
+    <loc>https://d0ublew.github.io/</loc>
+    <lastmod>2023-11-08T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://d0ublew.github.io/posts/pwc-hackaday-23/pwn/hack-the-binary-1/</loc>
+    <lastmod>2023-11-08T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://d0ublew.github.io/posts/pwc-hackaday-23/pwn/hack-the-binary-2/</loc>
+    <lastmod>2023-11-08T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://d0ublew.github.io/posts/</loc>
+    <lastmod>2023-11-08T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://d0ublew.github.io/posts/pwc-hackaday-23/web/php-code-review-1/</loc>
+    <lastmod>2023-11-08T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://d0ublew.github.io/posts/pwc-hackaday-23/web/php-code-review-2/</loc>
+    <lastmod>2023-11-08T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/</loc>
+    <lastmod>2023-07-25T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://d0ublew.github.io/about/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset>
