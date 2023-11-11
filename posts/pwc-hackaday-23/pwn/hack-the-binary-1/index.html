@@ -97,7 +97,7 @@
     "keywords": ["oob"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "489"
+    "wordCount": "490"
   }]
   </script>
 
@@ -874,10 +874,10 @@ variable named secret which contains the flag.</p>
             style="text-decoration-line: none !important;" href="#solution" aria-label="Anchor">#</a></span>        
     
 </h2>
-<p>Now that we know we could read the flag by providing a negative item ID, the step
-is to calculate the exact value to properly access the flag. To do this, we
+<p>Now that we know we could read the flag by providing a negative item ID, the next
+step is to calculate the exact value to properly access the flag. To do this, we
 could simply subtract the distance between <code>item</code> and <code>secret</code> and then divides
-the value by 2.</p>
+the value by 16.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># type: ignore</span>
