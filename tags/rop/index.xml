@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2023 d0UBleW</copyright>
-    <lastBuildDate>Tue, 25 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://d0ublew.github.io/tags/rop/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://d0ublew.github.io/tags/rop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hack the Binary 2</title>
+      <link>https://d0ublew.github.io/posts/pwc-hackaday-23/pwn/hack-the-binary-2/</link>
+      <pubDate>Wed, 08 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://d0ublew.github.io/posts/pwc-hackaday-23/pwn/hack-the-binary-2/</guid>
+      <description>Format string to defeat ASLR, ROP to get RCE</description>
+      
+    </item>
+    
     <item>
       <title>generic-rop-challenge</title>
       <link>https://d0ublew.github.io/posts/imaginaryctf-2023/pwn/generic-rop-challenge/</link>

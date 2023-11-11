@@ -18,15 +18,5 @@
       
     </item>
     
-    <item>
-      <title>Hack the Binary 2</title>
-      <link>https://d0ublew.github.io/posts/pwc-hackaday-23/pwn/hack-the-binary-2/</link>
-      <pubDate>Wed, 08 Nov 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://d0ublew.github.io/posts/pwc-hackaday-23/pwn/hack-the-binary-2/</guid>
-      <description>Format string to defeat ASLR, ROP to get RCE</description>
-      
-    </item>
-    
   </channel>
 </rss>

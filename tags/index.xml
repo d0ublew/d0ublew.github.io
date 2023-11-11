@@ -9,6 +9,16 @@
     <copyright>© 2023 d0UBleW</copyright>
     <lastBuildDate>Wed, 08 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://d0ublew.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>format string</title>
+      <link>https://d0ublew.github.io/tags/format-string/</link>
+      <pubDate>Wed, 08 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://d0ublew.github.io/tags/format-string/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
       <title>oob</title>
       <link>https://d0ublew.github.io/tags/oob/</link>
       <pubDate>Wed, 08 Nov 2023 00:00:00 +0000</pubDate>
@@ -29,21 +39,21 @@
     </item>
     
     <item>
-      <title>ARM64</title>
-      <link>https://d0ublew.github.io/tags/arm64/</link>
-      <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
+      <title>ROP</title>
+      <link>https://d0ublew.github.io/tags/rop/</link>
+      <pubDate>Wed, 08 Nov 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://d0ublew.github.io/tags/arm64/</guid>
+      <guid>https://d0ublew.github.io/tags/rop/</guid>
       <description></description>
       
     </item>
     
     <item>
-      <title>ROP</title>
-      <link>https://d0ublew.github.io/tags/rop/</link>
+      <title>ARM64</title>
+      <link>https://d0ublew.github.io/tags/arm64/</link>
       <pubDate>Tue, 25 Jul 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://d0ublew.github.io/tags/rop/</guid>
+      <guid>https://d0ublew.github.io/tags/arm64/</guid>
       <description></description>
       
     </item>

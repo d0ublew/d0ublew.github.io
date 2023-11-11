@@ -12,7 +12,7 @@
   <meta name="title" content="Hack the Binary 2 &middot; d0UBleW&#39;s Blog" />
   
   <meta name="description" content="Format string to defeat ASLR, ROP to get RCE" />
-  <meta name="keywords" content="oob, " />
+  <meta name="keywords" content="format string, ROP, " />
   
   
   <link rel="canonical" href="https://d0ublew.github.io/posts/pwc-hackaday-23/pwn/hack-the-binary-2/" />
@@ -94,7 +94,7 @@
     
     "dateModified": "2023-11-08T00:00:00\u002b00:00",
     
-    "keywords": ["oob"],
+    "keywords": ["format string","ROP"],
     
     "mainEntityOfPage": "true",
     "wordCount": "752"
@@ -618,12 +618,23 @@
   
   
   
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/oob/&#34;,'_self');">
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/format-string/&#34;,'_self');">
     <span class="flex">
   <span
     class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
   >
-    oob
+    format string
+  </span>
+</span>
+
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/rop/&#34;,'_self');">
+    <span class="flex">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+  >
+    ROP
   </span>
 </span>
 
@@ -1346,6 +1357,144 @@ exist in the binary file, but is available from the libc file.</p>
   
   
 
+  <a href="/posts/imaginaryctf-2023/pwn/generic-rop-challenge/" class="min-w-full">
+    
+    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur">
+
+      <div class="px-6 py-4">
+
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/imaginaryctf-2023/pwn/generic-rop-challenge/">generic-rop-challenge</div>
+        
+
+        <div class="text-sm text-neutral-500 dark:text-neutral-400">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-07-25 00:00:00 &#43;0000 UTC">25 July 2023</time>
+  
+
+  
+  
+</div>
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/imaginaryctf-2023/&#34;,'_self');">
+    <span class="flex">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+  >
+    ImaginaryCTF 2023
+  </span>
+</span>
+
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/pwn/&#34;,'_self');">
+    <span class="flex">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+  >
+    pwn
+  </span>
+</span>
+
+  </span>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/arm64/&#34;,'_self');">
+    <span class="flex">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+  >
+    ARM64
+  </span>
+</span>
+
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/rop/&#34;,'_self');">
+    <span class="flex">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+  >
+    ROP
+  </span>
+</span>
+
+  </span>
+  
+  
+  
+  
+</div>
+
+
+
+        </div>
+
+        
+        <div class="py-1 prose dark:prose-invert">
+          ARM64 ROP with <code>ret2csu</code>
+        </div>
+        
+      </div>
+      <div class="px-6 pt-4 pb-2">
+
+      </div>
+    </div>
+  </a>
+  
+  
+
   <a href="/posts/pwc-hackaday-23/web/php-code-review-1/" class="min-w-full">
     
     <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur">
@@ -1462,133 +1611,6 @@ exist in the binary file, but is available from the libc file.</p>
         
         <div class="py-1 prose dark:prose-invert">
           Leveraging Google search box to capture the flag
-        </div>
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-  
-  
-
-  <a href="/posts/pwc-hackaday-23/web/php-code-review-2/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur">
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/pwc-hackaday-23/web/php-code-review-2/">PHP Code Review 2</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2023-11-08 00:00:00 &#43;0000 UTC">8 November 2023</time>
-  
-
-  
-  
-</div>
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  
-  
-  
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/pwc-ctf-hack-a-day-2023-securing-ai/&#34;,'_self');">
-    <span class="flex">
-  <span
-    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
-  >
-    PwC CTF: Hack A Day 2023 - Securing AI
-  </span>
-</span>
-
-  </span>
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/web/&#34;,'_self');">
-    <span class="flex">
-  <span
-    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
-  >
-    web
-  </span>
-</span>
-
-  </span>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/php/&#34;,'_self');">
-    <span class="flex">
-  <span
-    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
-  >
-    php
-  </span>
-</span>
-
-  </span>
-  
-  
-  
-  
-</div>
-
-
-
-        </div>
-
-        
-        <div class="py-1 prose dark:prose-invert">
-          Triggering error to reach <code>catch</code> block
         </div>
         
       </div>
