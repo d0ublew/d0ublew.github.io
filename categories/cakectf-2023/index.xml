@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CakeCTF 2023 on d0UBleW&#39;s Blog</title>
+    <link>https://d0ublew.github.io/categories/cakectf-2023/</link>
+    <description>Recent content in CakeCTF 2023 on d0UBleW&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2023 d0UBleW</copyright>
+    <lastBuildDate>Thu, 16 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://d0ublew.github.io/categories/cakectf-2023/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>bofww</title>
+      <link>https://d0ublew.github.io/posts/cakectf-2023/pwn/bofww/</link>
+      <pubDate>Thu, 16 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://d0ublew.github.io/posts/cakectf-2023/pwn/bofww/</guid>
+      <description>Buffer overflow into arbitrary address write via std::string &lt;code&gt;=&lt;/code&gt; operator</description>
+      
+    </item>
+    
+    <item>
+      <title>Memorial Cabbage</title>
+      <link>https://d0ublew.github.io/posts/cakectf-2023/pwn/memorial-cabbage/</link>
+      <pubDate>Thu, 16 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://d0ublew.github.io/posts/cakectf-2023/pwn/memorial-cabbage/</guid>
+      <description>Overwriting &lt;code&gt;mkdtemp&lt;/code&gt; return path</description>
+      
+    </item>
+    
+  </channel>
+</rss>
