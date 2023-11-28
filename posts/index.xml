@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2023 d0UBleW</copyright>
-    <lastBuildDate>Thu, 16 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://d0ublew.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 28 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://d0ublew.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Glacier Rating</title>
+      <link>https://d0ublew.github.io/posts/glacierctf-2023/pwn/</link>
+      <pubDate>Tue, 28 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://d0ublew.github.io/posts/glacierctf-2023/pwn/</guid>
+      <description>Buffer overflow into arbitrary address write via std::string &lt;code&gt;=&lt;/code&gt; operator</description>
+      
+    </item>
+    
     <item>
       <title>bofww</title>
       <link>https://d0ublew.github.io/posts/cakectf-2023/pwn/bofww/</link>
