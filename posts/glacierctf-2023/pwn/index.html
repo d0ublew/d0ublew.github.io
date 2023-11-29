@@ -11,7 +11,7 @@
   <title>Glacier Rating &middot; d0UBleW&#39;s Blog</title>
   <meta name="title" content="Glacier Rating &middot; d0UBleW&#39;s Blog" />
   
-  <meta name="description" content="Buffer overflow into arbitrary address write via std::string `=` operator" />
+  <meta name="description" content="Double free into tcache poisoning" />
   <meta name="keywords" content="heap, cpp, tcache poisoning, double free, fastbin dup, " />
   
   
@@ -62,7 +62,7 @@
   
   
   <meta property="og:title" content="Glacier Rating" />
-<meta property="og:description" content="Buffer overflow into arbitrary address write via std::string = operator" />
+<meta property="og:description" content="Double free into tcache poisoning" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://d0ublew.github.io/posts/glacierctf-2023/pwn/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-11-28T00:00:00+00:00" />
@@ -71,7 +71,7 @@
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Glacier Rating"/>
-<meta name="twitter:description" content="Buffer overflow into arbitrary address write via std::string = operator"/>
+<meta name="twitter:description" content="Double free into tcache poisoning"/>
 
   
   <script type="application/ld+json">
@@ -82,7 +82,7 @@
     "name": "Glacier Rating",
     "headline": "Glacier Rating",
     
-    "abstract": "Buffer overflow into arbitrary address write via std::string \u003ccode\u003e=\u003c\/code\u003e operator",
+    "abstract": "Double free into tcache poisoning",
     "inLanguage": "en",
     "url" : "https:\/\/d0ublew.github.io\/posts\/glacierctf-2023\/pwn\/",
     "author" : {
@@ -98,7 +98,7 @@
     "keywords": ["heap","cpp","tcache poisoning","double free","fastbin dup"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1988"
+    "wordCount": "1990"
   }]
   </script>
 
@@ -958,7 +958,7 @@ into the <code>std::map&lt;size_t, char*&gt; ratings_</code></p>
 from the available <code>key</code> inside <code>ratings_</code>. Proper validation is implemented
 as well to prevent weird interactions. However, there is one problem here.
 The function <code>User::removeRating</code> does not actually delete the <code>std::pair</code> element,
-but instead only delete the <code>std::pair</code> value. Furthermore, the size of the
+but instead only delete the <code>std::pair</code> value. As a result, the size of the
 <code>std::map</code> stays the same as well.</p>
 <p>The proper way to delete should be using the <a href="https://en.cppreference.com/w/cpp/container/map/erase"   target="_blank">
     <code>erase</code> method</a>.</p>
@@ -1126,7 +1126,7 @@ field which contain the key to prevent double free but this is not possible.
 Unlike <code>tcachebins</code>, <code>fastbin</code> does not have the mechanism to detect double free.
 So our goal now is to free the rating chunk into fastbin and perform double free
 (also known as <code>fastbin dup</code>).</p>
-<p>To achieve this, we would need to first fill up the <code>tcachebins</code> with chunk of size
+<p>To achieve this, we would need to first fill up the <code>tcachebins</code> with chunks of size
 <code>0x20</code>. Recall the <code>scream</code> function which enable us to allocate up to 50
 arbitrary size chunks. Furthermore, this function also freed the allocated chunks
 at the end, which is perfect for us.</p>
