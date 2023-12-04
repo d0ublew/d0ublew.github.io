@@ -26,8 +26,8 @@
   
   
   
-  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.555aa9eb429520fd2dbf3f38e36ace79cb83b2926668df82200287a05d7cfdbeb4eea576f20535c4df70ca4fb9de7b88b4e6468e391d9bc3005902aee62e1707.css"
-    integrity="sha512-VVqp60KVIP0tvz8442rOecuDspJmaN&#43;CIAKHoF18/b607qV28gU1xN9wyk&#43;53nuItOZGjjkdm8MAWQKu5i4XBw==" />
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.b2f259bcbf8149ff12acc9e173cddba0346ddc57f87f60f126727275485535e4326e57e28724c2fa3b2dabe4ded23275c85b4cbf9cd3910ccde40a98a305e996.css"
+    integrity="sha512-svJZvL&#43;BSf8SrMnhc83boDRt3Ff4f2DxJnJydUhVNeQyblfihyTC&#43;jstq&#43;Te0jJ1yFtMv5zTkQzN5AqYowXplg==" />
   
   
   <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
@@ -47,7 +47,9 @@
   <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.82867bf47a612d7462e3555f4fccb5ab28e2bd4b18c37131afdf5ba4d21396ab08ac679cae8e0ae71b26835b657ce022e7aafd352b1ecf7ce672512e5cb25882.js"
     integrity="sha512-goZ79HphLXRi41VfT8y1qyjivUsYw3Exr99bpNITlqsIrGecro4K5xsmg1tlfOAi56r9NSsez3zmclEuXLJYgg==" data-copy="" data-copied=""></script>
   
+  
   <script src="/js/zoom.min.js"></script>
+  
   
   
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -185,8 +187,9 @@
     <div class="flex flex-1 items-center justify-between">
         <nav class="flex space-x-3">
 
+            
             <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">d0UBleW&rsquo;s Blog</a>
-
+            
 
         </nav>
         <nav class="hidden md:flex items-center space-x-5 md:ml-12 h-12">
@@ -357,6 +360,7 @@
 
         <label id="menu-button" for="menu-controller" class="block">
             <input type="checkbox" id="menu-controller" class="hidden" />
+            
             <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
                 
 
@@ -384,7 +388,6 @@
 </span>
                     </li>
 
-                    
                     
 
                     
@@ -467,9 +470,9 @@
 
 
                     
-                    
 
                 </ul>
+                
                 
 
             </div>
@@ -586,7 +589,7 @@
 
 
 
-<div class="flex flex-row flex-wrap items-center">
+<div style="cursor: default;" class="flex flex-row flex-wrap items-center">
   
   
   <time datetime="2023-11-08 00:00:00 &#43;0000 UTC">8 November 2023</time>
@@ -600,7 +603,7 @@
 
 
 
-<div class="flex flex-row flex-wrap items-center">
+<div style="cursor: pointer;" class="flex flex-row flex-wrap items-center">
   
   
   
@@ -767,12 +770,14 @@
 
 
         <div class="max-w-min mb-20">
-          <div id="source-code" class="anchor"></div>
-<h2 class="relative group">Source Code 
+          <h2 class="relative group">Source Code 
+    <div id="source-code" class="anchor"></div>
+    
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#source-code" aria-label="Anchor">#</a></span>        
+            style="text-decoration-line: none !important;" href="#source-code" aria-label="Anchor">#</a>
+    </span>        
     
 </h2>
 
@@ -825,12 +830,14 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
-</span></span></span></code></pre></div><div id="initial-analysis" class="anchor"></div>
-<h2 class="relative group">Initial Analysis 
+</span></span></span></code></pre></div><h2 class="relative group">Initial Analysis 
+    <div id="initial-analysis" class="anchor"></div>
+    
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#initial-analysis" aria-label="Anchor">#</a></span>        
+            style="text-decoration-line: none !important;" href="#initial-analysis" aria-label="Anchor">#</a>
+    </span>        
     
 </h2>
 <p>From the source code above, we could see that it requires us to provide a URL
@@ -859,12 +866,14 @@ it is stated that the server is running PHP version <code>8.2.12</code>.</p>
 </p>
 <p>Seems like there is no way for us to trick the <code>parse_url</code> but to work with
 <code>www.google.com</code></p>
-<div id="looking-at-wwwgooglecom" class="anchor"></div>
 <h2 class="relative group">Looking at <code>www.google.com</code> 
+    <div id="looking-at-wwwgooglecom" class="anchor"></div>
+    
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#looking-at-wwwgooglecom" aria-label="Anchor">#</a></span>        
+            style="text-decoration-line: none !important;" href="#looking-at-wwwgooglecom" aria-label="Anchor">#</a>
+    </span>        
     
 </h2>
 <p>If we provide <code>https://www.google.com</code> as the <code>url</code> query value, we could see that
@@ -923,12 +932,14 @@ is our provided <code>url</code> appended with <code>?flag=</code>. If our provi
 <code>?foo=bar</code>, then the appended <code>?flag=</code> would lose its <code>?</code> original syntax meaning
 and instead be treated as the continuation of our initial <code>foo</code> parameter key
 value, i.e., <code>foo = bar?flag=</code></p>
-<div id="solution" class="anchor"></div>
 <h2 class="relative group">Solution 
+    <div id="solution" class="anchor"></div>
+    
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#solution" aria-label="Anchor">#</a></span>        
+            style="text-decoration-line: none !important;" href="#solution" aria-label="Anchor">#</a>
+    </span>        
     
 </h2>
 <p>Before we continue, let&rsquo;s recap back on our findings:</p>
@@ -1168,7 +1179,7 @@ which means that <code>?flag=...</code> would show up inside the Google search b
 
 
 
-<div class="flex flex-row flex-wrap items-center">
+<div style="cursor: default;" class="flex flex-row flex-wrap items-center">
   
   
   <time datetime="2023-11-08 00:00:00 &#43;0000 UTC">8 November 2023</time>
@@ -1182,7 +1193,7 @@ which means that <code>?flag=...</code> would show up inside the Google search b
 
 
 
-<div class="flex flex-row flex-wrap items-center">
+<div style="cursor: pointer;" class="flex flex-row flex-wrap items-center">
   
   
   
@@ -1295,7 +1306,7 @@ which means that <code>?flag=...</code> would show up inside the Google search b
 
 
 
-<div class="flex flex-row flex-wrap items-center">
+<div style="cursor: default;" class="flex flex-row flex-wrap items-center">
   
   
   <time datetime="2023-11-08 00:00:00 &#43;0000 UTC">8 November 2023</time>
@@ -1309,7 +1320,7 @@ which means that <code>?flag=...</code> would show up inside the Google search b
 
 
 
-<div class="flex flex-row flex-wrap items-center">
+<div style="cursor: pointer;" class="flex flex-row flex-wrap items-center">
   
   
   
@@ -1422,7 +1433,7 @@ which means that <code>?flag=...</code> would show up inside the Google search b
 
 
 
-<div class="flex flex-row flex-wrap items-center">
+<div style="cursor: default;" class="flex flex-row flex-wrap items-center">
   
   
   <time datetime="2023-11-08 00:00:00 &#43;0000 UTC">8 November 2023</time>
@@ -1436,7 +1447,7 @@ which means that <code>?flag=...</code> would show up inside the Google search b
 
 
 
-<div class="flex flex-row flex-wrap items-center">
+<div style="cursor: pointer;" class="flex flex-row flex-wrap items-center">
   
   
   
