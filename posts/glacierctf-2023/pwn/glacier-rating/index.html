@@ -8,8 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>Glacier Rating &middot; d0UBleW&#39;s Blog</title>
-  <meta name="title" content="Glacier Rating &middot; d0UBleW&#39;s Blog" />
+  <title>Glacier Rating &middot; d0ublew&#39;s Blog</title>
+  <meta name="title" content="Glacier Rating &middot; d0ublew&#39;s Blog" />
   
   <meta name="description" content="Double free into tcache poisoning" />
   <meta name="keywords" content="heap, cpp, tcache poisoning, double free, fastbin dup, " />
@@ -89,7 +89,7 @@
     "url" : "https:\/\/d0ublew.github.io\/posts\/glacierctf-2023\/pwn\/glacier-rating\/",
     "author" : {
       "@type": "Person",
-      "name": "d0UBleW"
+      "name": "d0ublew"
     },
     "copyrightYear": "2023",
     "dateCreated": "2023-11-28T00:00:00\u002b00:00",
@@ -100,14 +100,14 @@
     "keywords": ["heap","cpp","tcache poisoning","double free","fastbin dup"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1988"
+    "wordCount": "2016"
   }]
   </script>
 
 
   
   
-  <meta name="author" content="d0UBleW" />
+  <meta name="author" content="d0ublew" />
   
   
   
@@ -162,6 +162,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/php.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/x86asm.min.js"></script>
 <script>hljs.highlightAll();</script>
 
   
@@ -188,7 +189,7 @@
         <nav class="flex space-x-3">
 
             
-            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">d0UBleW&rsquo;s Blog</a>
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">d0ublew&rsquo;s Blog</a>
             
 
         </nav>
@@ -526,7 +527,7 @@
     <a
       class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
       href="/"
-      >d0UBleW&#39;s Blog</a
+      >d0ublew&#39;s Blog</a
     ><span class="px-1 text-primary-500">/</span>
   </li>
 
@@ -967,13 +968,40 @@ into the <code>std::map&lt;size_t, char*&gt; ratings_</code></p>
 </h3>
 <p>Deleting a rating seems to be straight forward, where we are required to choose
 from the available <code>key</code> inside <code>ratings_</code>. Proper validation is implemented
-as well to prevent weird interactions. However, there is one problem here.
-The function <code>User::removeRating</code> does not actually delete the <code>std::pair</code> element,
-but instead only delete the <code>std::pair</code> value. As a result, the size of the
-<code>std::map</code> stays the same as well.</p>
-<p>The proper way to delete should be using the <a href="https://en.cppreference.com/w/cpp/container/map/erase"   target="_blank">
-    <code>erase</code> method</a>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// main.cpp
+as well to prevent weird interactions. However, there is one problem here. On
+line <code>21</code>, the function <code>User::removeRating</code> does not actually delete the
+<code>std::pair</code> element, but instead only delete the <code>std::pair</code> value. As a result,
+the size of the <code>std::map</code> stays the same as well.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// main.cpp
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">deleteRating</span><span class="p">(</span><span class="n">User</span> <span class="o">*</span><span class="n">user</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">size_t</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Which rating do you want to remove?&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
@@ -998,7 +1026,9 @@ but instead only delete the <code>std::pair</code> value. As a result, the size 
 </span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>Here is a rough visualization of what happen when we delete a rating:</p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Here is a rough visualization of what happen when we delete a rating:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">1: aaaa
 </span></span><span class="line"><span class="cl">2: bbbb
 </span></span><span class="line"><span class="cl">3: cccc
@@ -1013,6 +1043,8 @@ but instead only delete the <code>std::pair</code> value. As a result, the size 
 </span></span><span class="line"><span class="cl">3: cccc
 </span></span></code></pre></div><p>With this wrong implementation, we are able to leak data from the heap
 (through show rating), since the key <code>2</code> still exists inside <code>ratings_</code></p>
+<p>The proper way to delete should be using the <a href="https://en.cppreference.com/w/cpp/container/map/erase"   target="_blank">
+    <code>erase</code> method</a>.</p>
 <h3 class="relative group">Show A Rating 
     <div id="show-a-rating" class="anchor"></div>
     
@@ -2060,7 +2092,7 @@ we could overwrite our user permission level.</p>
     <p class="text-sm text-neutral-500 dark:text-neutral-400">
       &copy;
       2023
-      d0UBleW
+      d0ublew
     </p>
     
 
