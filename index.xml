@@ -10,10 +10,10 @@
     <lastBuildDate>Tue, 28 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://d0ublew.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Glacier Rating</title>
-      <link>https://d0ublew.github.io/posts/glacierctf-2023/pwn/</link>
+      <link>https://d0ublew.github.io/posts/glacierctf-2023/pwn/glacier-rating/</link>
       <pubDate>Tue, 28 Nov 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://d0ublew.github.io/posts/glacierctf-2023/pwn/</guid>
+      <guid>https://d0ublew.github.io/posts/glacierctf-2023/pwn/glacier-rating/</guid>
       <description>Double free into tcache poisoning</description>
       
     </item>

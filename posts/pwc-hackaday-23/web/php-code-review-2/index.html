@@ -935,8 +935,8 @@ that it indeed returns nothing as opposed to normal argument like <code>md5</cod
 <p>To pass an array via HTTP query string, we just need to append the parameter name with <code>[]</code>, e.g., <code>?alg[]=abcd</code>.
 Since the cookie value is our supplied username XOR with the flag and base64 encoded, and we do not know the length of the flag beforehand, we could just supply a really long username</p>
 <p>The final payload to get the server to set the cookie is:</p>
-<pre tabindex="0"><code>http://&lt;url&gt;?username=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&amp;password=deadbeef&amp;alg[]=
-</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">http://&lt;url&gt;?username=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&amp;password=deadbeef&amp;alg[]=
+</span></span></code></pre></div>
         </div>
                 
         
