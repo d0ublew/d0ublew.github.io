@@ -7,7 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2023 d0ublew</copyright>
-    <lastBuildDate>Tue, 28 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://d0ublew.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Dec 2023 09:38:00 +0800</lastBuildDate><atom:link href="https://d0ublew.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>k8s</title>
+      <link>https://d0ublew.github.io/categories/k8s/</link>
+      <pubDate>Sun, 17 Dec 2023 09:38:00 +0800</pubDate>
+      
+      <guid>https://d0ublew.github.io/categories/k8s/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>web</title>
+      <link>https://d0ublew.github.io/categories/web/</link>
+      <pubDate>Sun, 17 Dec 2023 09:38:00 +0800</pubDate>
+      
+      <guid>https://d0ublew.github.io/categories/web/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>wgmy2023</title>
+      <link>https://d0ublew.github.io/categories/wgmy2023/</link>
+      <pubDate>Sun, 17 Dec 2023 09:38:00 +0800</pubDate>
+      
+      <guid>https://d0ublew.github.io/categories/wgmy2023/</guid>
+      <description></description>
+      
+    </item>
+    
     <item>
       <title>GlacierCTF 2023</title>
       <link>https://d0ublew.github.io/categories/glacierctf-2023/</link>
@@ -44,16 +74,6 @@
       <pubDate>Wed, 08 Nov 2023 00:00:00 +0000</pubDate>
       
       <guid>https://d0ublew.github.io/categories/pwc-ctf-hack-a-day-2023-securing-ai/</guid>
-      <description></description>
-      
-    </item>
-    
-    <item>
-      <title>web</title>
-      <link>https://d0ublew.github.io/categories/web/</link>
-      <pubDate>Wed, 08 Nov 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://d0ublew.github.io/categories/web/</guid>
       <description></description>
       
     </item>

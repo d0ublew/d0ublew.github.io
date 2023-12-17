@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nginx on d0ublew&#39;s Blog</title>
+    <link>https://d0ublew.github.io/tags/nginx/</link>
+    <description>Recent content in nginx on d0ublew&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2023 d0ublew</copyright>
+    <lastBuildDate>Sun, 17 Dec 2023 09:38:00 +0800</lastBuildDate><atom:link href="https://d0ublew.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Status</title>
+      <link>https://d0ublew.github.io/posts/wgmy2023/web/status/</link>
+      <pubDate>Sun, 17 Dec 2023 09:38:00 +0800</pubDate>
+      
+      <guid>https://d0ublew.github.io/posts/wgmy2023/web/status/</guid>
+      <description>Retrieve nginx config file from k8s configmaps</description>
+      
+    </item>
+    
+  </channel>
+</rss>

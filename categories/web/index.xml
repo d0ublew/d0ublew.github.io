@@ -7,7 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2023 d0ublew</copyright>
-    <lastBuildDate>Wed, 08 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://d0ublew.github.io/categories/web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Dec 2023 09:38:00 +0800</lastBuildDate><atom:link href="https://d0ublew.github.io/categories/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Status</title>
+      <link>https://d0ublew.github.io/posts/wgmy2023/web/status/</link>
+      <pubDate>Sun, 17 Dec 2023 09:38:00 +0800</pubDate>
+      
+      <guid>https://d0ublew.github.io/posts/wgmy2023/web/status/</guid>
+      <description>Retrieve nginx config file from k8s configmaps</description>
+      
+    </item>
+    
+    <item>
+      <title>Secret</title>
+      <link>https://d0ublew.github.io/posts/wgmy2023/web/secret/</link>
+      <pubDate>Sun, 17 Dec 2023 07:49:56 +0800</pubDate>
+      
+      <guid>https://d0ublew.github.io/posts/wgmy2023/web/secret/</guid>
+      <description>Read secret from HashiCorp vault</description>
+      
+    </item>
+    
+    <item>
+      <title>Warmup</title>
+      <link>https://d0ublew.github.io/posts/wgmy2023/web/warmup/</link>
+      <pubDate>Sun, 17 Dec 2023 07:49:56 +0800</pubDate>
+      
+      <guid>https://d0ublew.github.io/posts/wgmy2023/web/warmup/</guid>
+      <description>LFI to RCE via PHP PEARCMD</description>
+      
+    </item>
+    
     <item>
       <title>PHP Code Review 1</title>
       <link>https://d0ublew.github.io/posts/pwc-hackaday-23/web/php-code-review-1/</link>
