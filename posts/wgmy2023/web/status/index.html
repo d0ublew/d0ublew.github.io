@@ -993,134 +993,134 @@ The one that is useful for us is the last 2 lines.</p>
 <p>To get the <code>deployments</code> data simply do <code>kubectl get deployments &lt;resource name&gt;</code>.
 Optionally we could also be more specific by specify the namespace (from <code>/var/www/api/status.php</code>)
 <code>kubectl -n wgmy get deployments &lt;resource name&gt;</code>.</p>
-<pre tabindex="0"><code>/tmp $ kubectl get deployments wgmy-webtestonetwothree-frontend
-NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
-wgmy-webtestonetwothree-frontend   2/2     2            2           35h
-/tmp $ kubectl get deploy wgmy-webtestonetwothree-frontend -o yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  annotations:
-    deployment.kubernetes.io/revision: &#34;1&#34;
-    meta.helm.sh/release-name: wgmy-webtestonetwothree
-    meta.helm.sh/release-namespace: wgmy
-  creationTimestamp: &#34;2023-12-15T14:14:18Z&#34;
-  generation: 2
-  labels:
-    app.kubernetes.io/instance: wgmy-webtestonetwothree
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/name: frontend
-    app.kubernetes.io/version: 0.1.0
-    helm.sh/chart: frontend-0.1.0
-  name: wgmy-webtestonetwothree-frontend
-  namespace: wgmy
-  resourceVersion: &#34;28477&#34;
-  uid: a8c63194-0eb2-4005-abe2-14138c2b615b
-spec:
-  progressDeadlineSeconds: 600
-  replicas: 2
-  revisionHistoryLimit: 10
-  selector:
-    matchLabels:
-      app.kubernetes.io/instance: wgmy-webtestonetwothree
-      app.kubernetes.io/name: frontend
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
-  template:
-    metadata:
-      annotations:
-        vault.hashicorp.com/agent-inject: &#34;true&#34;
-        vault.hashicorp.com/agent-inject-secret-flag: kv/data/flag_for_secret
-        vault.hashicorp.com/role: wgmy
-      creationTimestamp: null
-      labels:
-        app.kubernetes.io/instance: wgmy-webtestonetwothree
-        app.kubernetes.io/name: frontend
-    spec:
-      containers:
-      - image: nginx:1.25-alpine
-        imagePullPolicy: IfNotPresent
-        livenessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /
-            port: http
-            scheme: HTTP
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 1
-        name: frontend
-        ports:
-        - containerPort: 80
-          name: http
-          protocol: TCP
-        readinessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /
-            port: http
-            scheme: HTTP
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 1
-        resources: {}
-        securityContext: {}
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-        volumeMounts:
-        - mountPath: /usr/share/nginx/html
-          name: html
-        - mountPath: /etc/nginx/conf.d
-          name: conf
-        - mountPath: /usr/share/nginx/.lemme_try_hiding_flag_with_dot_in_front
-          name: flag
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      serviceAccount: wgmy-webtestonetwothree-frontend
-      serviceAccountName: wgmy-webtestonetwothree-frontend
-      terminationGracePeriodSeconds: 30
-      volumes:
-      - configMap:
-          defaultMode: 420
-          name: wgmy-webtestonetwothree-frontend-html
-        name: html
-      - configMap:
-          defaultMode: 420
-          name: wgmy-webtestonetwothree-frontend-conf
-        name: conf
-      - name: flag
-        secret:
-          defaultMode: 420
-          items:
-          - key: flag
-            path: flag_for_status
-          secretName: wgmy-webtestonetwothree-frontend-flag
-status:
-  availableReplicas: 2
-  conditions:
-  - lastTransitionTime: &#34;2023-12-15T14:14:18Z&#34;
-    lastUpdateTime: &#34;2023-12-15T14:14:20Z&#34;
-    message: ReplicaSet &#34;wgmy-webtestonetwothree-frontend-556ccd7cf&#34; has successfully
-      progressed.
-    reason: NewReplicaSetAvailable
-    status: &#34;True&#34;
-    type: Progressing
-  - lastTransitionTime: &#34;2023-12-16T14:43:01Z&#34;
-    lastUpdateTime: &#34;2023-12-16T14:43:01Z&#34;
-    message: Deployment has minimum availability.
-    reason: MinimumReplicasAvailable
-    status: &#34;True&#34;
-    type: Available
-  observedGeneration: 2
-  readyReplicas: 2
-  replicas: 2
-  updatedReplicas: 2
-</code></pre><p>We could see that there are interesting strings like:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">/tmp $ kubectl get deployments wgmy-webtestonetwothree-frontend
+</span></span></span><span class="line"><span class="cl"><span class="go">NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+</span></span></span><span class="line"><span class="cl"><span class="go">wgmy-webtestonetwothree-frontend   2/2     2            2           35h
+</span></span></span><span class="line"><span class="cl"><span class="go">/tmp $ kubectl get deploy wgmy-webtestonetwothree-frontend -o yaml
+</span></span></span><span class="line"><span class="cl"><span class="go">apiVersion: apps/v1
+</span></span></span><span class="line"><span class="cl"><span class="go">kind: Deployment
+</span></span></span><span class="line"><span class="cl"><span class="go">metadata:
+</span></span></span><span class="line"><span class="cl"><span class="go">  annotations:
+</span></span></span><span class="line"><span class="cl"><span class="go">    deployment.kubernetes.io/revision: &#34;1&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">    meta.helm.sh/release-name: wgmy-webtestonetwothree
+</span></span></span><span class="line"><span class="cl"><span class="go">    meta.helm.sh/release-namespace: wgmy
+</span></span></span><span class="line"><span class="cl"><span class="go">  creationTimestamp: &#34;2023-12-15T14:14:18Z&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">  generation: 2
+</span></span></span><span class="line"><span class="cl"><span class="go">  labels:
+</span></span></span><span class="line"><span class="cl"><span class="go">    app.kubernetes.io/instance: wgmy-webtestonetwothree
+</span></span></span><span class="line"><span class="cl"><span class="go">    app.kubernetes.io/managed-by: Helm
+</span></span></span><span class="line"><span class="cl"><span class="go">    app.kubernetes.io/name: frontend
+</span></span></span><span class="line"><span class="cl"><span class="go">    app.kubernetes.io/version: 0.1.0
+</span></span></span><span class="line"><span class="cl"><span class="go">    helm.sh/chart: frontend-0.1.0
+</span></span></span><span class="line"><span class="cl"><span class="go">  name: wgmy-webtestonetwothree-frontend
+</span></span></span><span class="line"><span class="cl"><span class="go">  namespace: wgmy
+</span></span></span><span class="line"><span class="cl"><span class="go">  resourceVersion: &#34;28477&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">  uid: a8c63194-0eb2-4005-abe2-14138c2b615b
+</span></span></span><span class="line"><span class="cl"><span class="go">spec:
+</span></span></span><span class="line"><span class="cl"><span class="go">  progressDeadlineSeconds: 600
+</span></span></span><span class="line"><span class="cl"><span class="go">  replicas: 2
+</span></span></span><span class="line"><span class="cl"><span class="go">  revisionHistoryLimit: 10
+</span></span></span><span class="line"><span class="cl"><span class="go">  selector:
+</span></span></span><span class="line"><span class="cl"><span class="go">    matchLabels:
+</span></span></span><span class="line"><span class="cl"><span class="go">      app.kubernetes.io/instance: wgmy-webtestonetwothree
+</span></span></span><span class="line"><span class="cl"><span class="go">      app.kubernetes.io/name: frontend
+</span></span></span><span class="line"><span class="cl"><span class="go">  strategy:
+</span></span></span><span class="line"><span class="cl"><span class="go">    rollingUpdate:
+</span></span></span><span class="line"><span class="cl"><span class="go">      maxSurge: 25%
+</span></span></span><span class="line"><span class="cl"><span class="go">      maxUnavailable: 25%
+</span></span></span><span class="line"><span class="cl"><span class="go">    type: RollingUpdate
+</span></span></span><span class="line"><span class="cl"><span class="go">  template:
+</span></span></span><span class="line"><span class="cl"><span class="go">    metadata:
+</span></span></span><span class="line"><span class="cl"><span class="go">      annotations:
+</span></span></span><span class="line"><span class="cl"><span class="go">        vault.hashicorp.com/agent-inject: &#34;true&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">        vault.hashicorp.com/agent-inject-secret-flag: kv/data/flag_for_secret
+</span></span></span><span class="line"><span class="cl"><span class="go">        vault.hashicorp.com/role: wgmy
+</span></span></span><span class="line"><span class="cl"><span class="go">      creationTimestamp: null
+</span></span></span><span class="line"><span class="cl"><span class="go">      labels:
+</span></span></span><span class="line"><span class="cl"><span class="go">        app.kubernetes.io/instance: wgmy-webtestonetwothree
+</span></span></span><span class="line"><span class="cl"><span class="go">        app.kubernetes.io/name: frontend
+</span></span></span><span class="line"><span class="cl"><span class="go">    spec:
+</span></span></span><span class="line"><span class="cl"><span class="go">      containers:
+</span></span></span><span class="line"><span class="cl"><span class="go">      - image: nginx:1.25-alpine
+</span></span></span><span class="line"><span class="cl"><span class="go">        imagePullPolicy: IfNotPresent
+</span></span></span><span class="line"><span class="cl"><span class="go">        livenessProbe:
+</span></span></span><span class="line"><span class="cl"><span class="go">          failureThreshold: 3
+</span></span></span><span class="line"><span class="cl"><span class="go">          httpGet:
+</span></span></span><span class="line"><span class="cl"><span class="go">            path: /
+</span></span></span><span class="line"><span class="cl"><span class="go">            port: http
+</span></span></span><span class="line"><span class="cl"><span class="go">            scheme: HTTP
+</span></span></span><span class="line"><span class="cl"><span class="go">          periodSeconds: 10
+</span></span></span><span class="line"><span class="cl"><span class="go">          successThreshold: 1
+</span></span></span><span class="line"><span class="cl"><span class="go">          timeoutSeconds: 1
+</span></span></span><span class="line"><span class="cl"><span class="go">        name: frontend
+</span></span></span><span class="line"><span class="cl"><span class="go">        ports:
+</span></span></span><span class="line"><span class="cl"><span class="go">        - containerPort: 80
+</span></span></span><span class="line"><span class="cl"><span class="go">          name: http
+</span></span></span><span class="line"><span class="cl"><span class="go">          protocol: TCP
+</span></span></span><span class="line"><span class="cl"><span class="go">        readinessProbe:
+</span></span></span><span class="line"><span class="cl"><span class="go">          failureThreshold: 3
+</span></span></span><span class="line"><span class="cl"><span class="go">          httpGet:
+</span></span></span><span class="line"><span class="cl"><span class="go">            path: /
+</span></span></span><span class="line"><span class="cl"><span class="go">            port: http
+</span></span></span><span class="line"><span class="cl"><span class="go">            scheme: HTTP
+</span></span></span><span class="line"><span class="cl"><span class="go">          periodSeconds: 10
+</span></span></span><span class="line"><span class="cl"><span class="go">          successThreshold: 1
+</span></span></span><span class="line"><span class="cl"><span class="go">          timeoutSeconds: 1
+</span></span></span><span class="line"><span class="cl"><span class="go">        resources: {}
+</span></span></span><span class="line"><span class="cl"><span class="go">        securityContext: {}
+</span></span></span><span class="line"><span class="cl"><span class="go">        terminationMessagePath: /dev/termination-log
+</span></span></span><span class="line"><span class="cl"><span class="go">        terminationMessagePolicy: File
+</span></span></span><span class="line"><span class="cl"><span class="go">        volumeMounts:
+</span></span></span><span class="line"><span class="cl"><span class="go">        - mountPath: /usr/share/nginx/html
+</span></span></span><span class="line"><span class="cl"><span class="go">          name: html
+</span></span></span><span class="line"><span class="cl"><span class="go">        - mountPath: /etc/nginx/conf.d
+</span></span></span><span class="line"><span class="cl"><span class="go">          name: conf
+</span></span></span><span class="line"><span class="cl"><span class="go">        - mountPath: /usr/share/nginx/.lemme_try_hiding_flag_with_dot_in_front
+</span></span></span><span class="line"><span class="cl"><span class="go">          name: flag
+</span></span></span><span class="line"><span class="cl"><span class="go">      dnsPolicy: ClusterFirst
+</span></span></span><span class="line"><span class="cl"><span class="go">      restartPolicy: Always
+</span></span></span><span class="line"><span class="cl"><span class="go">      schedulerName: default-scheduler
+</span></span></span><span class="line"><span class="cl"><span class="go">      securityContext: {}
+</span></span></span><span class="line"><span class="cl"><span class="go">      serviceAccount: wgmy-webtestonetwothree-frontend
+</span></span></span><span class="line"><span class="cl"><span class="go">      serviceAccountName: wgmy-webtestonetwothree-frontend
+</span></span></span><span class="line"><span class="cl"><span class="go">      terminationGracePeriodSeconds: 30
+</span></span></span><span class="line"><span class="cl"><span class="go">      volumes:
+</span></span></span><span class="line"><span class="cl"><span class="go">      - configMap:
+</span></span></span><span class="line"><span class="cl"><span class="go">          defaultMode: 420
+</span></span></span><span class="line"><span class="cl"><span class="go">          name: wgmy-webtestonetwothree-frontend-html
+</span></span></span><span class="line"><span class="cl"><span class="go">        name: html
+</span></span></span><span class="line"><span class="cl"><span class="go">      - configMap:
+</span></span></span><span class="line"><span class="cl"><span class="go">          defaultMode: 420
+</span></span></span><span class="line"><span class="cl"><span class="go">          name: wgmy-webtestonetwothree-frontend-conf
+</span></span></span><span class="line"><span class="cl"><span class="go">        name: conf
+</span></span></span><span class="line"><span class="cl"><span class="go">      - name: flag
+</span></span></span><span class="line"><span class="cl"><span class="go">        secret:
+</span></span></span><span class="line"><span class="cl"><span class="go">          defaultMode: 420
+</span></span></span><span class="line"><span class="cl"><span class="go">          items:
+</span></span></span><span class="line"><span class="cl"><span class="go">          - key: flag
+</span></span></span><span class="line"><span class="cl"><span class="go">            path: flag_for_status
+</span></span></span><span class="line"><span class="cl"><span class="go">          secretName: wgmy-webtestonetwothree-frontend-flag
+</span></span></span><span class="line"><span class="cl"><span class="go">status:
+</span></span></span><span class="line"><span class="cl"><span class="go">  availableReplicas: 2
+</span></span></span><span class="line"><span class="cl"><span class="go">  conditions:
+</span></span></span><span class="line"><span class="cl"><span class="go">  - lastTransitionTime: &#34;2023-12-15T14:14:18Z&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">    lastUpdateTime: &#34;2023-12-15T14:14:20Z&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">    message: ReplicaSet &#34;wgmy-webtestonetwothree-frontend-556ccd7cf&#34; has successfully
+</span></span></span><span class="line"><span class="cl"><span class="go">      progressed.
+</span></span></span><span class="line"><span class="cl"><span class="go">    reason: NewReplicaSetAvailable
+</span></span></span><span class="line"><span class="cl"><span class="go">    status: &#34;True&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">    type: Progressing
+</span></span></span><span class="line"><span class="cl"><span class="go">  - lastTransitionTime: &#34;2023-12-16T14:43:01Z&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">    lastUpdateTime: &#34;2023-12-16T14:43:01Z&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">    message: Deployment has minimum availability.
+</span></span></span><span class="line"><span class="cl"><span class="go">    reason: MinimumReplicasAvailable
+</span></span></span><span class="line"><span class="cl"><span class="go">    status: &#34;True&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">    type: Available
+</span></span></span><span class="line"><span class="cl"><span class="go">  observedGeneration: 2
+</span></span></span><span class="line"><span class="cl"><span class="go">  readyReplicas: 2
+</span></span></span><span class="line"><span class="cl"><span class="go">  replicas: 2
+</span></span></span><span class="line"><span class="cl"><span class="go">  updatedReplicas: 2
+</span></span></span></code></pre></div><p>We could see that there are interesting strings like:</p>
 <ul>
 <li><code>.lemme_try_hiding_flag_with_dot_in_front</code></li>
 <li><code>wgmy-webtestonetwothree-frontend-flag</code></li>
