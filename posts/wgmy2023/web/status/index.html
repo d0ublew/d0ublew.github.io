@@ -166,6 +166,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/shell.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/x86asm.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/nginx.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/yaml.min.js"></script>
 <script>hljs.highlightAll();</script>
 
   
@@ -1172,58 +1173,58 @@ endpoint directly, see <a href="#appendix"  >
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">[</span><span class="l">...]</span><span class="w">
 </span></span></span></code></pre></div><p>I assume that the <code>name</code> under <code>volumeMounts</code> refers to the <code>name</code> under <code>volumes</code>.
 Hence, the <code>nginx</code> config can be retrieved from <code>wgmy-webtestonetwothree-frontend-conf</code></p>
-<pre tabindex="0"><code>$ kubectl get configmaps wgmy-webtestonetwothree-frontend-conf -o yaml
-apiVersion: v1
-data:
-  default.conf: |
-    set_real_ip_from  10.42.0.0/16;
-    real_ip_header    X-Real-IP;    # from traefik
-
-    server {
-      listen       80;
-      server_name  _;
-
-      location / {
-        root   /usr/share/nginx/html;
-        index  index.html;
-      }
-
-      location /static {
-        alias       /usr/share/nginx/html/;
-        add_header  Cache-Control &#34;private, max-age=3600&#34;;
-      }
-
-      location /api/ {
-        include        /etc/nginx/fastcgi_params;
-        fastcgi_index  index.php;
-        fastcgi_param  SCRIPT_FILENAME /var/www$fastcgi_script_name;
-        fastcgi_pass   wgmy-webtestonetwothree-backend:9000;
-      }
-
-      location /internal-secret/ {
-        allow  10.42.0.0/16;
-        deny   all;
-
-        proxy_pass  http://vault.vault:8200/;
-      }
-    }
-kind: ConfigMap
-metadata:
-  annotations:
-    meta.helm.sh/release-name: wgmy-webtestonetwothree
-    meta.helm.sh/release-namespace: wgmy
-  creationTimestamp: &#34;2023-12-15T14:14:18Z&#34;
-  labels:
-    app.kubernetes.io/instance: wgmy-webtestonetwothree
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/name: frontend
-    app.kubernetes.io/version: 0.1.0
-    helm.sh/chart: frontend-0.1.0
-  name: wgmy-webtestonetwothree-frontend-conf
-  namespace: wgmy
-  resourceVersion: &#34;1726&#34;
-  uid: 5a73676b-f509-44b0-8e2d-e921eb4cf7b4
-</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">set_real_ip_from</span>  <span class="mi">10</span><span class="s">.42.0.0/16</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> kubectl get configmaps wgmy-webtestonetwothree-frontend-conf -o yaml
+</span></span><span class="line"><span class="cl"><span class="go">apiVersion: v1
+</span></span></span><span class="line"><span class="cl"><span class="go">data:
+</span></span></span><span class="line"><span class="cl"><span class="go">  default.conf: |
+</span></span></span><span class="line"><span class="cl"><span class="go">    set_real_ip_from  10.42.0.0/16;
+</span></span></span><span class="line"><span class="cl"><span class="go">    real_ip_header    X-Real-IP;    # from traefik
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    server {
+</span></span></span><span class="line"><span class="cl"><span class="go">      listen       80;
+</span></span></span><span class="line"><span class="cl"><span class="go">      server_name  _;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      location / {
+</span></span></span><span class="line"><span class="cl"><span class="go">        root   /usr/share/nginx/html;
+</span></span></span><span class="line"><span class="cl"><span class="go">        index  index.html;
+</span></span></span><span class="line"><span class="cl"><span class="go">      }
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      location /static {
+</span></span></span><span class="line"><span class="cl"><span class="go">        alias       /usr/share/nginx/html/;
+</span></span></span><span class="line"><span class="cl"><span class="go">        add_header  Cache-Control &#34;private, max-age=3600&#34;;
+</span></span></span><span class="line"><span class="cl"><span class="go">      }
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      location /api/ {
+</span></span></span><span class="line"><span class="cl"><span class="go">        include        /etc/nginx/fastcgi_params;
+</span></span></span><span class="line"><span class="cl"><span class="go">        fastcgi_index  index.php;
+</span></span></span><span class="line"><span class="cl"><span class="go">        fastcgi_param  SCRIPT_FILENAME /var/www$fastcgi_script_name;
+</span></span></span><span class="line"><span class="cl"><span class="go">        fastcgi_pass   wgmy-webtestonetwothree-backend:9000;
+</span></span></span><span class="line"><span class="cl"><span class="go">      }
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      location /internal-secret/ {
+</span></span></span><span class="line"><span class="cl"><span class="go">        allow  10.42.0.0/16;
+</span></span></span><span class="line"><span class="cl"><span class="go">        deny   all;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">        proxy_pass  http://vault.vault:8200/;
+</span></span></span><span class="line"><span class="cl"><span class="go">      }
+</span></span></span><span class="line"><span class="cl"><span class="go">    }
+</span></span></span><span class="line"><span class="cl"><span class="go">kind: ConfigMap
+</span></span></span><span class="line"><span class="cl"><span class="go">metadata:
+</span></span></span><span class="line"><span class="cl"><span class="go">  annotations:
+</span></span></span><span class="line"><span class="cl"><span class="go">    meta.helm.sh/release-name: wgmy-webtestonetwothree
+</span></span></span><span class="line"><span class="cl"><span class="go">    meta.helm.sh/release-namespace: wgmy
+</span></span></span><span class="line"><span class="cl"><span class="go">  creationTimestamp: &#34;2023-12-15T14:14:18Z&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">  labels:
+</span></span></span><span class="line"><span class="cl"><span class="go">    app.kubernetes.io/instance: wgmy-webtestonetwothree
+</span></span></span><span class="line"><span class="cl"><span class="go">    app.kubernetes.io/managed-by: Helm
+</span></span></span><span class="line"><span class="cl"><span class="go">    app.kubernetes.io/name: frontend
+</span></span></span><span class="line"><span class="cl"><span class="go">    app.kubernetes.io/version: 0.1.0
+</span></span></span><span class="line"><span class="cl"><span class="go">    helm.sh/chart: frontend-0.1.0
+</span></span></span><span class="line"><span class="cl"><span class="go">  name: wgmy-webtestonetwothree-frontend-conf
+</span></span></span><span class="line"><span class="cl"><span class="go">  namespace: wgmy
+</span></span></span><span class="line"><span class="cl"><span class="go">  resourceVersion: &#34;1726&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">  uid: 5a73676b-f509-44b0-8e2d-e921eb4cf7b4
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">set_real_ip_from</span>  <span class="mi">10</span><span class="s">.42.0.0/16</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">real_ip_header</span>    <span class="s">X-Real-IP</span><span class="p">;</span>    <span class="c1"># from traefik
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>
 </span></span><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
@@ -1319,11 +1320,11 @@ to get the other flag.</p>
     
 </h3>
 <p>To interact with the API, we need to get the <code>serviceaccount</code> token.</p>
-<pre tabindex="0"><code>$ cat /var/run/secrets/kubernetes.io/serviceaccount/token
-eyJhbGciOiJSUzI1NiIsImtpZCI6Im5oUXBoT0FLNVY5U2llMDR2ZFpfeDByYlpCVEtRQlVDUlB[...]
-
-$ export k8s_token=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
-</code></pre><h3 class="relative group">Getting Other Services IP and Domain Name 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> cat /var/run/secrets/kubernetes.io/serviceaccount/token
+</span></span><span class="line"><span class="cl"><span class="go">eyJhbGciOiJSUzI1NiIsImtpZCI6Im5oUXBoT0FLNVY5U2llMDR2ZFpfeDByYlpCVEtRQlVDUlB[...]
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">$</span> <span class="nb">export</span> <span class="nv">k8s_token</span><span class="o">=</span><span class="k">$(</span>cat /var/run/secrets/kubernetes.io/serviceaccount/token<span class="k">)</span>
+</span></span></code></pre></div><h3 class="relative group">Getting Other Services IP and Domain Name 
     <div id="getting-other-services-ip-and-domain-name" class="anchor"></div>
     
     <span
