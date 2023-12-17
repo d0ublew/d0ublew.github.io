@@ -810,7 +810,7 @@
 <details style="margin-left:0px" class="mt-2 mb-5 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5" >
     <summary
         class="py-1 text-lg font-semibold cursor-pointer bg-primary-200 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-primary-800 dark:text-neutral-100">
-        Wargames.MY 2023 - This article is part of a series.
+        Wargames.MY 2023 web k8s - This article is part of a series.
     </summary>
     
     
@@ -1344,15 +1344,15 @@ or use the domain name by reverse nslookup the IP or follow the naming conventio
 </span></span></span><span class="line"><span class="cl"><span class="go">KUBERNETES_SERVICE_PORT_HTTPS=443
 </span></span></span><span class="line"><span class="cl"><span class="go">KUBERNETES_SERVICE_HOST=10.43.0.1
 </span></span></span></code></pre></div><p>Example of converting the domain name manually:</p>
-<pre tabindex="0"><code>FOO_BAR_SERVICE
-
-replace `_` with `-` until the word `_SERVICE` and append `.&lt;namespace&gt;.svc.cluster.local`
-
-if namespace is default -&gt; foo-bar.default.svc.cluster.local
-if namespace is wgmy -&gt; foo-bar.wgmy.svc.cluster.local
-
-WGMY_WEBTESTONETWOTHREE_FRONTEND_SERVICE -&gt; wgmy-webtestonetwothree-frontend.wgmy.svc.cluster.local
-</code></pre><p>Refer to this <a href="https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-uris"   target="_blank">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">FOO_BAR_SERVICE
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">replace `_` with `-` until the word `_SERVICE` and append `.&lt;namespace&gt;.svc.cluster.local`
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">if namespace is default -&gt; foo-bar.default.svc.cluster.local
+</span></span><span class="line"><span class="cl">if namespace is wgmy -&gt; foo-bar.wgmy.svc.cluster.local
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">WGMY_WEBTESTONETWOTHREE_FRONTEND_SERVICE -&gt; wgmy-webtestonetwothree-frontend.wgmy.svc.cluster.local
+</span></span></code></pre></div><p>Refer to this <a href="https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-uris"   target="_blank">
     documentation</a>
 on how to determine the API endpoint. Furthermore, you can browse <code>/apis</code> and use the <code>name</code> field to build the next part after <code>/apis</code></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">/tmp $ curl -s -k -H &#34;Authorization: Bearer $(cat token)&#34; https://kubernetes.default.svc.cluster.local/apis/ | grep name
@@ -1433,7 +1433,7 @@ the pattern (which could be wrong as well)</span>
 <details style="margin-left:0px" class="mt-2 mb-5 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5">
     <summary
         class="py-1 text-lg font-semibold cursor-pointer bg-primary-200 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-primary-800 dark:text-neutral-100">
-        Wargames.MY 2023 - This article is part of a series.
+        Wargames.MY 2023 web k8s - This article is part of a series.
     </summary>
     
     
