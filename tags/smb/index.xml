@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SMB on d0ublew&#39;s Blog</title>
+    <link>https://d0ublew.github.io/tags/smb/</link>
+    <description>Recent content in SMB on d0ublew&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2023 d0ublew</copyright>
+    <lastBuildDate>Fri, 15 Dec 2023 16:55:58 +0800</lastBuildDate><atom:link href="https://d0ublew.github.io/tags/smb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SMB Relay Attack</title>
+      <link>https://d0ublew.github.io/notes/active-directory/smb-relay-attack/</link>
+      <pubDate>Fri, 15 Dec 2023 16:55:58 +0800</pubDate>
+      
+      <guid>https://d0ublew.github.io/notes/active-directory/smb-relay-attack/</guid>
+      <description>Personal notes on SMB relay attack</description>
+      
+    </item>
+    
+  </channel>
+</rss>

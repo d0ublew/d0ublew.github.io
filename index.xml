@@ -39,6 +39,16 @@
     </item>
     
     <item>
+      <title>SMB Relay Attack</title>
+      <link>https://d0ublew.github.io/notes/active-directory/smb-relay-attack/</link>
+      <pubDate>Fri, 15 Dec 2023 16:55:58 +0800</pubDate>
+      
+      <guid>https://d0ublew.github.io/notes/active-directory/smb-relay-attack/</guid>
+      <description>Personal notes on SMB relay attack</description>
+      
+    </item>
+    
+    <item>
       <title>Glacier Rating</title>
       <link>https://d0ublew.github.io/posts/glacierctf-2023/pwn/glacier-rating/</link>
       <pubDate>Tue, 28 Nov 2023 00:00:00 +0000</pubDate>
