@@ -100,7 +100,7 @@
     "keywords": ["Kerberos","RBCD","PrivEsc"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "972"
+    "wordCount": "1090"
   }]
   </script>
 
@@ -824,33 +824,40 @@
     class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#delegations">Delegations</a>
+    <li><a href="#delegations">Delegations</a></li>
+    <li><a href="#unconstrained-delegation">Unconstrained Delegation</a>
       <ul>
-        <li><a href="#unconstrained-delegation">Unconstrained Delegation</a></li>
-        <li><a href="#constrained-delegation">Constrained Delegation</a>
-          <ul>
-            <li><a href="#resource-based-constrained-delegation-rbcd">Resource-based Constrained Delegation (RBCD)</a></li>
-          </ul>
-        </li>
-        <li><a href="#s4u2self">S4U2Self</a></li>
-        <li><a href="#s4u2proxy">S4U2Proxy</a>
-          <ul>
-            <li><a href="#constrained-delegation-1">Constrained Delegation</a></li>
-            <li><a href="#resource-based-constrained-delegation-rbcd-1">Resource-based Constrained Delegation (RBCD)</a></li>
-          </ul>
-        </li>
-        <li><a href="#attack-scenario">Attack Scenario</a>
-          <ul>
-            <li><a href="#scenario-1-generic-dacl-abuse">Scenario 1 (Generic DACL Abuse)</a></li>
-            <li><a href="#scenario-2-reflective-rbcd">Scenario 2 (Reflective RBCD)</a></li>
-            <li><a href="#scenario-3-reflective-rbcd-impersonating-protected-users">Scenario 3 (Reflective RBCD Impersonating Protected Users)</a></li>
-            <li><a href="#scenario-4-constrained-delegation-wo-protocol-transition">Scenario 4 (Constrained Delegation w/o Protocol Transition)</a></li>
-          </ul>
-        </li>
-        <li><a href="#todo">TODO</a></li>
-        <li><a href="#references">References</a></li>
+        <li><a href="#abusing-unconstrained-delegation">Abusing Unconstrained Delegation</a></li>
       </ul>
     </li>
+    <li><a href="#constrained-delegation">Constrained Delegation</a>
+      <ul>
+        <li><a href="#without-protocol-transition-kerberos-only">Without Protocol Transition (Kerberos Only)</a></li>
+        <li><a href="#with-protocol-transition-any-authentication">With Protocol Transition (Any Authentication)</a></li>
+      </ul>
+    </li>
+    <li><a href="#resource-based-constrained-delegation-rbcd">Resource-based Constrained Delegation (RBCD)</a></li>
+    <li><a href="#s4u2self">S4U2Self</a>
+      <ul>
+        <li><a href="#abusing-s4u2self">Abusing S4U2Self</a></li>
+      </ul>
+    </li>
+    <li><a href="#s4u2proxy">S4U2Proxy</a>
+      <ul>
+        <li><a href="#constrained-delegation-1">Constrained Delegation</a></li>
+        <li><a href="#resource-based-constrained-delegation-rbcd-1">Resource-based Constrained Delegation (RBCD)</a></li>
+      </ul>
+    </li>
+    <li><a href="#attack-scenario">Attack Scenario</a>
+      <ul>
+        <li><a href="#scenario-1-generic-dacl-abuse">Scenario 1 (Generic DACL Abuse)</a></li>
+        <li><a href="#scenario-2-reflective-rbcd">Scenario 2 (Reflective RBCD)</a></li>
+        <li><a href="#scenario-3-reflective-rbcd-impersonating-protected-users">Scenario 3 (Reflective RBCD Impersonating Protected Users)</a></li>
+        <li><a href="#scenario-4-constrained-delegation-wo-protocol-transition">Scenario 4 (Constrained Delegation w/o Protocol Transition)</a></li>
+        <li><a href="#scenario-5-double-kcd">Scenario 5 (Double KCD)</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
   </ul>
 </nav>
   </div>
@@ -864,33 +871,40 @@
     class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#delegations">Delegations</a>
+    <li><a href="#delegations">Delegations</a></li>
+    <li><a href="#unconstrained-delegation">Unconstrained Delegation</a>
       <ul>
-        <li><a href="#unconstrained-delegation">Unconstrained Delegation</a></li>
-        <li><a href="#constrained-delegation">Constrained Delegation</a>
-          <ul>
-            <li><a href="#resource-based-constrained-delegation-rbcd">Resource-based Constrained Delegation (RBCD)</a></li>
-          </ul>
-        </li>
-        <li><a href="#s4u2self">S4U2Self</a></li>
-        <li><a href="#s4u2proxy">S4U2Proxy</a>
-          <ul>
-            <li><a href="#constrained-delegation-1">Constrained Delegation</a></li>
-            <li><a href="#resource-based-constrained-delegation-rbcd-1">Resource-based Constrained Delegation (RBCD)</a></li>
-          </ul>
-        </li>
-        <li><a href="#attack-scenario">Attack Scenario</a>
-          <ul>
-            <li><a href="#scenario-1-generic-dacl-abuse">Scenario 1 (Generic DACL Abuse)</a></li>
-            <li><a href="#scenario-2-reflective-rbcd">Scenario 2 (Reflective RBCD)</a></li>
-            <li><a href="#scenario-3-reflective-rbcd-impersonating-protected-users">Scenario 3 (Reflective RBCD Impersonating Protected Users)</a></li>
-            <li><a href="#scenario-4-constrained-delegation-wo-protocol-transition">Scenario 4 (Constrained Delegation w/o Protocol Transition)</a></li>
-          </ul>
-        </li>
-        <li><a href="#todo">TODO</a></li>
-        <li><a href="#references">References</a></li>
+        <li><a href="#abusing-unconstrained-delegation">Abusing Unconstrained Delegation</a></li>
       </ul>
     </li>
+    <li><a href="#constrained-delegation">Constrained Delegation</a>
+      <ul>
+        <li><a href="#without-protocol-transition-kerberos-only">Without Protocol Transition (Kerberos Only)</a></li>
+        <li><a href="#with-protocol-transition-any-authentication">With Protocol Transition (Any Authentication)</a></li>
+      </ul>
+    </li>
+    <li><a href="#resource-based-constrained-delegation-rbcd">Resource-based Constrained Delegation (RBCD)</a></li>
+    <li><a href="#s4u2self">S4U2Self</a>
+      <ul>
+        <li><a href="#abusing-s4u2self">Abusing S4U2Self</a></li>
+      </ul>
+    </li>
+    <li><a href="#s4u2proxy">S4U2Proxy</a>
+      <ul>
+        <li><a href="#constrained-delegation-1">Constrained Delegation</a></li>
+        <li><a href="#resource-based-constrained-delegation-rbcd-1">Resource-based Constrained Delegation (RBCD)</a></li>
+      </ul>
+    </li>
+    <li><a href="#attack-scenario">Attack Scenario</a>
+      <ul>
+        <li><a href="#scenario-1-generic-dacl-abuse">Scenario 1 (Generic DACL Abuse)</a></li>
+        <li><a href="#scenario-2-reflective-rbcd">Scenario 2 (Reflective RBCD)</a></li>
+        <li><a href="#scenario-3-reflective-rbcd-impersonating-protected-users">Scenario 3 (Reflective RBCD Impersonating Protected Users)</a></li>
+        <li><a href="#scenario-4-constrained-delegation-wo-protocol-transition">Scenario 4 (Constrained Delegation w/o Protocol Transition)</a></li>
+        <li><a href="#scenario-5-double-kcd">Scenario 5 (Double KCD)</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
   </ul>
 </nav>
   </div>
@@ -976,8 +990,9 @@
 <li><code>user</code> requests for <code>resource</code> via <code>service</code></li>
 <li>In other words, <code>service</code> impersonate <code>user</code> to request for <code>resource</code></li>
 <li>In other words, <code>service</code> request for <code>resource</code> on behalf of <code>user</code></li>
+<li>personal note: a TGS to <code>krbtgt</code> service is basically a TGT</li>
 </ul>
-<h3 class="relative group">Unconstrained Delegation 
+<h2 class="relative group">Unconstrained Delegation 
     <div id="unconstrained-delegation" class="anchor"></div>
     
     <span
@@ -986,29 +1001,33 @@
             style="text-decoration-line: none !important;" href="#unconstrained-delegation" aria-label="Anchor">#</a>
     </span>        
     
-</h3>
+</h2>
 <ul>
 <li><code>service</code> account needs to have <code>TRUSTED_FOR_DELEGATION</code> flag <strong>enabled</strong></li>
 <li><code>user</code> needs to have <code>NOT_DELEGATED</code> flag <strong>disabled</strong> and is not a member of <code>Protected Users</code> group</li>
 <li>When <code>user</code> requests for TGS (<code>KRB_TGS_REQ</code>) to access <code>service</code>, the domain controller responds with TGS together with the copy of the <code>user</code> TGT</li>
 <li>Thus, <code>service</code> can request for <strong>any</strong> <code>resource</code> impersonating as <code>user</code> using the <code>user</code> copied TGT</li>
 </ul>
-<p>
-
-
-
-
-  
-  
-  
-    <figure>
-      <img class="my-0 rounded-md" src="./unconstrained-delegation.svg" alt="Unconstrained delegation diagram" />
-      
-    </figure>
-  
-
-</p>
-<h3 class="relative group">Constrained Delegation 
+<h3 class="relative group">Abusing Unconstrained Delegation 
+    <div id="abusing-unconstrained-delegation" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#abusing-unconstrained-delegation" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Requirements:</p>
+<ul>
+<li>Compromised computer with unconstrained delegation</li>
+</ul>
+<p>Attack:</p>
+<ul>
+<li>coerce authentication to our compromised computer to obtain a TGT</li>
+<li>use the TGT to do stuff</li>
+</ul>
+<h2 class="relative group">Constrained Delegation 
     <div id="constrained-delegation" class="anchor"></div>
     
     <span
@@ -1017,29 +1036,51 @@
             style="text-decoration-line: none !important;" href="#constrained-delegation" aria-label="Anchor">#</a>
     </span>        
     
-</h3>
+</h2>
 <ul>
 <li><code>service</code> can <strong>only</strong> request for <code>resource</code> <strong>defined</strong> in <code>msDS-AllowedToDelegateTo</code></li>
 <li>Validation is done on <code>service</code> account side</li>
-<li>Requires <code>SeEnableDelegationPrivilege</code> to modify <code>msDS-AllowedToDelegateTo</code></li>
+<li>Requires <code>SeEnableDelegationPrivilege</code> (domain admin level privilege) to modify <code>msDS-AllowedToDelegateTo</code></li>
 <li>Unlike unconstrained delegation, no copy of the <code>user</code> TGT is given to the <code>service</code></li>
 </ul>
-<p>
-
-
-
-
-  
-  
-  
-    <figure>
-      <img class="my-0 rounded-md" src="./constrained-delegation.svg" alt="Constrained delegation diagram" />
-      
-    </figure>
-  
-
-</p>
-<h4 class="relative group">Resource-based Constrained Delegation (RBCD) 
+<h3 class="relative group">Without Protocol Transition (Kerberos Only) 
+    <div id="without-protocol-transition-kerberos-only" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#without-protocol-transition-kerberos-only" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li>possible attack path:
+<ul>
+<li><a href="#scenario-4-constrained-delegation-wo-protocol-transition"  >
+    Scenario 4</a></li>
+<li><a href="#scenario-5-double-kcd"  >
+    Scenario 5</a></li>
+</ul>
+</li>
+<li><a href="#s4u2self"  >
+    <code>S4U2Self</code></a> produces non-forwardable TGS</li>
+</ul>
+<h3 class="relative group">With Protocol Transition (Any Authentication) 
+    <div id="with-protocol-transition-any-authentication" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#with-protocol-transition-any-authentication" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li>Identified by <code>TrustedToAuthForDelegation</code> property</li>
+<li><a href="#s4u2self"  >
+    <code>S4U2Self</code></a> produces forwardable TGS</li>
+</ul>
+<h2 class="relative group">Resource-based Constrained Delegation (RBCD) 
     <div id="resource-based-constrained-delegation-rbcd" class="anchor"></div>
     
     <span
@@ -1048,29 +1089,14 @@
             style="text-decoration-line: none !important;" href="#resource-based-constrained-delegation-rbcd" aria-label="Anchor">#</a>
     </span>        
     
-</h4>
+</h2>
 <ul>
 <li><code>resource</code> can <strong>only</strong> be requested from <code>service</code> <strong>defined</strong> in <code>msDS-AllowedToActOnBehalfOfOtherIdentity</code></li>
 <li>Validation is done on <code>resource</code> account side</li>
 <li>Only requires rights like <code>GenericAll</code>, <code>GenericWrite</code>, <code>WriteDacl</code>, etc., to modify <code>msDS-AllowedToActOnBehalfOfOtherIdentity</code></li>
 <li>Unlike unconstrained delegation, no copy of the <code>user</code> TGT is given to the <code>service</code></li>
 </ul>
-<p>
-
-
-
-
-  
-  
-  
-    <figure>
-      <img class="my-0 rounded-md" src="./resource-based-constrained-delegation.svg" alt="Resource-based constrained delegation diagram" />
-      
-    </figure>
-  
-
-</p>
-<h3 class="relative group">S4U2Self 
+<h2 class="relative group">S4U2Self 
     <div id="s4u2self" class="anchor"></div>
     
     <span
@@ -1079,7 +1105,7 @@
             style="text-decoration-line: none !important;" href="#s4u2self" aria-label="Anchor">#</a>
     </span>        
     
-</h3>
+</h2>
 <ul>
 <li><code>TRUSTED_TO_AUTH_FOR_DELEGATION</code> appears to have no impact based on <a href="https://eladshamir.com/2019/01/28/Wagging-the-Dog.html#serendipity"   target="_blank">
     Elad&rsquo;s research</a></li>
@@ -1092,7 +1118,21 @@
 <li>For this to work, it only requires the service performing <code>S4U2Self</code> to have SPN</li>
 <li>impersonating protected user would result in non-forwardable TGS</li>
 </ul>
-<h3 class="relative group">S4U2Proxy 
+<h3 class="relative group">Abusing S4U2Self 
+    <div id="abusing-s4u2self" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#abusing-s4u2self" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li>To perform local privilege escalation</li>
+<li>Regardless of the impersonated user being sensitive for delegation, S4U2Self could be abused since the SPN (<code>sname</code>/service name) on the TGS can be modified as it is not encrypted</li>
+</ul>
+<h2 class="relative group">S4U2Proxy 
     <div id="s4u2proxy" class="anchor"></div>
     
     <span
@@ -1101,12 +1141,11 @@
             style="text-decoration-line: none !important;" href="#s4u2proxy" aria-label="Anchor">#</a>
     </span>        
     
-</h3>
+</h2>
 <ul>
 <li>Every TGS generated from <code>S4U2Proxy</code> is always forwardable</li>
-<li>Although <code>user</code> needs to be not sensitive for delegation (<code>NOT_DELEGATED</code> flag <strong>disabled</strong> and is not a member of <code>Protected Users</code> group), when doing <code>S4U2Self</code>, the resulting TGS <code>sname</code> (service name) field is not encrypted and could be tampered to our end <code>S4U2Proxy</code> target service</li>
 </ul>
-<h4 class="relative group">Constrained Delegation 
+<h3 class="relative group">Constrained Delegation 
     <div id="constrained-delegation-1" class="anchor"></div>
     
     <span
@@ -1115,28 +1154,13 @@
             style="text-decoration-line: none !important;" href="#constrained-delegation-1" aria-label="Anchor">#</a>
     </span>        
     
-</h4>
+</h3>
 <ul>
 <li>requires TGS to be <code>forwardable</code></li>
 <li><code>user</code> needs to have <code>NOT_DELEGATED</code> flag <strong>disabled</strong> and is not a member of <code>Protected Users</code> group (such that the requested TGS is <code>forwardable</code>)</li>
 <li><code>service</code> embeds the <code>user</code> TGS in <code>additional-tickets</code> field when requesting TGS to access <code>resource</code></li>
 </ul>
-<p>
-
-
-
-
-  
-  
-  
-    <figure>
-      <img class="my-0 rounded-md" src="./constrained-delegation-s4u2proxy.svg" alt="Constrained delegation (S4U2Proxy) diagram" />
-      
-    </figure>
-  
-
-</p>
-<h4 class="relative group">Resource-based Constrained Delegation (RBCD) 
+<h3 class="relative group">Resource-based Constrained Delegation (RBCD) 
     <div id="resource-based-constrained-delegation-rbcd-1" class="anchor"></div>
     
     <span
@@ -1145,13 +1169,13 @@
             style="text-decoration-line: none !important;" href="#resource-based-constrained-delegation-rbcd-1" aria-label="Anchor">#</a>
     </span>        
     
-</h4>
+</h3>
 <ul>
 <li>Does not require the user TGS to be forwardable but the user <code>NOT_DELEGATED</code> flag has the highest priority to determine the success of <code>S4U2Proxy</code></li>
-<li>In other words, if the user can be impersonated (<code>NOT_DELEGATED</code> not set and is not a member of <code>Protected Users</code> group), regardless of the existence of <code>forwardable</code> flag in TGS, <code>S4U2Proxy</code> will always <strong>success</strong></li>
-<li>If the user <code>NOT_DELEGATED</code> flag is set and is not a member of <code>Protected Users</code> group, regardless of the existence of <code>forwardable</code> flag in TGS, <code>S4U2Proxy</code> will always <strong>fail</strong></li>
+<li>In other words, if the user can be impersonated (<code>NOT_DELEGATED</code> not set and is <strong>not</strong> a member of <code>Protected Users</code> group), regardless of the existence of <code>forwardable</code> flag in TGS, <code>S4U2Proxy</code> will always <strong>success</strong></li>
+<li>If the user <code>NOT_DELEGATED</code> flag is <strong>set</strong> and is <strong>not</strong> a member of <code>Protected Users</code> group, regardless of the existence of <code>forwardable</code> flag in TGS, <code>S4U2Proxy</code> will always <strong>fail</strong></li>
 </ul>
-<h3 class="relative group">Attack Scenario 
+<h2 class="relative group">Attack Scenario 
     <div id="attack-scenario" class="anchor"></div>
     
     <span
@@ -1160,8 +1184,8 @@
             style="text-decoration-line: none !important;" href="#attack-scenario" aria-label="Anchor">#</a>
     </span>        
     
-</h3>
-<h4 class="relative group">Scenario 1 (Generic DACL Abuse) 
+</h2>
+<h3 class="relative group">Scenario 1 (Generic DACL Abuse) 
     <div id="scenario-1-generic-dacl-abuse" class="anchor"></div>
     
     <span
@@ -1170,7 +1194,7 @@
             style="text-decoration-line: none !important;" href="#scenario-1-generic-dacl-abuse" aria-label="Anchor">#</a>
     </span>        
     
-</h4>
+</h3>
 <p>Scenario:</p>
 <ul>
 <li>ServiceA is compromised computer account with:
@@ -1201,8 +1225,8 @@
 </li>
 </ol>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ps1" data-lang="ps1"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">Rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">s4u</span> <span class="p">/</span><span class="n">user</span><span class="err">:</span><span class="n">ServiceA</span><span class="p">$</span> <span class="p">/</span><span class="n">rc4</span><span class="err">:</span><span class="nv">$ServiceANtlmHash</span> <span class="p">/</span><span class="n">domain</span><span class="err">:</span><span class="n">domain</span><span class="p">.</span><span class="py">local</span> <span class="p">/</span><span class="n">msdsspn</span><span class="err">:</span><span class="n">cifs</span><span class="p">/</span><span class="n">serviceb</span><span class="p">.</span><span class="py">domain</span><span class="p">.</span><span class="py">local</span> <span class="p">/</span><span class="n">impersonateuser</span><span class="err">:</span><span class="n">administrator</span> <span class="p">/</span><span class="n">ptt</span>
-</span></span><span class="line"><span class="cl"><span class="c"># Outcome: PrivEsc on `ServiceB`</span>
-</span></span></code></pre></div><h4 class="relative group">Scenario 2 (Reflective RBCD) 
+</span></span><span class="line"><span class="cl"> <span class="n">Outcome</span><span class="err">:</span> <span class="n">PrivEsc</span> <span class="n">on</span> <span class="p">`</span><span class="n">ServiceB</span><span class="p">`</span>
+</span></span></code></pre></div><h3 class="relative group">Scenario 2 (Reflective RBCD) 
     <div id="scenario-2-reflective-rbcd" class="anchor"></div>
     
     <span
@@ -1211,7 +1235,7 @@
             style="text-decoration-line: none !important;" href="#scenario-2-reflective-rbcd" aria-label="Anchor">#</a>
     </span>        
     
-</h4>
+</h3>
 
   
 
@@ -1249,16 +1273,16 @@
 <li><code>TRUSTED_TO_AUTH_FOR_DELEGATION</code> set on computer account (if the computer account is constrained delegation w/o protocol transition, then the <code>S4U2Proxy</code> would fail since the resulting TGS from <code>S4U2Self</code> is non-forwardable due to the absence of <code>TRUSTED_TO_AUTH_FOR_DELEGATION</code>)</li>
 <li>DACL to modify the computer account <code>msDS-AllowedToActOnBehalfOfOtherIdentity</code></li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ps1" data-lang="ps1"><span class="line"><span class="cl"><span class="c"># Use DACL to include `ServiceA` on `ServiceA`&#39;s `msDS-AllowedToActOnBehalfOfOtherIdentity`</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ps1" data-lang="ps1"><span class="line"><span class="cl"> <span class="n">Use</span> <span class="n">DACL</span> <span class="n">to</span> <span class="n">include</span> <span class="p">`</span><span class="n">ServiceA</span><span class="p">`</span> <span class="n">on</span> <span class="p">`</span><span class="n">ServiceA</span><span class="p">`&#39;</span><span class="n">s</span> <span class="p">`</span><span class="nb">msDS-AllowedToActOnBehalfOfOtherIdentity</span><span class="p">`</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c"># With credentials</span>
+</span></span><span class="line"><span class="cl"> <span class="n">With</span> <span class="n">credentials</span>
 </span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">Rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">s4u</span> <span class="p">/</span><span class="n">user</span><span class="err">:</span><span class="n">ServiceA</span><span class="p">$</span> <span class="p">/</span><span class="n">rc4</span><span class="err">:</span><span class="nv">$ServiceANtlmHash</span> <span class="p">/</span><span class="n">domain</span><span class="err">:</span><span class="n">domain</span><span class="p">.</span><span class="py">local</span> <span class="p">/</span><span class="n">msdsspn</span><span class="err">:</span><span class="n">cifs</span><span class="p">/</span><span class="n">servicea</span><span class="p">.</span><span class="py">domain</span><span class="p">.</span><span class="py">local</span> <span class="p">/</span><span class="n">impersonateuser</span><span class="err">:</span><span class="n">administrator</span> <span class="p">/</span><span class="n">ptt</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c"># Or with TGT</span>
-</span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">Rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">s4u</span> <span class="p">/</span><span class="n">user</span><span class="err">:</span><span class="n">ServiceA</span><span class="p">$</span> <span class="p">/</span><span class="n">ticket</span><span class="err">:</span><span class="p">&lt;</span><span class="n">base64</span> <span class="n">blob</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">domain</span><span class="err">:</span><span class="n">domain</span><span class="p">.</span><span class="py">local</span> <span class="p">/</span><span class="n">msdsspn</span><span class="err">:</span><span class="n">cifs</span><span class="p">/</span><span class="n">servicea</span><span class="p">.</span><span class="py">domain</span><span class="p">.</span><span class="py">local</span> <span class="p">/</span><span class="n">impersonateuser</span><span class="err">:</span><span class="n">administrator</span> <span class="p">/</span><span class="n">ptt</span>
+</span></span><span class="line"><span class="cl"> <span class="n">Or</span> <span class="n">with</span> <span class="n">TGT</span>
+</span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">Rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">s4u</span> <span class="p">/</span><span class="n">user</span><span class="err">:</span><span class="n">ServiceA</span><span class="p">$</span> <span class="p">/</span><span class="n">ticket</span><span class="err">:</span><span class="p">&lt;</span><span class="n">bas64</span> <span class="n">blob</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">domain</span><span class="err">:</span><span class="n">domain</span><span class="p">.</span><span class="py">local</span> <span class="p">/</span><span class="n">msdsspn</span><span class="err">:</span><span class="n">cifs</span><span class="p">/</span><span class="n">servicea</span><span class="p">.</span><span class="py">domain</span><span class="p">.</span><span class="py">local</span> <span class="p">/</span><span class="n">impersonateuser</span><span class="err">:</span><span class="n">administrator</span> <span class="p">/</span><span class="n">ptt</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c"># Outcome: PrivEsc on `ServiceA`</span>
-</span></span></code></pre></div><h4 class="relative group">Scenario 3 (Reflective RBCD Impersonating Protected Users) 
+</span></span><span class="line"><span class="cl"> <span class="n">Outcome</span><span class="err">:</span> <span class="n">PrivEsc</span> <span class="n">on</span> <span class="p">`</span><span class="n">ServiceA</span><span class="p">`</span>
+</span></span></code></pre></div><h3 class="relative group">Scenario 3 (Reflective RBCD Impersonating Protected Users) 
     <div id="scenario-3-reflective-rbcd-impersonating-protected-users" class="anchor"></div>
     
     <span
@@ -1267,22 +1291,53 @@
             style="text-decoration-line: none !important;" href="#scenario-3-reflective-rbcd-impersonating-protected-users" aria-label="Anchor">#</a>
     </span>        
     
-</h4>
+</h3>
+
+  
+
+
+
+<div
+  
+    class="flex px-4 py-3 rounded-md bg-primary-100 dark:bg-primary-900"
+  >
+
+  <span
+    
+      class="text-primary-400 ltr:pr-3 rtl:pl-3 flex items-center"
+    >
+
+    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"/></svg>
+
+  </span>
+
+
+  </span>
+
+  <span
+    
+      class="dark:text-neutral-300"
+    >PATCHED</span>
+</div>
+
 <p>Pre-requisites:</p>
 <ul>
 <li>computer account credentials or TGT (to perform <code>S4U2Self</code>)</li>
 <li><code>TRUSTED_TO_AUTH_FOR_DELEGATION</code> set on computer account (if the computer account is constrained delegation w/o protocol transition, then the <code>S4U2Proxy</code> would fail since the resulting TGS from <code>S4U2Self</code> is non-forwardable due to the absence of TRUSTED_TO_AUTH_FOR_DELEGATION)</li>
 <li>DACL to modify the computer account <code>msDS-AllowedToActOnBehalfOfOtherIdentity</code> (?)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ps1" data-lang="ps1"><span class="line"><span class="cl"><span class="c"># Use DACL to include `ServiceA` on `ServiceA`&#39;s `msDS-AllowedToActOnBehalfOfOtherIdentity`</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ps1" data-lang="ps1"><span class="line"><span class="cl"> <span class="n">Use</span> <span class="n">DACL</span> <span class="n">to</span> <span class="n">include</span> <span class="p">`</span><span class="n">ServiceA</span><span class="p">`</span> <span class="n">on</span> <span class="p">`</span><span class="n">ServiceA</span><span class="p">`&#39;</span><span class="n">s</span> <span class="p">`</span><span class="nb">msDS-AllowedToActOnBehalfOfOtherIdentity</span><span class="p">`</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c"># Successful `S4U2Self`, but failed when `S4U2Proxy`</span>
+</span></span><span class="line"><span class="cl"> <span class="n">Successful</span> <span class="p">`</span><span class="n">S4U2Self</span><span class="p">`,</span> <span class="n">but</span> <span class="n">failed</span> <span class="n">when</span> <span class="p">`</span><span class="n">S4U2Proxy</span><span class="p">`</span>
 </span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">Rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">s4u</span> <span class="p">/</span><span class="n">user</span><span class="err">:</span><span class="n">ServiceA</span><span class="p">$</span> <span class="p">/</span><span class="n">rc4</span><span class="err">:</span><span class="nv">$ServiceANtlmHash</span> <span class="p">/</span><span class="n">domain</span><span class="err">:</span><span class="n">domain</span><span class="p">.</span><span class="py">local</span> <span class="p">/</span><span class="n">msdsspn</span><span class="err">:</span><span class="n">cifs</span><span class="p">/</span><span class="n">servicea</span><span class="p">.</span><span class="py">domain</span><span class="p">.</span><span class="py">local</span> <span class="p">/</span><span class="n">impersonateuser</span><span class="err">:</span><span class="n">administrator</span> <span class="p">/</span><span class="n">ptt</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c"># Edit the `sname` field on the TGS generated from `S4U2Self` from `ServiceA$` to `cifs/servicea.domain.local`</span>
+</span></span><span class="line"><span class="cl"> <span class="n">Edit</span> <span class="n">the</span> <span class="p">`</span><span class="n">sname</span><span class="p">`</span> <span class="n">field</span> <span class="n">on</span> <span class="n">the</span> <span class="n">TGS</span> <span class="n">generated</span> <span class="n">from</span> <span class="p">`</span><span class="n">S4U2Self</span><span class="p">`</span> <span class="n">from</span> <span class="p">`</span><span class="n">ServiceA</span><span class="p">$`</span> <span class="n">to</span> <span class="p">`</span><span class="n">cifs</span><span class="p">/</span><span class="n">servicea</span><span class="p">.</span><span class="py">domain</span><span class="p">.</span><span class="n">local</span><span class="p">`</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c"># Outcome: PrivEsc on `ServiceA`</span>
-</span></span></code></pre></div><h4 class="relative group">Scenario 4 (Constrained Delegation w/o Protocol Transition) 
+</span></span><span class="line"><span class="cl"> <span class="n">Outcome</span><span class="err">:</span> <span class="n">PrivEsc</span> <span class="n">on</span> <span class="p">`</span><span class="n">ServiceA</span><span class="p">`</span>
+</span></span></code></pre></div><h3 class="relative group">Scenario 4 (Constrained Delegation w/o Protocol Transition) 
     <div id="scenario-4-constrained-delegation-wo-protocol-transition" class="anchor"></div>
     
     <span
@@ -1291,7 +1346,7 @@
             style="text-decoration-line: none !important;" href="#scenario-4-constrained-delegation-wo-protocol-transition" aria-label="Anchor">#</a>
     </span>        
     
-</h4>
+</h3>
 <p>Pre-requisites:</p>
 <ul>
 <li>computer account credentials or TGT (to perform DACL write <code>msDS-AllowedToActOnBehalfOfOtherIdentity</code>) that has constrained delegation without protocol transition</li>
@@ -1306,41 +1361,66 @@
 <p>Attack Path:</p>
 <ol>
 <li>Use DACL to write ServiceA on ServiceB&rsquo;s msDS-AllowedToActOnBehalfOfOtherIdentity</li>
-<li><code>S4U2Self</code> on ServiceA to get TGS for administrator to access ServiceA
+<li><code>S4U2Self</code> on ServiceA
 <ul>
-<li>result: non-forwardable TGS</li>
+<li>result: non-forwardable TGS (administrator -&gt; ServiceA)</li>
 <li>reason: non-forwardable due to the absence of <code>TrustedToAuthForDelegation</code> on ServiceA</li>
 </ul>
 </li>
 <li><code>S4U2Proxy</code> on ServiceA targetting ServiceB host SPN by embedding previously obtained non-forwardable TGS on <code>additional-tickets</code> field
 <ul>
-<li>result: forwardable TGS for administrator to access ServiceB</li>
+<li>result: forwardable TGS (administrator -&gt; ServiceB)</li>
 <li>reason: this works because ServiceA is not configured to be constrained delegation which does not requires the embedded TGS to be forwardable</li>
 </ul>
 </li>
-<li><code>S4U2Proxy</code> on ServiceB targetting ServiceC SPN (according to ServiceB&rsquo;s msDS-AllowedToDelegateTo value) by embedding previously obtained forwardable TGS on <code>additional-tickets</code> field
+<li><code>S4U2Proxy</code> on ServiceB targetting ServiceC SPN (according to ServiceB&rsquo;s <code>msDS-AllowedToDelegateTo</code> value) by embedding previously obtained forwardable TGS on <code>additional-tickets</code> field
 <ul>
-<li>result: forwardable TGS for administrator to access ServiceC</li>
+<li>result: forwardable TGS (administrator -&gt; ServiceC)</li>
 <li>reason: <code>S4U2Proxy</code> on ServiceB works because the embedded TGS is forwardable, otherwise this fails</li>
 </ul>
 </li>
 </ol>
-<h3 class="relative group">TODO 
-    <div id="todo" class="anchor"></div>
+<h3 class="relative group">Scenario 5 (Double KCD) 
+    <div id="scenario-5-double-kcd" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#todo" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#scenario-5-double-kcd" aria-label="Anchor">#</a>
     </span>        
     
 </h3>
+<p>Scenario:</p>
 <ul>
-<li>Create ServiceA with constrained delegation w/o protocol transition to access ServiceB</li>
-<li>Create ServiceA to be RBCD to ServiceB</li>
-<li>Test full <code>S4U2</code> attack on ServiceA</li>
+<li>ServiceA is KCD w/ protocol transition with <code>msDS-AllowedToDelegateTo</code> set to ServiceB</li>
+<li>ServiceB is KCD w/o protocol transition with <code>msDS-AllowedToDelegateTo</code> set to ServiceC</li>
 </ul>
-<h3 class="relative group">References 
+<p>Pre-requisites:</p>
+<ul>
+<li>ServiceA credentials</li>
+</ul>
+<p>Attack Path:</p>
+<ol>
+<li><code>S4U2Self</code> on ServiceA
+<ul>
+<li>result: forwardable TGS (administrator -&gt; ServiceA)</li>
+<li>reason: forwardable as ServiceA has <code>TrustedToAuthForDelegation</code> (with protocol transition)</li>
+</ul>
+</li>
+<li><code>S4U2Proxy</code> on ServiceA to ServiceB
+<ul>
+<li>result: forwardable TGS (administrator -&gt; ServiceB)</li>
+<li>reason: success because the embedded TGS from previous <code>S4U2Self</code> is forwardable</li>
+</ul>
+</li>
+<li><code>S4U2Proxy</code> on ServiceB to ServiceC
+<ul>
+<li>result: forwardable TGS (administrator -&gt; ServiceC)</li>
+<li>reason: success because the embedded TGS from previous <code>S4U2Proxy</code> is forwardable</li>
+</ul>
+</li>
+</ol>
+<h2 class="relative group">References 
     <div id="references" class="anchor"></div>
     
     <span
@@ -1349,7 +1429,7 @@
             style="text-decoration-line: none !important;" href="#references" aria-label="Anchor">#</a>
     </span>        
     
-</h3>
+</h2>
 <ul>
 <li><a href="https://en.hackndo.com/constrained-unconstrained-delegation/"   target="_blank">
     https://en.hackndo.com/constrained-unconstrained-delegation/</a></li>
