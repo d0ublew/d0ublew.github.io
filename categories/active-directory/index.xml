@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 d0ublew</copyright>
-    <lastBuildDate>Fri, 15 Dec 2023 16:55:58 +0800</lastBuildDate><atom:link href="https://d0ublew.github.io/categories/active-directory/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Jan 2024 15:01:22 +0800</lastBuildDate><atom:link href="https://d0ublew.github.io/categories/active-directory/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kerberos Delegations</title>
+      <link>https://d0ublew.github.io/notes/active-directory/delegations/</link>
+      <pubDate>Thu, 18 Jan 2024 15:01:22 +0800</pubDate>
+      
+      <guid>https://d0ublew.github.io/notes/active-directory/delegations/</guid>
+      <description>Personal notes on Kerberos Delegations</description>
+      
+    </item>
+    
     <item>
       <title>SMB Relay Attack</title>
       <link>https://d0ublew.github.io/notes/active-directory/smb-relay-attack/</link>

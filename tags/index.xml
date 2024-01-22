@@ -7,7 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 d0ublew</copyright>
-    <lastBuildDate>Sun, 17 Dec 2023 10:29:56 +0800</lastBuildDate><atom:link href="https://d0ublew.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Jan 2024 15:01:22 +0800</lastBuildDate><atom:link href="https://d0ublew.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kerberos</title>
+      <link>https://d0ublew.github.io/tags/kerberos/</link>
+      <pubDate>Thu, 18 Jan 2024 15:01:22 +0800</pubDate>
+      
+      <guid>https://d0ublew.github.io/tags/kerberos/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>PrivEsc</title>
+      <link>https://d0ublew.github.io/tags/privesc/</link>
+      <pubDate>Thu, 18 Jan 2024 15:01:22 +0800</pubDate>
+      
+      <guid>https://d0ublew.github.io/tags/privesc/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>RBCD</title>
+      <link>https://d0ublew.github.io/tags/rbcd/</link>
+      <pubDate>Thu, 18 Jan 2024 15:01:22 +0800</pubDate>
+      
+      <guid>https://d0ublew.github.io/tags/rbcd/</guid>
+      <description></description>
+      
+    </item>
+    
     <item>
       <title>hashicorp vault</title>
       <link>https://d0ublew.github.io/tags/hashicorp-vault/</link>

