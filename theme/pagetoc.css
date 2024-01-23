@@ -77,11 +77,11 @@
     .pagetoc a:hover,
     .pagetoc a.active {
         background: var(--toc-active-bg);
-        color: var(--sidebar-fg) !important;
+        color: var(--sidebar-active) !important;
     }
     .pagetoc .active {
         background: var(--toc-active-bg);
-        color: var(--sidebar-fg);
+        color: var(--sidebar-active);
     }
     .pagetoc .pagetoc-H2 {
         padding-left: 20px;
