@@ -76,11 +76,11 @@
     }
     .pagetoc a:hover,
     .pagetoc a.active {
-        background: var(--sidebar-bg);
+        background: var(--toc-active-bg);
         color: var(--sidebar-fg) !important;
     }
     .pagetoc .active {
-        background: var(--sidebar-bg);
+        background: var(--toc-active-bg);
         color: var(--sidebar-fg);
     }
     .pagetoc .pagetoc-H2 {

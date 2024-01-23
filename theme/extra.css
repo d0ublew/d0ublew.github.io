@@ -1,0 +1,19 @@
+.ayu {
+    --toc-active-bg: #191f26;
+}
+
+.coal {
+    --toc-active-bg: var(--sidebar-bg);
+}
+
+.light {
+    --toc-active-bg: #f6f7f6;
+}
+
+.navy {
+    --toc-active-bg: var(--sidebar-bg);
+}
+
+.rust {
+    --toc-active-bg: var(--sidebar-bg);
+}
