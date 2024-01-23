@@ -26,10 +26,10 @@ command = "mdbook-mermaid"
 [output]
 
 [output.html]
-additional-css = ["mdbook-admonish.css", "theme/pagetoc.css"]
+additional-css = ["mdbook-admonish.css", "theme/pagetoc.css", "./theme/catppuccin.css", "./theme/catppuccin-admonish.css"]
 additional-js = ["theme/pagetoc.js", "mermaid.min.js", "mermaid-init.js"]
 default-theme = "light"
-preferred-dark-theme = "ayu"
+preferred-dark-theme = "mocha"
 no-section-label = true
 git-repository-url = "https://github.com/d0UBleW/my-blog"
 git-repository-icon = "fa-github"
