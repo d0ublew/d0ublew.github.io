@@ -17,3 +17,7 @@
 .rust {
     --toc-active-bg: var(--sidebar-bg);
 }
+
+.mocha, .macchiato, .frappe, .latte {
+    --toc-active-bg: var(--sidebar-bg);
+}
