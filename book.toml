@@ -1,0 +1,39 @@
+[book]
+authors = ["d0UBleW"]
+language = "en"
+multilingual = false
+src = "src"
+title = "d0ublew's Blog"
+description = "An average blog consisting of CTF writeups and notes"
+
+[build]
+build-dir = "book"                # the directory where the output is placed
+create-missing = true             # whether or not to create missing pages
+use-default-preprocessors = true  # use the default preprocessors
+extra-watch-dirs = []             # directories to watch for triggering builds
+
+[preprocessor]
+
+[preprocessor.index]
+
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "3.0.1" # do not edit: managed by `mdbook-admonish install`
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
+[output]
+
+[output.html]
+additional-css = ["mdbook-admonish.css", "theme/pagetoc.css"]
+additional-js = ["theme/pagetoc.js", "mermaid.min.js", "mermaid-init.js"]
+default-theme = "light"
+preferred-dark-theme = "ayu"
+no-section-label = true
+git-repository-url = "https://github.com/d0UBleW/my-blog"
+git-repository-icon = "fa-github"
+mathjax-support = true
+
+[output.html.fold]
+enable = true
