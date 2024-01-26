@@ -36,4 +36,4 @@ git-repository-icon = "fa-github"
 mathjax-support = true
 
 [output.html.fold]
-enable = true
+enable = false
