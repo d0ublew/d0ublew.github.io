@@ -26,4 +26,4 @@
     - [Kerberos Delegations](./notes/active-directory/delegations/README.md)
     - [SMB Relay Attack](./notes/active-directory/smb-relay-attack/README.md)
 - [pwn]()
-    - [File Structure Oriented Programming (FSOP)](./notes/pwn/fsop/readme.md)
+    - [File Stream Oriented Programming (FSOP)](./notes/pwn/fsop/readme.md)
