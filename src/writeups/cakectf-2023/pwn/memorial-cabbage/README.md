@@ -137,11 +137,10 @@ is constructed everytime `memo_r` is called, we could overwrite `tempdir` to be
 when `strcpy(path + strlen(TEMPDIR_TEMPLATE), "/memo.txt")` is called, our NULL
 termination stays and `fopen()` would open `/flag.txt`, instead of `/flag.txtgarbage/memo.txt`
 
-```admonish important
-When testing locally, make sure that the running user has no write permission
-to `/flag.txt` since `memo_w` would not return early and instead overwrite
-the content of `/flag.txt`.
-```
+> [!IMPORTANT]
+> When testing locally, make sure that the running user has no write permission
+> to `/flag.txt` since `memo_w` would not return early and instead overwrite
+> the content of `/flag.txt`.
 
 Final solve script:
 

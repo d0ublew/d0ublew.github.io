@@ -10,9 +10,8 @@ Triggering error to reach `catch` block
 
 ## Source Code
 
-```admonish info collapsible=true
-This is only a part of the source code
-```
+> [!INFO]
+> This is only a part of the source code
 
 ```php
 <?php

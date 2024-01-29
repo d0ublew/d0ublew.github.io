@@ -4,9 +4,8 @@
     keywords: ARM64, aarch46, ROP, ret2csu
 </div>
 
-```admonish warning
-Not sure why the exploit does not work in non-debug mode locally, but works for local debug-mode and remote non-debug
-```
+> [!WARNING]
+> Not sure why the exploit does not work in non-debug mode locally, but works for local debug-mode and remote non-debug
 
 ## aarch64 (ARM64)
 

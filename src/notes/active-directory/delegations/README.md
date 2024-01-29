@@ -118,9 +118,8 @@ Attack Path:
 
 ### Scenario 2 (Reflective RBCD)
 
-```admonish warning collapsible=true title="Patched"
-According to [@M4yFly](https://twitter.com/M4yFly) testing, this has been sliently patched by Microsoft
-```
+> [!WARNING]
+> According to [@M4yFly](https://twitter.com/M4yFly) testing, this has been sliently patched by Microsoft
 
 Pre-requisites:
 - computer account credentials or TGT (to perform `S4U2Self`)
@@ -141,9 +140,8 @@ Pre-requisites:
 
 ### Scenario 3 (Reflective RBCD Impersonating Protected Users)
 
-```admonish warning collapsible=true title="Patched"
-According to [@M4yFly](https://twitter.com/M4yFly) testing, this has been sliently patched by Microsoft
-```
+> [!WARNING]
+> According to [@M4yFly](https://twitter.com/M4yFly) testing, this has been sliently patched by Microsoft
 
 Pre-requisites:
 - computer account credentials or TGT (to perform `S4U2Self`)

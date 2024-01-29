@@ -87,12 +87,11 @@ only relay from anywhere (`dc01`, `ws01`) to `ws02` as `oscp\bob`.
 
 ## Example
 
-```admonish note
-If impacket is installed on a virtual environment and needs to execute with `sudo`
-~~~sh
-sudo --preserve-env=PATH env impacket-ntlmrelay ...
-~~~
-```
+> [!NOTE]
+> If impacket is installed on a virtual environment and needs to execute with `sudo`
+> ~~~sh
+> sudo --preserve-env=PATH env impacket-ntlmrelay ...
+> ~~~
 
 ### Relaying from `ws01` to `ws02` as `oscp\alice` (Succeed)
 

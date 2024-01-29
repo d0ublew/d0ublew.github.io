@@ -10,9 +10,8 @@ Leveraging Google search box to capture the flag
 
 ## Source Code
 
-```admonish info collapsible=true
-This is a rough overview of the source code but is enough for solving the challenge
-```
+> [!INFO]
+> This is a rough overview of the source code but is enough for solving the challenge
 
 ```php
 <?php

@@ -16,9 +16,7 @@ extra-watch-dirs = []             # directories to watch for triggering builds
 
 [preprocessor.index]
 
-[preprocessor.admonish]
-command = "mdbook-admonish"
-assets_version = "3.0.1" # do not edit: managed by `mdbook-admonish install`
+[preprocessor.alerts]
 
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
@@ -26,7 +24,7 @@ command = "mdbook-mermaid"
 [output]
 
 [output.html]
-additional-css = ["mdbook-admonish.css", "theme/pagetoc.css", "./theme/catppuccin.css", "./theme/catppuccin-admonish.css", "./theme/extra.css"]
+additional-css = ["theme/pagetoc.css", "./theme/catppuccin.css", "./theme/catppuccin-admonish.css", "./theme/extra.css"]
 additional-js = ["theme/pagetoc.js", "mermaid.min.js", "mermaid-init.js"]
 default-theme = "light"
 preferred-dark-theme = "ayu"

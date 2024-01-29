@@ -4,10 +4,9 @@
     keywords: Wargames.MY CTF 2023, web, k8s, nginx, off-by-slash
 </div>
 
-```admonish warning title="Disclaimer"
-This is my first time playing with `k8s`, so things that I mentioned may not be
-accurate.
-```
+> [!WARNING]
+> Disclaimer: This is my first time playing with `k8s`, so things that I mentioned
+> may not be accurate.
 
 ## Series
 
@@ -269,10 +268,9 @@ We could see that there are interesting strings like:
 - `flag_for_status`
 - `kv/data/flag_for_secret` (for the other challenge named `secret`)
 
-```admonish note
-Alternative way to retrieve this data without `kubectl` is through the API
-endpoint directly, see [appendix](#appendix)
-```
+> [!NOTE]
+> Alternative way to retrieve this data without `kubectl` is through the API
+> endpoint directly, see [appendix](#appendix)
 
 ## Retrieving `nginx` Config from `configmaps`
 
@@ -513,10 +511,9 @@ $ curl -s -k -H "Authorization: Bearer ${k8s_token}" https://kubernetes.default.
 
 ### Getting stuff via API
 
-```admonish warning title="Disclaimer"
-The first attempt that I did was just trial-and-error before noticing the
-pattern (which could be wrong as well)
-```
+> [!WARNING]
+> Disclaimer: The first attempt that I did was just trial-and-error before
+> noticing the pattern (which could be wrong as well)
 
 I use `/apis/apps` from the assumption of `kubectl auth can-i --list` output: `deployments.apps`
 

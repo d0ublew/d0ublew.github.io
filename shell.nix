@@ -2,7 +2,6 @@
 pkgs.mkShell {
     nativeBuildInputs = with pkgs.buildPackages; [
         mdbook
-        mdbook-admonish
         mdbook-mermaid
     ];
     shellHook = ''

@@ -4,12 +4,11 @@
     keywords: fsop, pwn, aaw, aar, arbitrary address write, arbitrary address read, primitive
 </div>
 
-```admonish note
-Some lines of code are hidden for brevity.
-
-When hovering over the code block, press the eye button on the top right corner
-to toggle the hidden lines.
-```
+> [!NOTE]
+> Some lines of code are hidden for brevity.
+> 
+> When hovering over the code block, press the eye button on the top right corner
+> to toggle the hidden lines.
 
 
 ## Built-in File Struct
@@ -235,10 +234,9 @@ gef> ptype /ox struct _IO_jump_t
 
 <https://elixir.bootlin.com/glibc/glibc-2.38/source/libio/libioP.h#L509>
 
-```admonish note
-- glibc stdio uses `_IO_file_jumps` vtable
-- `_wide_data` struct uses `_IO_wfile_jumps` vtable
-```
+> [!NOTE]
+> - glibc stdio uses `_IO_file_jumps` vtable
+> - `_wide_data` struct uses `_IO_wfile_jumps` vtable
 
 ```c
 extern const struct _IO_jump_t __io_vtables[] attribute_hidden;
@@ -565,10 +563,9 @@ Dump of assembler code for function __GI__IO_wdoallocbuf:
    0x00007ffff7e16b9b <+43>:    call   QWORD PTR [rax+0x68]  # calls function at offset 0x68 inside the _wide_vtable (of kind __doallocate, specifically _IO_wfile_doallocate since we are dealing with wide data)
 ```
 
-```admonish warning
-Be careful when overwriting the `_IO_lock_t *_lock` field.
-The value needs to be a writable address that has NULL value
-```
+> [!WARNING]
+> Be careful when overwriting the `_IO_lock_t *_lock` field.
+> The value needs to be a writable address that has NULL value
 
 #### Example
 
