@@ -26,10 +26,12 @@ command = "mdbook-mermaid"
 [output.html]
 additional-css = ["theme/pagetoc.css", "./theme/catppuccin.css", "./theme/catppuccin-admonish.css", "./theme/extra.css"]
 additional-js = ["theme/pagetoc.js", "mermaid.min.js", "mermaid-init.js"]
+# additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css", "./theme/extra.css"]
+# additional-js = ["mermaid.min.js", "mermaid-init.js"]
 default-theme = "light"
 preferred-dark-theme = "ayu"
 no-section-label = true
-git-repository-url = "https://github.com/d0UBleW/d0ublew.github.io"
+git-repository-url = "https://github.com/d0ublew/d0ublew.github.io"
 git-repository-icon = "fa-github"
 mathjax-support = true
 
