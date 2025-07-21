@@ -8,8 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      MDBOOK_VERSION: '0.4.36'
-      MDBOOK_MERMAID_VERSION: '0.13.0'
+      MDBOOK_VERSION: '0.4.52'
+      MDBOOK_MERMAID_VERSION: '0.15.0'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
