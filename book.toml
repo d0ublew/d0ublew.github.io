@@ -21,6 +21,8 @@ extra-watch-dirs = []             # directories to watch for triggering builds
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
 
+# [preprocessor.pagetoc]
+
 [output]
 
 [output.html]
