@@ -1,7 +1,7 @@
 /*
   Highlight.js 10.7.3 (0c4cc8a1)
   License: BSD-3-Clause
-  Copyright (c) 2006-2025, Ivan Sagalaev
+  Copyright (c) 2006-2026, Ivan Sagalaev
 */
 var hljs=function(){"use strict";function e(t){
 return t instanceof Map?t.clear=t.delete=t.set=()=>{

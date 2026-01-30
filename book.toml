@@ -1,7 +1,6 @@
 [book]
 authors = ["d0UBleW"]
 language = "en"
-multilingual = false
 src = "src"
 title = "d0ublew's Blog"
 description = "An average blog consisting of CTF writeups and notes"
@@ -16,23 +15,19 @@ extra-watch-dirs = []             # directories to watch for triggering builds
 
 [preprocessor.index]
 
-[preprocessor.alerts]
-
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
-
-# [preprocessor.pagetoc]
 
 [output]
 
 [output.html]
-additional-css = ["theme/pagetoc.css", "./theme/catppuccin.css", "./theme/catppuccin-admonish.css", "./theme/extra.css"]
-additional-js = ["theme/pagetoc.js", "mermaid.min.js", "mermaid-init.js"]
+additional-css = ["./theme/catppuccin.css"]
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
 default-theme = "light"
 preferred-dark-theme = "ayu"
 no-section-label = true
 git-repository-url = "https://github.com/d0UBleW/d0ublew.github.io"
-git-repository-icon = "fa-github"
+# git-repository-icon = "fa-github"
 mathjax-support = true
 
 [output.html.fold]

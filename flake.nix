@@ -19,9 +19,9 @@
           packages = with pkgs; [
             bashInteractive
             mdbook
-            mdbook-pagetoc
+            # mdbook-pagetoc
             mdbook-mermaid
-            mdbook-alerts
+            # mdbook-alerts
           ];
           shellHook = ''
             source <(mdbook completions bash)
